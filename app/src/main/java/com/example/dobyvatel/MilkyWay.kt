@@ -20,11 +20,11 @@ class MilkyWay : AppCompatActivity() {
         binding = ActivityPlanetsMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        //TODO urobit to so vsetkymi planetami, ak je level done, obrazok je odmknuty
         if(MilkyWayDone.sun == true){
             binding.mercury.setImageResource(R.drawable.milkyway_mercury)
         }
-
-
 
         //        SLNKO
         binding.sun.setOnClickListener{
@@ -41,11 +41,6 @@ class MilkyWay : AppCompatActivity() {
 
                 //TODO level je splneny, malo by sa nieco vypisat
             }
-
-
-
-
-
             ///TODO urobit to takto, cez imageSource. Nechat len jeden obrazok
             ///TODO ktoremu sa bude nastavovat rozne source
 //            binding.mercuryBlack.setImageResource(R.drawable.milkyway_mercury)
@@ -53,6 +48,12 @@ class MilkyWay : AppCompatActivity() {
 
         //        MERKUR
         binding.mercury.setOnClickListener{
+
+            if(MilkyWayDone.mercury == true){
+                ///TODO nic sa neotvara
+            }else{
+                ///TODO otvori sa hraci level
+            }
 
 
         }
@@ -113,34 +114,6 @@ class MilkyWay : AppCompatActivity() {
             binding.uranus.setImageResource(R.drawable.milkyway_uran)
         }
     }
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if (requestCode == 0) {
-//            if (resultCode == RESULT_OK) {
-//                // Get the result from intent
-//
-//                val res = data?.getStringExtra("result")
-//
-//                var bzl = data?.getBooleanExtra("game",false)
-//
-//
-//                val result = intent.getStringExtra("result")
-//                // set the result to the text view
-//                findViewById<TextView>(R.id.ufoText).text = "Odblokoval si $res. Vela stastia!"
-//            }
-//        } else if (requestCode == 1){
-//
-//            val res = data?.getStringExtra("result")
-//
-//
-//            // set the result to the text view
-//            findViewById<TextView>(R.id.ufoText).text = res
-//        }
-//    }
-
-
 
     var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {

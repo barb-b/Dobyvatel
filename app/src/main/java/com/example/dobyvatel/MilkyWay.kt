@@ -13,15 +13,16 @@ import com.example.dobyvatel.databinding.ActivityPlanetsMapBinding
 class MilkyWay : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlanetsMapBinding
-    var sunBoolean = false
-    var mercBoolean = false
-
-
+//    public lateinit var sunBoolean: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlanetsMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if(MilkyWayDone.sun == true){
+            binding.mercury.setImageResource(R.drawable.milkyway_mercury)
+        }
 
 
 
@@ -32,7 +33,7 @@ class MilkyWay : AppCompatActivity() {
 ////            startActivity(intent)
 //            startActivityForResult(intent,0)
 
-            if(sunBoolean == false){
+            if(MilkyWayDone.sun == false){
 
                 val intent = Intent(this, ImageGame::class.java)
                 resultLauncher.launch(intent)
@@ -98,6 +99,19 @@ class MilkyWay : AppCompatActivity() {
 
             //TODO otvorenie suhvezdi
         }
+
+        binding.chest.setOnClickListener{
+            //TODO presmerovanie na stranku, kde budu ulozene karticky
+
+            binding.mercury.setImageResource(R.drawable.milkyway_mercury)
+            binding.venus.setImageResource(R.drawable.milkyway_venus)
+            binding.mars.setImageResource(R.drawable.milkyway_mars)
+            binding.earth.setImageResource(R.drawable.milkyway_earth)
+            binding.jupiter.setImageResource(R.drawable.milkyway_jupiter)
+            binding.saturn.setImageResource(R.drawable.milkyway_saturn)
+            binding.neptune.setImageResource(R.drawable.milkyway_neptune)
+            binding.uranus.setImageResource(R.drawable.milkyway_uran)
+        }
     }
 //
 //    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -133,9 +147,9 @@ class MilkyWay : AppCompatActivity() {
             // There are no request codes
             val data: Intent? = result.data
 
-            sunBoolean = data?.getBooleanExtra("boolSun",false) == true
-            mercBoolean = data?.getBooleanExtra("boolMerc",false) == true
-            if(sunBoolean == true){
+            MilkyWayDone.sun = data?.getBooleanExtra("boolSun",false) == true
+            MilkyWayDone.mercury = data?.getBooleanExtra("boolMerc",false) == true
+            if(MilkyWayDone.sun == true){
                 binding.mercury.setImageResource(R.drawable.milkyway_mercury)
             }
 

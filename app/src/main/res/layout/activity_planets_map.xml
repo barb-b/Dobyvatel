@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <!--               SUN   />-->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -33,12 +34,13 @@
 
                     <ImageButton
                         android:id="@+id/sun"
-                        android:layout_width="500dp"
+                        android:layout_width="550dp"
                         android:layout_height="0dp"
                         android:layout_weight="1"
                         android:adjustViewBounds="true"
                         android:background="@null"
                         android:scaleType="fitStart"
+                        android:contentDescription="@string/app_name"
                         app:srcCompat="@drawable/milkyway_sun" />
 
                     <TextView
@@ -57,7 +59,6 @@
 
 
                 <!--               MERCURY   />-->
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -81,7 +82,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        android:layout_marginTop="-210dp"
+                        android:layout_marginTop="-100dp"
                         android:gravity="center"
                         android:textSize="20sp"
                         android:layout_gravity="top"
@@ -117,7 +118,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        android:layout_marginTop="-210dp"
+                        android:layout_marginTop="-100dp"
                         android:gravity="center"
                         android:textSize="20sp"
                         android:layout_gravity="top"
@@ -128,15 +129,12 @@
                 </LinearLayout>
 
 
-
-
-
-
                 <!--               EARTH   />-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginEnd="80dp">
 
                     <ImageButton
                         android:id="@+id/earth"
@@ -155,7 +153,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_gravity="top"
-                        android:layout_marginTop="-210dp"
+                        android:layout_marginTop="-100dp"
                         android:fontFamily="@font/space"
                         android:gravity="center"
                         android:text="ZEM"
@@ -166,87 +164,180 @@
 
 
                 <!--               MARS   />-->
-                <ImageButton
-                    android:id="@+id/mars"
-                    android:layout_width="0dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@null"
-                    android:contentDescription="@string/app_name"
-                    android:padding="20dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/milkyway_marsblack"
-                   />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="80dp">
 
+                    <ImageButton
+                        android:id="@+id/mars"
+                        android:layout_width="200dp"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/milkyway_marsblack"
+                        />
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="-100dp"
+                        android:fontFamily="@font/space"
+                        android:gravity="center"
+                        android:text="MARS"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
 
                 <!--               JUPITER   />-->
-                <ImageButton
-                    android:id="@+id/jupiter"
-                    android:layout_width="0dp"
-                    android:layout_height="400dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@null"
-                    android:contentDescription="@string/app_name"
-                    android:padding="20dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/milkyway_jupiterblack"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="40dp">
+
+                    <ImageButton
+                        android:id="@+id/jupiter"
+                        android:layout_width="350dp"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/milkyway_jupiterblack"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="-100dp"
+                        android:fontFamily="@font/space"
+                        android:gravity="center"
+                        android:text="JUPITER"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
 
 
                 <!--               SATURN   />-->
-                <ImageButton
-                    android:id="@+id/saturn"
-                    android:layout_width="0dp"
-                    android:layout_height="800dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@null"
-                    android:contentDescription="@string/app_name"
-                    android:padding="0dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/milkyway_saturnblack"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="80dp">
 
+                    <ImageButton
+                        android:id="@+id/saturn"
+                        android:layout_width="550dp"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:contentDescription="@string/app_name"
+                        android:padding="0dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/milkyway_saturnblack"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="-100dp"
+                        android:fontFamily="@font/space"
+                        android:gravity="center"
+                        android:text="SATURN"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
 
                 <!--               URANUS   />-->
-                <ImageButton
-                    android:id="@+id/uranus"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@null"
-                    android:contentDescription="@string/app_name"
-                    android:padding="20dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/milkyway_uranblack"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="80dp">
+
+                    <ImageButton
+                        android:id="@+id/uranus"
+                        android:layout_width="200dp"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:contentDescription="@string/app_name"
+                        android:padding="20dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/milkyway_uranblack"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="-100dp"
+                        android:fontFamily="@font/space"
+                        android:gravity="center"
+                        android:text="URAN"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
 
 
                 <!--               NEPTUNE   />-->
-                <ImageButton
-                    android:id="@+id/neptune"
-                    android:layout_width="0dp"
-                    android:layout_height="180dp"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:background="@null"
-                    android:contentDescription="@string/app_name"
-                    android:padding="20dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/milkyway_neptuneblack"
-                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="80dp">
 
+                    <ImageButton
+                        android:id="@+id/neptune"
+                        android:layout_width="200dp"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:contentDescription="@string/app_name"
+                        android:padding="20dp"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/milkyway_neptuneblack"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_gravity="top"
+                        android:layout_marginTop="-100dp"
+                        android:fontFamily="@font/space"
+                        android:gravity="center"
+                        android:text="Neptun"
+                        android:textColor="@color/white"
+                        android:textSize="20sp" />
+                </LinearLayout>
             </LinearLayout>
         </HorizontalScrollView>
+
+        <ImageView
+            android:id="@+id/chest"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="top|right"
+            android:adjustViewBounds="false"
+            app:srcCompat="@drawable/chest"
+            android:layout_marginBottom="-50dp"/>
 
         <ImageView
             android:id="@+id/alien"

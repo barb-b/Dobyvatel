@@ -2,7 +2,6 @@ package com.example.dobyvatel
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -10,10 +9,13 @@ import android.os.Looper
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.dobyvatel.databinding.ActivityImageGameBinding
 import kotlin.random.Random
 
 class ImageGame : AppCompatActivity() {
+
+
 
     private lateinit var binding: ActivityImageGameBinding
     private lateinit var timer: CountDownTimer
@@ -27,9 +29,10 @@ class ImageGame : AppCompatActivity() {
     var listOfTextObjects = arrayListOf<TextView>()
     var startNumber = 1
     var endNumber = 14
+    var timerIsRunning = false
+    var timerGameIsRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityImageGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -51,10 +54,6 @@ class ImageGame : AppCompatActivity() {
             binding.countdown
         )
 
-
-        for (image in listOfImageAlien){
-            image.visibility = View.INVISIBLE
-        }
 
         timerGame = object : CountDownTimer(30000, 1000) {
 
@@ -99,6 +98,10 @@ class ImageGame : AppCompatActivity() {
         }.start()
 
 
+        for(image in listOfImageAlien){
+            image.setTag(R.id.KEY,null)
+            image.visibility = View.INVISIBLE
+        }
 
         ///TODO randomgenerator number -> switch -> visibility obrazka -> bude to vo while slucke
         ///TODO -> while dokym neskonci timer
@@ -143,6 +146,10 @@ class ImageGame : AppCompatActivity() {
     }
 
     fun setGame(imageView: ImageView){
+        if(timerIsRunning==true){
+            timer.cancel()
+        }
+
 
         // Ak je obrazok Aliena pripocitava sa skore
         // Inaksie je Bomb a to skore odpocitava
@@ -166,19 +173,17 @@ class ImageGame : AppCompatActivity() {
     }
 
     fun playGameAgain(imageView: ImageView){
-        imageView.setTag(R.id.KEY,null)
-        timer.cancel()
 
+        for(image in listOfImageAlien){
+            image.setTag(R.id.KEY,null)
+            image.visibility = View.INVISIBLE
+        }
         //TODO
         binding.score.text = "Score: " + score
-        imageView.visibility = View.INVISIBLE
         game(Random.nextInt(startNumber,endNumber))
     }
 
     fun scoreEnd(score: Int){
-
-        timer.cancel()
-
         when(score){
             1->{
                 endOfTimer = false
@@ -332,6 +337,9 @@ class ImageGame : AppCompatActivity() {
     }
 
     fun setImageAlien(imageView: ImageView, tag: String){
+        if(timerIsRunning==true){
+            timer.cancel()
+        }
         imageView.setImageResource(R.drawable.imagegame_alien)
         imageView.setTag(R.id.KEY,null)
         imageView.setTag(R.id.KEY,tag)
@@ -339,6 +347,9 @@ class ImageGame : AppCompatActivity() {
     }
 
     fun setImageBomb (imageView: ImageView, tag: String){
+        if(timerIsRunning==true){
+            timer.cancel()
+        }
         imageView.setTag(R.id.KEY,null)
         imageView.setTag(R.id.KEY,tag)
         imageView.setImageResource(R.drawable.imagegame_bomb)
@@ -346,17 +357,22 @@ class ImageGame : AppCompatActivity() {
     }
 
     fun endImage(alien: Int, bomb : Int = 0){
-        timer = object : CountDownTimer(700, 600) {
+
+        timer = object : CountDownTimer(700, 500) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
 //                binding.countdown.setText("seconds remaining: " + millisUntilFinished / 1000)
                 ///TODO
+                timerIsRunning = true
             }
 
             // Callback function, fired
             // when the time is up
             override fun onFinish() {
+
+                timerIsRunning = false
+
                 when (alien) {
                     1 -> {
                         binding.alien1.visibility = View.INVISIBLE

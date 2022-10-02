@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import com.example.dobyvatel.databinding.ActivityImageGameBinding
 import kotlin.random.Random
 
@@ -23,7 +24,7 @@ class ImageGame : AppCompatActivity() {
     var endOfTimer = true
     var endScore = 3
     var listOfImageAlien = arrayListOf<ImageView>()
-    var listOfImageBomb = arrayListOf<ImageView>()
+    var listOfTextObjects = arrayListOf<TextView>()
     var startNumber = 1
     var endNumber = 14
 
@@ -45,6 +46,11 @@ class ImageGame : AppCompatActivity() {
             binding.alien9
         )
 
+        listOfTextObjects = arrayListOf(
+            binding.score,
+            binding.countdown
+        )
+
 
         for (image in listOfImageAlien){
             image.visibility = View.INVISIBLE
@@ -63,17 +69,32 @@ class ImageGame : AppCompatActivity() {
             // TODO END GAME
             // TODO : koniec hry, vsetky obrazky zmizny
             override fun onFinish() {
-                endOfGame = true
-                binding.countdown.setText("done!")
+
+                timer.cancel()
+
+                if(score >= 20){
+                    endOfGame = true
+                    binding.mainHeader.text = "DONE"
+                }else{
+                    endOfGame
+                    binding.mainHeader.text = "GAME OVER"
+                }
 
                 for (image in listOfImageAlien){
                     image.visibility = View.INVISIBLE
                 }
 
-                val intent = Intent()
-                intent.putExtra("boolSun", endOfGame)
-                setResult(Activity.RESULT_OK, intent)
-                finish()
+                for (text in listOfTextObjects){
+                    text.visibility = View.INVISIBLE
+                }
+
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent()
+                    intent.putExtra("boolSun", endOfGame)
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                }, 10000)
+
             }
         }.start()
 
@@ -324,7 +345,7 @@ class ImageGame : AppCompatActivity() {
     }
 
     fun endImage(alien: Int, bomb : Int = 0){
-        timer = object : CountDownTimer(2000, 1000) {
+        timer = object : CountDownTimer(700, 600) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
@@ -335,10 +356,6 @@ class ImageGame : AppCompatActivity() {
             // Callback function, fired
             // when the time is up
             override fun onFinish() {
-
-
-
-
                 when (alien) {
                     1 -> {
                         binding.alien1.visibility = View.INVISIBLE

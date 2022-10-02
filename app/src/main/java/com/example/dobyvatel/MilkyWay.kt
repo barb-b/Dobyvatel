@@ -23,10 +23,6 @@ class MilkyWay : AppCompatActivity() {
         binding = ActivityPlanetsMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        if(sunBoolean == true){
-            binding.mercury.visibility = View.VISIBLE
-            binding.mercuryBlack.visibility = View.GONE
-        }
 
 
         //        SLNKO
@@ -36,12 +32,18 @@ class MilkyWay : AppCompatActivity() {
 ////            startActivity(intent)
 //            startActivityForResult(intent,0)
 
-            val intent = Intent(this, ImageGame::class.java)
-            resultLauncher.launch(intent)
+            if(sunBoolean == false){
+
+                val intent = Intent(this, ImageGame::class.java)
+                resultLauncher.launch(intent)
+            }else{
+
+                //TODO level je splneny, malo by sa nieco vypisat
+            }
 
 
-//            binding.mercury.visibility = View.VISIBLE
-//            binding.mercuryBlack.visibility = View.GONE
+
+
 
             ///TODO urobit to takto, cez imageSource. Nechat len jeden obrazok
             ///TODO ktoremu sa bude nastavovat rozne source
@@ -51,56 +53,50 @@ class MilkyWay : AppCompatActivity() {
         //        MERKUR
         binding.mercury.setOnClickListener{
 
-            binding.venus.visibility = View.VISIBLE
-            binding.venusBlack.visibility = View.GONE
+
         }
 
         //        VENUSA
         binding.venus.setOnClickListener{
 
-            binding.earth.visibility = View.VISIBLE
-            binding.earthBlack.visibility = View.GONE
+
         }
 
         //        ZEM
         binding.earth.setOnClickListener{
 
-            binding.mars.visibility = View.VISIBLE
-            binding.marsBlack.visibility = View.GONE
+
         }
 
         //        MARS
         binding.mars.setOnClickListener{
 
-            binding.jupiter.visibility = View.VISIBLE
-            binding.jupiterBlack.visibility = View.GONE
+
         }
 
         //        JUPITER
         binding.jupiter.setOnClickListener{
 
-            binding.saturn.visibility = View.VISIBLE
-            binding.saturnBlack.visibility = View.GONE
+
         }
 
         //        SATURN
         binding.saturn.setOnClickListener{
 
-            binding.uranus.visibility = View.VISIBLE
-            binding.uranusBlack.visibility = View.GONE
+
         }
 
         //        URAN
         binding.uranus.setOnClickListener{
 
-            binding.neptune.visibility = View.VISIBLE
-            binding.neptuneBlack.visibility = View.GONE
+
         }
 
         //        NEPTUN
         binding.neptune.setOnClickListener{
 
 
+            //TODO otvorenie suhvezdi
         }
     }
 //
@@ -140,8 +136,7 @@ class MilkyWay : AppCompatActivity() {
             sunBoolean = data?.getBooleanExtra("boolSun",false) == true
             mercBoolean = data?.getBooleanExtra("boolMerc",false) == true
             if(sunBoolean == true){
-                binding.mercury.visibility = View.VISIBLE
-                binding.mercuryBlack.visibility = View.GONE
+                binding.mercury.setImageResource(R.drawable.milkyway_mercury)
             }
 
         }

@@ -66,7 +66,7 @@
 
                     <ImageButton
                         android:id="@+id/mercury"
-                        android:layout_width="200dp"
+                        android:layout_width="150dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
@@ -103,7 +103,7 @@
 
                     <ImageButton
                         android:id="@+id/venus"
-                        android:layout_width="300dp"
+                        android:layout_width="220dp"
                         android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
@@ -140,8 +140,8 @@
 
                     <ImageButton
                         android:id="@+id/earth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="280dp"
+                        android:layout_height="0dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:adjustViewBounds="true"

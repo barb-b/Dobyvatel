@@ -146,13 +146,11 @@ class ImageGame : AppCompatActivity() {
 
         // Ak je obrazok Aliena pripocitava sa skore
         // Inaksie je Bomb a to skore odpocitava
-
         if(imageView.getTag(R.id.KEY) == getString(R.string.ALIEN)){
             score++
             playGameAgain(imageView)
 
         }else{
-
             if(endScore == 1){
                 /// Do tejto slucky sa vojde vtedy, ked hrac prehra vsetky zivoty
                 // Hra sa ukoncuje
@@ -178,6 +176,9 @@ class ImageGame : AppCompatActivity() {
     }
 
     fun scoreEnd(score: Int){
+
+        timer.cancel()
+
         when(score){
             1->{
                 endOfTimer = false

@@ -1,27 +1,43 @@
 package com.example.dobyvatel
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dobyvatel.databinding.ActivityMainBinding
 import com.example.dobyvatel.databinding.ActivityPlanetsMapBinding
 
 class MilkyWay : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlanetsMapBinding
+    var sunBoolean = false
+    var mercBoolean = false
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPlanetsMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(sunBoolean == true){
+            binding.mercury.visibility = View.VISIBLE
+            binding.mercuryBlack.visibility = View.GONE
+        }
+
 
         //        SLNKO
         binding.sun.setOnClickListener{
 
+//            val intent = Intent(this, ImageGame::class.java)
+////            startActivity(intent)
+//            startActivityForResult(intent,0)
+
             val intent = Intent(this, ImageGame::class.java)
-            startActivity(intent)
+            resultLauncher.launch(intent)
 
 
 //            binding.mercury.visibility = View.VISIBLE
@@ -86,13 +102,48 @@ class MilkyWay : AppCompatActivity() {
 
 
         }
+    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//
+//        if (requestCode == 0) {
+//            if (resultCode == RESULT_OK) {
+//                // Get the result from intent
+//
+//                val res = data?.getStringExtra("result")
+//
+//                var bzl = data?.getBooleanExtra("game",false)
+//
+//
+//                val result = intent.getStringExtra("result")
+//                // set the result to the text view
+//                findViewById<TextView>(R.id.ufoText).text = "Odblokoval si $res. Vela stastia!"
+//            }
+//        } else if (requestCode == 1){
+//
+//            val res = data?.getStringExtra("result")
+//
+//
+//            // set the result to the text view
+//            findViewById<TextView>(R.id.ufoText).text = res
+//        }
+//    }
 
 
 
+    var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // There are no request codes
+            val data: Intent? = result.data
 
+            sunBoolean = data?.getBooleanExtra("boolSun",false) == true
+            mercBoolean = data?.getBooleanExtra("boolMerc",false) == true
+            if(sunBoolean == true){
+                binding.mercury.visibility = View.VISIBLE
+                binding.mercuryBlack.visibility = View.GONE
+            }
 
-
-
-
+        }
     }
 }

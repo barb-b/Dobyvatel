@@ -1,8 +1,12 @@
 package com.example.dobyvatel
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.ImageView
 import com.example.dobyvatel.databinding.ActivityImageGameBinding
@@ -11,11 +15,17 @@ import kotlin.random.Random
 class ImageGame : AppCompatActivity() {
 
     private lateinit var binding: ActivityImageGameBinding
-
     private lateinit var timer: CountDownTimer
+    private lateinit var timerGame: CountDownTimer
 
     var score = 0
     var endOfGame = false
+    var endOfTimer = true
+    var endScore = 3
+    var listOfImageAlien = arrayListOf<ImageView>()
+    var listOfImageBomb = arrayListOf<ImageView>()
+    var startNumber = 1
+    var endNumber = 14
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -23,28 +33,47 @@ class ImageGame : AppCompatActivity() {
         binding = ActivityImageGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.alien1.visibility = View.INVISIBLE
-        binding.alien2.visibility = View.INVISIBLE
-        binding.alien3.visibility = View.INVISIBLE
-        binding.alien4.visibility = View.INVISIBLE
-        binding.alien5.visibility = View.INVISIBLE
-        binding.alien6.visibility = View.INVISIBLE
-        binding.alien7.visibility = View.INVISIBLE
-        binding.alien8.visibility = View.INVISIBLE
-        binding.alien9.visibility = View.INVISIBLE
+        listOfImageAlien = arrayListOf<ImageView>(
+            binding.alien1,
+            binding.alien2,
+            binding.alien3,
+            binding.alien4,
+            binding.alien5,
+            binding.alien6,
+            binding.alien7,
+            binding.alien8,
+            binding.alien9
+        )
 
-        object : CountDownTimer(30000, 1000) {
+
+        for (image in listOfImageAlien){
+            image.visibility = View.INVISIBLE
+        }
+
+        timerGame = object : CountDownTimer(30000, 1000) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
                 binding.countdown.setText("seconds remaining: " + millisUntilFinished / 1000)
+
             }
 
             // Callback function, fired
             // when the time is up
+            // TODO END GAME
+            // TODO : koniec hry, vsetky obrazky zmizny
             override fun onFinish() {
                 endOfGame = true
                 binding.countdown.setText("done!")
+
+                for (image in listOfImageAlien){
+                    image.visibility = View.INVISIBLE
+                }
+
+                val intent = Intent()
+                intent.putExtra("boolSun", endOfGame)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
             }
         }.start()
 
@@ -52,7 +81,7 @@ class ImageGame : AppCompatActivity() {
 
         ///TODO randomgenerator number -> switch -> visibility obrazka -> bude to vo while slucke
         ///TODO -> while dokym neskonci timer
-        game(Random.nextInt(1,11))
+        game(Random.nextInt(startNumber,endNumber))
 
         binding.alien1.setOnClickListener {
             setGame(binding.alien1)
@@ -93,16 +122,72 @@ class ImageGame : AppCompatActivity() {
     }
 
     fun setGame(imageView: ImageView){
+
+        // Ak je obrazok Aliena pripocitava sa skore
+        // Inaksie je Bomb a to skore odpocitava
+
         if(imageView.getTag(R.id.KEY) == getString(R.string.ALIEN)){
             score++
+            playGameAgain(imageView)
+
         }else{
-            score--
+
+            if(endScore == 1){
+                /// Do tejto slucky sa vojde vtedy, ked hrac prehra vsetky zivoty
+                // Hra sa ukoncuje
+                scoreEnd(endScore)
+                score--
+            }else{
+                scoreEnd(endScore)
+                endScore--
+                score--
+                playGameAgain(imageView)
+            }
         }
+    }
+
+    fun playGameAgain(imageView: ImageView){
         imageView.setTag(R.id.KEY,null)
         timer.cancel()
+
+        //TODO
         binding.score.text = "Score: " + score
         imageView.visibility = View.INVISIBLE
-        game(Random.nextInt(1,11))
+        game(Random.nextInt(startNumber,endNumber))
+    }
+
+    fun scoreEnd(score: Int){
+        when(score){
+            1->{
+                endOfTimer = false
+                timerGame.cancel()
+                timer.cancel()
+
+                binding.redx1.visibility = View.INVISIBLE
+                //TODO skonci sa timer, hru nie je mozne hrat
+
+                for (image in listOfImageAlien){
+                    image.visibility = View.INVISIBLE
+                }
+
+                binding.countdown.setText("YOU LOOSE!")
+
+
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent()
+                    intent.putExtra("boolSun", endOfGame)
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                }, 10000)
+
+            }
+            2->{
+                binding.redx2.visibility = View.INVISIBLE
+            }
+            3->{
+                binding.redx3.visibility = View.INVISIBLE
+            }
+        }
     }
 
     fun game(randomNumber: Int){
@@ -152,59 +237,76 @@ class ImageGame : AppCompatActivity() {
                 endImage(9)
             }
 
-
-
             10->{
-                var randomNumber = Random.nextInt(1,10)
-                when (randomNumber) {
+                val randomNumber = Random.nextInt(1,10)
+                setBombImage(randomNumber)
+            }
 
-                    1 -> {
-                        setImageBomb(binding.alien1,getString(R.string.BOMB))
-                        endImage(10,1)
-                    }
+            11->{
+                val randomNumber = Random.nextInt(1,10)
+                setBombImage(randomNumber)
+            }
 
-                    2 -> {
-                        setImageBomb(binding.alien2,getString(R.string.BOMB))
-                        endImage(10,2)
-                    }
+            12->{
+                val randomNumber = Random.nextInt(1,10)
+                setBombImage(randomNumber)
+            }
 
-                    3 -> {
-                        setImageBomb(binding.alien3,getString(R.string.BOMB))
-                        endImage(10,3)
-                    }
-
-                    4 -> {
-                        setImageBomb(binding.alien4,getString(R.string.BOMB))
-                        endImage(10,4)
-                    }
-
-                    5 -> {
-                        setImageBomb(binding.alien5,getString(R.string.BOMB))
-                        endImage(10,5)
-                    }
-
-                    6 -> {
-                        setImageBomb(binding.alien6,getString(R.string.BOMB))
-                        endImage(10,6)
-                    }
-
-                    7 -> {
-                        setImageBomb(binding.alien7,getString(R.string.BOMB))
-                        endImage(10,7)
-                    }
-
-                    8 -> {
-                        setImageBomb(binding.alien8,getString(R.string.BOMB))
-                        endImage(10,8)
-                    }
-
-                    9 -> {
-                        setImageBomb(binding.alien9,getString(R.string.BOMB))
-                        endImage(10,9)
-                    }
-                }
+            13->{
+                val randomNumber = Random.nextInt(1,10)
+                setBombImage(randomNumber)
             }
         }
+    }
+
+    fun setBombImage (randomNumber: Int){
+        when (randomNumber) {
+            1 -> {
+                setImageBomb(binding.alien1,getString(R.string.BOMB))
+                endImage(10,1)
+            }
+
+            2 -> {
+                setImageBomb(binding.alien2,getString(R.string.BOMB))
+                endImage(10,2)
+            }
+
+            3 -> {
+                setImageBomb(binding.alien3,getString(R.string.BOMB))
+                endImage(10,3)
+            }
+
+            4 -> {
+                setImageBomb(binding.alien4,getString(R.string.BOMB))
+                endImage(10,4)
+            }
+
+            5 -> {
+                setImageBomb(binding.alien5,getString(R.string.BOMB))
+                endImage(10,5)
+            }
+
+            6 -> {
+                setImageBomb(binding.alien6,getString(R.string.BOMB))
+                endImage(10,6)
+            }
+
+            7 -> {
+                setImageBomb(binding.alien7,getString(R.string.BOMB))
+                endImage(10,7)
+            }
+
+            8 -> {
+                setImageBomb(binding.alien8,getString(R.string.BOMB))
+                endImage(10,8)
+            }
+
+            9 -> {
+                setImageBomb(binding.alien9,getString(R.string.BOMB))
+                endImage(10,9)
+            }
+        }
+
     }
 
     fun setImageAlien(imageView: ImageView, tag: String){
@@ -222,16 +324,21 @@ class ImageGame : AppCompatActivity() {
     }
 
     fun endImage(alien: Int, bomb : Int = 0){
-        timer = object : CountDownTimer(4000, 1000) {
+        timer = object : CountDownTimer(2000, 1000) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
 //                binding.countdown.setText("seconds remaining: " + millisUntilFinished / 1000)
+                ///TODO
             }
 
             // Callback function, fired
             // when the time is up
             override fun onFinish() {
+
+
+
+
                 when (alien) {
                     1 -> {
                         binding.alien1.visibility = View.INVISIBLE
@@ -319,7 +426,7 @@ class ImageGame : AppCompatActivity() {
                         }
                     }
                 }
-                game(Random.nextInt(1,11))
+                game(Random.nextInt(startNumber,endNumber))
             }
         }.start()
     }

@@ -1,274 +1,218 @@
 package com.example.dobyvatel
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.dobyvatel.databinding.ActivityImageGameBinding
-import com.example.dobyvatel.databinding.ActivityPlanetsMapBinding
 import kotlin.random.Random
 
 class ImageGame : AppCompatActivity() {
 
-    private lateinit var binding: ActivityImageGameBinding
 
+
+    private lateinit var binding: ActivityImageGameBinding
     private lateinit var timer: CountDownTimer
+    private lateinit var timerGame: CountDownTimer
 
     var score = 0
     var endOfGame = false
+    var endOfTimer = true
+    var endScore = 3
+    var listOfImageAlien = arrayListOf<ImageView>()
+    var listOfTextObjects = arrayListOf<TextView>()
+    var startNumber = 1
+    var endNumber = 14
+    var timerIsRunning = false
+    var timerGameIsRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         binding = ActivityImageGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.alien1.visibility = View.INVISIBLE
-        binding.alien2.visibility = View.INVISIBLE
-        binding.alien3.visibility = View.INVISIBLE
-        binding.alien4.visibility = View.INVISIBLE
-        binding.alien5.visibility = View.INVISIBLE
-        binding.alien6.visibility = View.INVISIBLE
-        binding.alien7.visibility = View.INVISIBLE
-        binding.alien8.visibility = View.INVISIBLE
-        binding.alien9.visibility = View.INVISIBLE
+        listOfImageAlien = arrayListOf<ImageView>(
+            binding.alien1,
+            binding.alien2,
+            binding.alien3,
+            binding.alien4,
+            binding.alien5,
+            binding.alien6,
+            binding.alien7,
+            binding.alien8,
+            binding.alien9
+        )
 
-        object : CountDownTimer(30000, 1000) {
+        listOfTextObjects = arrayListOf(
+            binding.score,
+            binding.countdown
+        )
+
+
+        timerGame = object : CountDownTimer(30000, 1000) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
                 binding.countdown.setText("seconds remaining: " + millisUntilFinished / 1000)
+
             }
 
             // Callback function, fired
             // when the time is up
+            // TODO END GAME
+            // TODO : koniec hry, vsetky obrazky zmizny
             override fun onFinish() {
-                endOfGame = true
-                binding.countdown.setText("done!")
+
+                timer.cancel()
+
+                if(score >= 20){
+                    endOfGame = true
+                    binding.mainHeader.text = "DONE"
+                }else{
+                    endOfGame
+                    binding.mainHeader.text = "GAME OVER"
+                }
+
+                for (image in listOfImageAlien){
+                    image.visibility = View.INVISIBLE
+                }
+
+                for (text in listOfTextObjects){
+                    text.visibility = View.INVISIBLE
+                }
+
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent()
+                    intent.putExtra("boolSun", endOfGame)
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                }, 10000)
+
             }
         }.start()
 
-        binding.alien1.setTag(R.id.KEY,"now")
-        var b = binding.alien1.getTag(R.id.KEY)
-        binding.alien1.setTag(R.id.KEY,"why")
-        var c = binding.alien1.getTag(R.id.KEY)
-        binding.alien1.setTag(R.id.KEY,null)
-        var f = binding.alien1.getTag(R.id.KEY)
 
-        var s = f
-
-
-
-
-
+        for(image in listOfImageAlien){
+            image.setTag(R.id.KEY,null)
+            image.visibility = View.INVISIBLE
+        }
 
         ///TODO randomgenerator number -> switch -> visibility obrazka -> bude to vo while slucke
         ///TODO -> while dokym neskonci timer
-
-
-
-        game(Random.nextInt(1,11))
+        game(Random.nextInt(startNumber,endNumber))
 
         binding.alien1.setOnClickListener {
-
-            var s = binding.alien1.getTag(R.id.KEY)
-
-            if(binding.alien1.getTag(R.id.KEY) == "alien")    {
-
-                score++
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien1.visibility = View.INVISIBLE
-
-                game(Random.nextInt(1,11))
-            }else{
-                score--
-                binding.alien1.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien1.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }
+            setGame(binding.alien1)
         }
 
         binding.alien2.setOnClickListener {
-
-            var s = binding.alien2.getTag(R.id.KEY)
-
-            if(binding.alien2.getTag(R.id.KEY) == "alien")    {
-
-                score++
-                binding.alien2.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien2.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }else{
-                score--
-                binding.alien2.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien2.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }
+            setGame(binding.alien2)
         }
 
         binding.alien3.setOnClickListener {
-
-            var s = binding.alien3.getTag(R.id.KEY)
-
-            if(binding.alien3.getTag(R.id.KEY) == "alien")    {
-
-                score++
-                binding.alien3.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien3.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }else{
-                score--
-                binding.alien3.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien3.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }
+            setGame(binding.alien3)
         }
 
-
-
         binding.alien4.setOnClickListener {
-
-            var s = binding.alien4.getTag(R.id.KEY)
-
-            if(binding.alien4.getTag(R.id.KEY) == "alien")    {
-
-                score++
-                binding.alien4.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien4.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }else{
-                score--
-                binding.alien4.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien4.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }
+            setGame(binding.alien4)
         }
 
         binding.alien5.setOnClickListener {
-
-            var s = binding.alien5.getTag(R.id.KEY)
-
-            if(binding.alien5.getTag(R.id.KEY) == "alien")    {
-
-                score++
-                binding.alien5.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien5.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }else{
-                score--
-                binding.alien5.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien5.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }
+            setGame(binding.alien5)
         }
 
         binding.alien6.setOnClickListener {
-
-            var s = binding.alien6.getTag(R.id.KEY)
-
-            if(binding.alien6.getTag(R.id.KEY) == "alien")    {
-
-                score++
-                binding.alien6.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien6.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }else{
-
-                score--
-                binding.alien6.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien6.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }
+            setGame(binding.alien6)
         }
 
         binding.alien7.setOnClickListener {
-
-            var s = binding.alien7.getTag(R.id.KEY)
-
-            if(binding.alien7.getTag(R.id.KEY) == "alien")    {
-
-                score++
-                binding.alien7.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien7.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }else{
-
-                score--
-                binding.alien7.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien7.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }
+            setGame(binding.alien7)
         }
 
 
         binding.alien8.setOnClickListener {
+            setGame(binding.alien8)
+        }
 
-            var s = binding.alien8.getTag(R.id.KEY)
+        binding.alien9.setOnClickListener {
+            setGame(binding.alien9)
+        }
+    }
 
-            if(binding.alien8.getTag(R.id.KEY) == "alien")    {
+    fun setGame(imageView: ImageView){
+        if(timerIsRunning==true){
+            timer.cancel()
+        }
 
-                score++
-                binding.alien8.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien8.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }else{
 
+        // Ak je obrazok Aliena pripocitava sa skore
+        // Inaksie je Bomb a to skore odpocitava
+        if(imageView.getTag(R.id.KEY) == getString(R.string.ALIEN)){
+            score++
+            playGameAgain(imageView)
+
+        }else{
+            if(endScore == 1){
+                /// Do tejto slucky sa vojde vtedy, ked hrac prehra vsetky zivoty
+                // Hra sa ukoncuje
+                scoreEnd(endScore)
                 score--
-                binding.alien8.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien8.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
+            }else{
+                scoreEnd(endScore)
+                endScore--
+                score--
+                playGameAgain(imageView)
             }
         }
-        binding.alien9.setOnClickListener {
+    }
 
+    fun playGameAgain(imageView: ImageView){
 
-            var s = binding.alien9.getTag(R.id.KEY)
+        for(image in listOfImageAlien){
+            image.setTag(R.id.KEY,null)
+            image.visibility = View.INVISIBLE
+        }
+        //TODO
+        binding.score.text = "Score: " + score
+        game(Random.nextInt(startNumber,endNumber))
+    }
 
-            if(binding.alien9.getTag(R.id.KEY) == "alien")    {
-                score++
-                binding.alien9.setTag(R.id.KEY,null)
+    fun scoreEnd(score: Int){
+        when(score){
+            1->{
+                endOfTimer = false
+                timerGame.cancel()
                 timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien9.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
-            }else{
-                score--
-                binding.alien9.setTag(R.id.KEY,null)
-                timer.cancel()
-                binding.score.text = "Score: " + score
-                binding.alien9.visibility = View.INVISIBLE
-                game(Random.nextInt(1,11))
+
+                binding.redx1.visibility = View.INVISIBLE
+                //TODO skonci sa timer, hru nie je mozne hrat
+
+                for (image in listOfImageAlien){
+                    image.visibility = View.INVISIBLE
+                }
+
+                binding.countdown.setText("YOU LOOSE!")
+
+
+                Handler(Looper.getMainLooper()).postDelayed({
+                    val intent = Intent()
+                    intent.putExtra("boolSun", endOfGame)
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                }, 10000)
+
+            }
+            2->{
+                binding.redx2.visibility = View.INVISIBLE
+            }
+            3->{
+                binding.redx3.visibility = View.INVISIBLE
             }
         }
     }
@@ -276,200 +220,159 @@ class ImageGame : AppCompatActivity() {
     fun game(randomNumber: Int){
         when (randomNumber) {
             1 -> {
-                binding.alien1.setImageResource(R.drawable.imagegame_alien)
-                binding.alien1.setTag(R.id.KEY,null)
-                binding.alien1.setTag(R.id.KEY,"alien")
-                binding.alien1.visibility = View.VISIBLE
-//                binding.alien1.setTag("alien")
+                setImageAlien(binding.alien1,getString(R.string.ALIEN))
                 endImage(1)
             }
 
             2 -> {
-                binding.alien2.setImageResource(R.drawable.imagegame_alien)
-                binding.alien2.setTag(R.id.KEY,null)
-                binding.alien2.setTag(R.id.KEY,"alien")
-                binding.alien2.visibility = View.VISIBLE
-//                binding.alien2.setTag("alien")
+                setImageAlien(binding.alien2,getString(R.string.ALIEN))
                 endImage(2)
             }
 
             3 -> {
-                binding.alien3.setImageResource(R.drawable.imagegame_alien)
-                binding.alien3.setTag(R.id.KEY,null)
-                binding.alien3.setTag(R.id.KEY,"alien")
-                binding.alien3.visibility = View.VISIBLE
-//                binding.alien3.setTag("alien")
+                setImageAlien(binding.alien3,getString(R.string.ALIEN))
                 endImage(3)
             }
 
             4 -> {
-                binding.alien4.setImageResource(R.drawable.imagegame_alien)
-                binding.alien4.setTag(R.id.KEY,null)
-                binding.alien4.setTag(R.id.KEY,"alien")
-                binding.alien4.visibility = View.VISIBLE
-//                binding.alien4.setTag("alien")
+                setImageAlien(binding.alien4,getString(R.string.ALIEN))
                 endImage(4)
             }
 
             5 -> {
-                binding.alien5.setImageResource(R.drawable.imagegame_alien)
-                binding.alien5.setTag(R.id.KEY,null)
-                binding.alien5.setTag(R.id.KEY,"alien")
-                binding.alien5.visibility = View.VISIBLE
-//                binding.alien5.setTag("alien")
+                setImageAlien(binding.alien5,getString(R.string.ALIEN))
                 endImage(5)
             }
 
             6 -> {
-                binding.alien6.setImageResource(R.drawable.imagegame_alien)
-                binding.alien6.setTag(R.id.KEY,null)
-                binding.alien6.setTag(R.id.KEY,"alien")
-                binding.alien6.visibility = View.VISIBLE
-//                binding.alien6.setTag("alien")
+                setImageAlien(binding.alien6,getString(R.string.ALIEN))
                 endImage(6)
             }
 
             7 -> {
-                binding.alien7.setImageResource(R.drawable.imagegame_alien)
-                binding.alien7.setTag(R.id.KEY,null)
-                binding.alien7.setTag(R.id.KEY,"alien")
-                binding.alien7.visibility = View.VISIBLE
-//                binding.alien7.setTag("alien")
+                setImageAlien(binding.alien7,getString(R.string.ALIEN))
                 endImage(7)
             }
 
             8 -> {
-                binding.alien8.setImageResource(R.drawable.imagegame_alien)
-                binding.alien8.setTag(R.id.KEY,null)
-                binding.alien8.setTag(R.id.KEY,"alien")
-                binding.alien8.visibility = View.VISIBLE
-//                binding.alien8.setTag("alien")
+                setImageAlien(binding.alien8,getString(R.string.ALIEN))
                 endImage(8)
             }
 
             9 -> {
-                binding.alien9.setImageResource(R.drawable.imagegame_alien)
-                binding.alien9.setTag(R.id.KEY,null)
-                binding.alien9.setTag(R.id.KEY,"alien")
-                binding.alien9.visibility = View.VISIBLE
-//                binding.alien9.setTag("alien")
+                setImageAlien(binding.alien9,getString(R.string.ALIEN))
                 endImage(9)
             }
 
-
-
             10->{
-                var randomNumber = Random.nextInt(1,10)
-                when (randomNumber) {
-
-                    1 -> {
-
-                        binding.alien1.setTag(R.id.KEY,null)
-                        binding.alien1.setTag(R.id.KEY,"bomb")
-//                        binding.alien1.setTag("bomb")
-                        binding.alien1.setImageResource(R.drawable.imagegame_bomb)
-                        binding.alien1.visibility = View.VISIBLE
-                        endImage(10,1)
-                    }
-
-                    2 -> {
-
-                        binding.alien2.setTag(R.id.KEY,null)
-                        binding.alien2.setTag(R.id.KEY,"bomb")
-//                        binding.alien2.setTag("bomb")
-                        binding.alien2.setImageResource(R.drawable.imagegame_bomb)
-                        binding.alien2.visibility = View.VISIBLE
-                        endImage(10,2)
-                    }
-
-                    3 -> {
-
-                        binding.alien3.setTag(R.id.KEY,null)
-                        binding.alien3.setTag(R.id.KEY,"bomb")
-//                        binding.alien3.setTag("bomb")
-                        binding.alien3.setImageResource(R.drawable.imagegame_bomb)
-                        binding.alien3.visibility = View.VISIBLE
-                        endImage(10,3)
-                    }
-
-                    4 -> {
-
-                        binding.alien4.setTag(R.id.KEY,null)
-                        binding.alien4.setTag(R.id.KEY,"bomb")
-//                        binding.alien4.setTag("bomb")
-                        binding.alien4.setImageResource(R.drawable.imagegame_bomb)
-                        binding.alien4.visibility = View.VISIBLE
-                        endImage(10,4)
-                    }
-
-                    5 -> {
-
-                        binding.alien5.setTag(R.id.KEY,null)
-                        binding.alien5.setTag(R.id.KEY,"bomb")
-//                        binding.alien5.setTag("bomb")
-                        binding.alien5.setImageResource(R.drawable.imagegame_bomb)
-                        binding.alien5.visibility = View.VISIBLE
-                        endImage(10,5)
-                    }
-
-                    6 -> {
-
-                        binding.alien6.setTag(R.id.KEY,null)
-                        binding.alien6.setTag(R.id.KEY,"bomb")
-//                        binding.alien6.setTag("bomb")
-                        binding.alien6.setImageResource(R.drawable.imagegame_bomb)
-                        binding.alien6.visibility = View.VISIBLE
-                        endImage(10,6)
-                    }
-
-                    7 -> {
-
-                        binding.alien7.setTag(R.id.KEY,null)
-                        binding.alien7.setTag(R.id.KEY,"bomb")
-//                        binding.alien7.setTag("bomb")
-                        binding.alien7.setImageResource(R.drawable.imagegame_bomb)
-                        binding.alien7.visibility = View.VISIBLE
-                        endImage(10,7)
-                    }
-
-                    8 -> {
-
-                        binding.alien8.setTag(R.id.KEY,null)
-                        binding.alien8.setTag(R.id.KEY,"bomb")
-//                        binding.alien8.setTag("bomb")
-                        binding.alien8.setImageResource(R.drawable.imagegame_bomb)
-                        binding.alien8.visibility = View.VISIBLE
-                        endImage(10,8)
-                    }
-
-                    9 -> {
-
-                        binding.alien9.setTag(R.id.KEY,null)
-                        binding.alien9.setTag(R.id.KEY,"bomb")
-//                        binding.alien9.setTag("bomb")
-                        binding.alien9.setImageResource(R.drawable.imagegame_bomb)
-                        binding.alien9.visibility = View.VISIBLE
-                        endImage(10,9)
-                    }
-                }
+                val randomNumber = Random.nextInt(1,10)
+                setBombImage(randomNumber)
             }
 
+            11->{
+                val randomNumber = Random.nextInt(1,10)
+                setBombImage(randomNumber)
+            }
 
+            12->{
+                val randomNumber = Random.nextInt(1,10)
+                setBombImage(randomNumber)
+            }
+
+            13->{
+                val randomNumber = Random.nextInt(1,10)
+                setBombImage(randomNumber)
+            }
+        }
+    }
+
+    fun setBombImage (randomNumber: Int){
+        when (randomNumber) {
+            1 -> {
+                setImageBomb(binding.alien1,getString(R.string.BOMB))
+                endImage(10,1)
+            }
+
+            2 -> {
+                setImageBomb(binding.alien2,getString(R.string.BOMB))
+                endImage(10,2)
+            }
+
+            3 -> {
+                setImageBomb(binding.alien3,getString(R.string.BOMB))
+                endImage(10,3)
+            }
+
+            4 -> {
+                setImageBomb(binding.alien4,getString(R.string.BOMB))
+                endImage(10,4)
+            }
+
+            5 -> {
+                setImageBomb(binding.alien5,getString(R.string.BOMB))
+                endImage(10,5)
+            }
+
+            6 -> {
+                setImageBomb(binding.alien6,getString(R.string.BOMB))
+                endImage(10,6)
+            }
+
+            7 -> {
+                setImageBomb(binding.alien7,getString(R.string.BOMB))
+                endImage(10,7)
+            }
+
+            8 -> {
+                setImageBomb(binding.alien8,getString(R.string.BOMB))
+                endImage(10,8)
+            }
+
+            9 -> {
+                setImageBomb(binding.alien9,getString(R.string.BOMB))
+                endImage(10,9)
+            }
         }
 
     }
 
+    fun setImageAlien(imageView: ImageView, tag: String){
+        if(timerIsRunning==true){
+            timer.cancel()
+        }
+        imageView.setImageResource(R.drawable.imagegame_alien)
+        imageView.setTag(R.id.KEY,null)
+        imageView.setTag(R.id.KEY,tag)
+        imageView.visibility = View.VISIBLE
+    }
+
+    fun setImageBomb (imageView: ImageView, tag: String){
+        if(timerIsRunning==true){
+            timer.cancel()
+        }
+        imageView.setTag(R.id.KEY,null)
+        imageView.setTag(R.id.KEY,tag)
+        imageView.setImageResource(R.drawable.imagegame_bomb)
+        imageView.visibility = View.VISIBLE
+    }
+
     fun endImage(alien: Int, bomb : Int = 0){
-        timer = object : CountDownTimer(4000, 1000) {
+
+        timer = object : CountDownTimer(700, 500) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
 //                binding.countdown.setText("seconds remaining: " + millisUntilFinished / 1000)
+                ///TODO
+                timerIsRunning = true
             }
 
             // Callback function, fired
             // when the time is up
             override fun onFinish() {
+
+                timerIsRunning = false
+
                 when (alien) {
                     1 -> {
                         binding.alien1.visibility = View.INVISIBLE
@@ -481,17 +384,14 @@ class ImageGame : AppCompatActivity() {
 
                     3 -> {
                         binding.alien3.visibility = View.INVISIBLE
-
                     }
 
                     4 -> {
                         binding.alien4.visibility = View.INVISIBLE
-
                     }
 
                     5 -> {
                         binding.alien5.visibility = View.INVISIBLE
-
                     }
 
                     6 -> {
@@ -500,7 +400,6 @@ class ImageGame : AppCompatActivity() {
 
                     7 -> {
                         binding.alien7.visibility = View.INVISIBLE
-
                     }
 
                     8 -> {
@@ -559,13 +458,9 @@ class ImageGame : AppCompatActivity() {
                                 binding.alien9.setImageResource(R.drawable.imagegame_alien)
                             }
                         }
-
-
-
-
                     }
                 }
-                game(Random.nextInt(1,11))
+                game(Random.nextInt(startNumber,endNumber))
             }
         }.start()
     }

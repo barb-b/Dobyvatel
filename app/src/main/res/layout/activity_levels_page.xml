@@ -34,6 +34,17 @@
                     android:scaleType="center"
                     app:srcCompat="@drawable/levelspage_milkyway" />
 
+                <ImageButton
+                    android:id="@+id/constellation"
+                    android:layout_width="500dp"
+                    android:layout_height="500dp"
+                    android:layout_weight="1"
+                    android:adjustViewBounds="true"
+                    android:background="@null"
+                    android:padding="10dp"
+                    android:scaleType="center"
+                    app:srcCompat="@drawable/levelspage_constellation" />
+
 
             </LinearLayout>
         </HorizontalScrollView>

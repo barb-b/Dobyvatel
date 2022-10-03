@@ -1,15 +1,19 @@
 package com.example.dobyvatel
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.dobyvatel.databinding.ActivityMainBinding
 import com.example.dobyvatel.databinding.ActivityPlanetsMapBinding
 
 class MilkyWay : AppCompatActivity() {
 
     private lateinit var binding: ActivityPlanetsMapBinding
+//    public lateinit var sunBoolean: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,16 +21,26 @@ class MilkyWay : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        //TODO urobit to so vsetkymi planetami, ak je level done, obrazok je odmknuty
+        if(MilkyWayDone.sun == true){
+            binding.mercury.setImageResource(R.drawable.milkyway_mercury)
+        }
+
         //        SLNKO
         binding.sun.setOnClickListener{
 
-            val intent = Intent(this, ImageGame::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, ImageGame::class.java)
+////            startActivity(intent)
+//            startActivityForResult(intent,0)
 
+            if(MilkyWayDone.sun == false){
 
-//            binding.mercury.visibility = View.VISIBLE
-//            binding.mercuryBlack.visibility = View.GONE
+                val intent = Intent(this, ImageGame::class.java)
+                resultLauncher.launch(intent)
+            }else{
 
+                //TODO level je splneny, malo by sa nieco vypisat
+            }
             ///TODO urobit to takto, cez imageSource. Nechat len jeden obrazok
             ///TODO ktoremu sa bude nastavovat rozne source
 //            binding.mercuryBlack.setImageResource(R.drawable.milkyway_mercury)
@@ -35,64 +49,83 @@ class MilkyWay : AppCompatActivity() {
         //        MERKUR
         binding.mercury.setOnClickListener{
 
-            binding.venus.visibility = View.VISIBLE
-            binding.venusBlack.visibility = View.GONE
+            if(MilkyWayDone.mercury == true){
+                ///TODO nic sa neotvara
+            }else{
+                ///TODO otvori sa hraci level
+            }
+
+
         }
 
         //        VENUSA
         binding.venus.setOnClickListener{
 
-            binding.earth.visibility = View.VISIBLE
-            binding.earthBlack.visibility = View.GONE
+
         }
 
         //        ZEM
         binding.earth.setOnClickListener{
 
-            binding.mars.visibility = View.VISIBLE
-            binding.marsBlack.visibility = View.GONE
+
         }
 
         //        MARS
         binding.mars.setOnClickListener{
 
-            binding.jupiter.visibility = View.VISIBLE
-            binding.jupiterBlack.visibility = View.GONE
+
         }
 
         //        JUPITER
         binding.jupiter.setOnClickListener{
 
-            binding.saturn.visibility = View.VISIBLE
-            binding.saturnBlack.visibility = View.GONE
+
         }
 
         //        SATURN
         binding.saturn.setOnClickListener{
 
-            binding.uranus.visibility = View.VISIBLE
-            binding.uranusBlack.visibility = View.GONE
+
         }
 
         //        URAN
         binding.uranus.setOnClickListener{
 
-            binding.neptune.visibility = View.VISIBLE
-            binding.neptuneBlack.visibility = View.GONE
+
         }
 
         //        NEPTUN
         binding.neptune.setOnClickListener{
 
 
+            //TODO otvorenie suhvezdi
         }
 
+        binding.chest.setOnClickListener{
+            //TODO presmerovanie na stranku, kde budu ulozene karticky
 
+            binding.mercury.setImageResource(R.drawable.milkyway_mercury)
+            binding.venus.setImageResource(R.drawable.milkyway_venus)
+            binding.mars.setImageResource(R.drawable.milkyway_mars)
+            binding.earth.setImageResource(R.drawable.milkyway_earth)
+            binding.jupiter.setImageResource(R.drawable.milkyway_jupiter)
+            binding.saturn.setImageResource(R.drawable.milkyway_saturn)
+            binding.neptune.setImageResource(R.drawable.milkyway_neptune)
+            binding.uranus.setImageResource(R.drawable.milkyway_uran)
+        }
+    }
 
+    var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            // There are no request codes
+            val data: Intent? = result.data
 
+            MilkyWayDone.sun = data?.getBooleanExtra("boolSun",false) == true
+            MilkyWayDone.mercury = data?.getBooleanExtra("boolMerc",false) == true
+            if(MilkyWayDone.sun == true){
+                binding.mercury.setImageResource(R.drawable.milkyway_mercury)
+            }
 
-
-
-
+        }
     }
 }

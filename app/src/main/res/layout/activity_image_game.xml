@@ -7,15 +7,40 @@
     tools:context=".ImageGame">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/mainHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CHYT VSETKYCH MIMOZENSTANOV"
+        android:text="CHYT VSETKYCH MIM"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/tabulkamimozenstanov"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/countdown"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainHeader">
+
+        <ImageView
+            android:id="@+id/redx1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/xko" />
+        <ImageView
+            android:id="@+id/redx2"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/xko" />
+        <ImageView
+            android:id="@+id/redx3"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/xko" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/score"
@@ -120,8 +145,7 @@
                 android:layout_height="100dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp"
-                app:srcCompat="@drawable/imagegame_alien"
-               />
+                app:srcCompat="@drawable/imagegame_alien" />
 
             <ImageView
                 android:id="@+id/alien9"
@@ -142,7 +166,7 @@
         android:text="Odpocet"
         app:layout_constraintBottom_toTopOf="@+id/tabulkamimozenstanov"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

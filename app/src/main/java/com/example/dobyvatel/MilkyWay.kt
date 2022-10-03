@@ -2,38 +2,35 @@ package com.example.dobyvatel
 
 import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
-import com.example.dobyvatel.databinding.ActivityMainBinding
-import com.example.dobyvatel.databinding.ActivityPlanetsMapBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.example.dobyvatel.databinding.ActivityMilkywayMapBinding
+import com.example.dobyvatel.objects.MilkyWayPlanets
 
 class MilkyWay : AppCompatActivity() {
 
-    private lateinit var binding: ActivityPlanetsMapBinding
+    private lateinit var binding: ActivityMilkywayMapBinding
 //    public lateinit var sunBoolean: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPlanetsMapBinding.inflate(layoutInflater)
+        binding = ActivityMilkywayMapBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         //TODO urobit to so vsetkymi planetami, ak je level done, obrazok je odmknuty
-        if(MilkyWayDone.sun == true){
-            binding.mercury.setImageResource(R.drawable.milkyway_mercury)
-        }
+        setImages()
 
         //        SLNKO
         binding.sun.setOnClickListener{
+
+            MilkyWayPlanets.sunIsPlaying = true
 
 //            val intent = Intent(this, ImageGame::class.java)
 ////            startActivity(intent)
 //            startActivityForResult(intent,0)
 
-            if(MilkyWayDone.sun == false){
+            if(MilkyWayPlanets.sunDone == false){
 
                 val intent = Intent(this, ImageGame::class.java)
                 resultLauncher.launch(intent)
@@ -49,13 +46,16 @@ class MilkyWay : AppCompatActivity() {
         //        MERKUR
         binding.mercury.setOnClickListener{
 
-            if(MilkyWayDone.mercury == true){
-                ///TODO nic sa neotvara
+            MilkyWayPlanets.mercuryIsPlaying = true
+
+            if(MilkyWayPlanets.sunDone == true){
+                ///TODO slnko je zvladnute takze sa ide do hry
+                val intent = Intent(this, ImageGame::class.java)
+                resultLauncher.launch(intent)
+
             }else{
-                ///TODO otvori sa hraci level
+                ///TODO neotvori sa nic button je neaktivny
             }
-
-
         }
 
         //        VENUSA
@@ -115,17 +115,43 @@ class MilkyWay : AppCompatActivity() {
         }
     }
 
+    fun setImages(){
+        if(MilkyWayPlanets.sunDone){
+            binding.mercury.setImageResource(R.drawable.milkyway_mercury)
+        }
+        if(MilkyWayPlanets.mercuryDone){
+            binding.venus.setImageResource(R.drawable.milkyway_venus)
+        }
+        if(MilkyWayPlanets.venusDone){
+            binding.earth.setImageResource(R.drawable.milkyway_earth)
+        }
+        if(MilkyWayPlanets.earthDone){
+            binding.mars.setImageResource(R.drawable.milkyway_mars)
+        }
+        if(MilkyWayPlanets.marsDone){
+            binding.jupiter.setImageResource(R.drawable.milkyway_jupiter)
+        }
+        if(MilkyWayPlanets.jupiterDone){
+            binding.saturn.setImageResource(R.drawable.milkyway_saturn)
+        }
+        if(MilkyWayPlanets.saturnDone){
+            binding.uranus.setImageResource(R.drawable.milkyway_uran)
+        }
+        if(MilkyWayPlanets.uranusDone){
+            binding.neptune.setImageResource(R.drawable.milkyway_neptune)
+        }
+    }
+
     var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             // There are no request codes
             val data: Intent? = result.data
 
-            MilkyWayDone.sun = data?.getBooleanExtra("boolSun",false) == true
-            MilkyWayDone.mercury = data?.getBooleanExtra("boolMerc",false) == true
-            if(MilkyWayDone.sun == true){
-                binding.mercury.setImageResource(R.drawable.milkyway_mercury)
-            }
+            //TODO nastavit to priamo v
 
+//            MilkyWayDone.sun = data?.getBooleanExtra("boolSun",false) == true
+//            MilkyWayDone.mercury = data?.getBooleanExtra("boolMerc",false) == true
+            setImages()
         }
     }
 }

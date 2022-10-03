@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.dobyvatel.databinding.ActivityLevelsPageBinding
-import com.example.dobyvatel.databinding.ActivityPlanetsMapBinding
+import com.example.dobyvatel.databinding.ActivityMilkywayMapBinding
 
 class LevelsPage : AppCompatActivity() {
 

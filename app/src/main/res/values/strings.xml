@@ -2,6 +2,7 @@
     <string name="app_name">Dobyvatel</string>
     <string name="ALIEN">alien</string>
     <string name="BOMB">bomb</string>
+    <string name="main_header">Chyť všetkých mimozenšťanov a vyhýbaj sa bombám</string>
     <item name="KEY" type="id" />
 
     <!-- TODO: Remove or change this placeholder text -->

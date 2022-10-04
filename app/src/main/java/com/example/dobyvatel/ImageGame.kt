@@ -1,12 +1,16 @@
 package com.example.dobyvatel
 
+import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.view.View
+import android.webkit.RenderProcessGoneDetail
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -31,7 +35,6 @@ class ImageGame : AppCompatActivity() {
     var startNumber = 1
     var endNumber = 14
     var timerIsRunning = false
-    var timerGameIsRunning = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +55,7 @@ class ImageGame : AppCompatActivity() {
 
         listOfTextObjects = arrayListOf(
             binding.score,
-            binding.countdown
+            binding.numberScore
         )
 
         listOfX = arrayListOf(
@@ -65,8 +68,11 @@ class ImageGame : AppCompatActivity() {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
-                binding.countdown.setText("Zostávajúci čas: " + millisUntilFinished / 1000)
+//                binding.countdown.setText("Zostávajúci čas: " + millisUntilFinished / 1000)
 
+//                ObjectAnimator.ofInt(binding.progressBar2,"progress", (millisUntilFinished / 1000).toInt())
+//                    .start()
+                progressBarTimeScore(millisUntilFinished)
             }
             //koniec casu: End game
             override fun onFinish() {
@@ -171,7 +177,7 @@ class ImageGame : AppCompatActivity() {
         // Ak je obrazok Aliena pripocitava sa skore
         // Inaksie je Bomb a to skore odpocitava
         if (imageView.getTag(R.id.KEY) == getString(R.string.ALIEN)) {
-            score++
+            scoreSetNull("plus")
             playGameAgain(imageView)
 
         } else {
@@ -179,11 +185,11 @@ class ImageGame : AppCompatActivity() {
                 /// Do tejto slucky sa vojde vtedy, ked hrac prehra vsetky zivoty
                 // Hra sa ukoncuje
                 scoreEnd(endScore)
-                score--
+                scoreSetNull("minus")
             } else {
                 scoreEnd(endScore)
                 endScore--
-                score--
+                scoreSetNull("minus")
                 playGameAgain(imageView)
             }
         }
@@ -196,8 +202,37 @@ class ImageGame : AppCompatActivity() {
             image.visibility = View.INVISIBLE
         }
         //TODO
-        binding.score.text = "Score: " + score
+//        binding.score.text = "Score: " + score
+
+        binding.numberScore.text = score.toString()
+
         game(Random.nextInt(startNumber, endNumber))
+    }
+
+    fun progressBarTimeScore(time: Long){
+        if(time/ 1000>= 20){
+            binding.progressBarTime.progressTintList = ColorStateList.valueOf(Color.GREEN)
+        }else if (time/ 1000>=8){
+            binding.progressBarTime.progressTintList = ColorStateList.valueOf(Color.parseColor("#FF6F00"))
+        }else{
+            binding.progressBarTime.progressTintList = ColorStateList.valueOf(Color.RED)
+        }
+
+        ObjectAnimator.ofInt(binding.progressBarTime,"progress",(time / 1000).toInt())
+            .start()
+    }
+
+    fun scoreSetNull (symbol:String){
+
+        if(symbol == "plus"){
+            score++
+        }else{
+            if(score==0){
+                score = 0
+            }else{
+                score--
+            }
+        }
     }
 
     // metoda ak sa stlaci bomba, odpocitavaju sa Xka
@@ -435,6 +470,9 @@ class ImageGame : AppCompatActivity() {
         for (x in listOfX){
             x.visibility = View.GONE
         }
+
+        binding.progressBarTime.visibility = View.GONE
+
         binding.tabulkamimozenstanov.background = null
 
     }

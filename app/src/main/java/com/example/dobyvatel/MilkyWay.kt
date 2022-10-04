@@ -32,7 +32,7 @@ class MilkyWay : AppCompatActivity() {
 
             if(MilkyWayPlanets.sunDone == false){
 
-                val intent = Intent(this, ImageGame::class.java)
+                val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
             }else{
 
@@ -50,8 +50,10 @@ class MilkyWay : AppCompatActivity() {
 
             if(MilkyWayPlanets.sunDone == true){
                 ///TODO slnko je zvladnute takze sa ide do hry
-                val intent = Intent(this, ImageGame::class.java)
+                val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
+//                val intent = Intent(this, DecisionPage::class.java)
+//                startActivity(intent)
 
             }else{
                 ///TODO neotvori sa nic button je neaktivny
@@ -152,6 +154,7 @@ class MilkyWay : AppCompatActivity() {
 //            MilkyWayDone.sun = data?.getBooleanExtra("boolSun",false) == true
 //            MilkyWayDone.mercury = data?.getBooleanExtra("boolMerc",false) == true
             setImages()
+            binding.ufoText.text = "data sa poslali"
         }
     }
 }

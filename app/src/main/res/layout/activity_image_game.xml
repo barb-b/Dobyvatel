@@ -4,19 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ImageGame">
+    tools:context=".ImageGame"
+    android:background="#252525"
+    >
 
     <TextView
         android:id="@+id/mainHeader"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CHYT VSETKYCH MIM"
+        android:layout_height="100dp"
+        android:text="@string/main_header"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="15dp"
+        android:textColor="@color/galaxy_purple_light"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:orientation="horizontal"
@@ -30,36 +37,29 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:srcCompat="@drawable/xko" />
+
         <ImageView
             android:id="@+id/redx2"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:srcCompat="@drawable/xko" />
+
         <ImageView
             android:id="@+id/redx3"
             android:layout_width="50dp"
             android:layout_height="50dp"
             app:srcCompat="@drawable/xko" />
-    </LinearLayout>
 
-    <TextView
-        android:id="@+id/score"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SCORE: ...."
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabulkamimozenstanov" />
+    </LinearLayout>
 
     <TableLayout
         android:id="@+id/tabulkamimozenstanov"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:padding="10dp"
         android:orientation="vertical"
+        android:background="@color/teal_700"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
@@ -159,14 +159,67 @@
     </TableLayout>
 
 
+<!--    <TextView-->
+<!--        android:id="@+id/countdown"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginVertical="10dp"-->
+<!--        android:text="Zostáva ti"-->
+<!--        android:textColor="@color/galaxy_purple_light"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tabulkamimozenstanov"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/scoreProgress"-->
+<!--        style="?android:attr/progressBarStyleHorizontal"-->
+<!--        android:layout_width="250dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_weight="1"-->
+<!--        android:foregroundTint="#9C27B0"-->
+<!--        android:max="20"-->
+<!--        android:progressTint="#CDDC39"-->
+<!--        android:scaleY="2"-->
+<!--        android:scrollbarSize="10dp"-->
+<!--        android:textAlignment="center"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/score" />-->
+
     <TextView
-        android:id="@+id/countdown"
+        android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Odpocet"
+        android:text="Počet chytených mimozenšťanov"
+        android:textColor="@color/galaxy_purple_light"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabulkamimozenstanov" />
+
+    <ProgressBar
+        android:id="@+id/progressBarTime"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:max="30"
+        android:progressTint="#FF1100"
         app:layout_constraintBottom_toTopOf="@+id/tabulkamimozenstanov"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <TextView
+        android:id="@+id/numberScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/galaxy_purple_light"
+        android:textSize="70dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/score" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

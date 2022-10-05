@@ -4,14 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".MilkyWay"
     android:background="@color/black">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
         <HorizontalScrollView
             android:id="@+id/horizontalScrollView"
@@ -46,12 +44,12 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        android:layout_marginTop="-80dp"
+                        android:layout_marginTop="-50dp"
                         android:gravity="center"
                         android:textSize="30sp"
                         android:layout_gravity="top"
                         android:text="SLNKO"
-                        android:fontFamily="@font/space"
+                        android:fontFamily="@font/spacebar"
                         android:textColor="@color/white"
                         />
                 </LinearLayout>
@@ -87,7 +85,7 @@
                         android:textSize="20sp"
                         android:layout_gravity="top"
                         android:text="MERKUR"
-                        android:fontFamily="@font/space"
+                        android:fontFamily="@font/spacebar"
                         android:textColor="@color/white"
                         />
                 </LinearLayout>
@@ -123,7 +121,7 @@
                         android:textSize="20sp"
                         android:layout_gravity="top"
                         android:text="VENUSA"
-                        android:fontFamily="@font/space"
+                        android:fontFamily="@font/spacebar"
                         android:textColor="@color/white"
                         />
                 </LinearLayout>
@@ -154,7 +152,7 @@
                         android:layout_height="80dp"
                         android:layout_gravity="top"
                         android:layout_marginTop="-100dp"
-                        android:fontFamily="@font/space"
+                        android:fontFamily="@font/spacebar"
                         android:gravity="center"
                         android:text="ZEM"
                         android:textColor="@color/white"
@@ -188,7 +186,7 @@
                         android:layout_height="80dp"
                         android:layout_gravity="top"
                         android:layout_marginTop="-100dp"
-                        android:fontFamily="@font/space"
+                        android:fontFamily="@font/spacebar"
                         android:gravity="center"
                         android:text="MARS"
                         android:textColor="@color/white"
@@ -218,7 +216,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_marginTop="-100dp"
-                        android:fontFamily="@font/space"
+                        android:fontFamily="@font/spacebar"
                         android:gravity="center"
                         android:text="JUPITER"
                         android:textColor="@color/white"
@@ -253,7 +251,7 @@
                         android:layout_height="80dp"
                         android:layout_gravity="top"
                         android:layout_marginTop="-100dp"
-                        android:fontFamily="@font/space"
+                        android:fontFamily="@font/spacebar"
                         android:gravity="center"
                         android:text="SATURN"
                         android:textColor="@color/white"
@@ -286,7 +284,7 @@
                         android:layout_height="80dp"
                         android:layout_gravity="top"
                         android:layout_marginTop="-100dp"
-                        android:fontFamily="@font/space"
+                        android:fontFamily="@font/spacebar"
                         android:gravity="center"
                         android:text="URAN"
                         android:textColor="@color/white"
@@ -313,55 +311,59 @@
                         android:contentDescription="@string/app_name"
                         android:padding="20dp"
                         android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/milkyway_neptuneblack"
-                        />
+                        app:srcCompat="@drawable/milkyway_neptuneblack" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
                         android:layout_gravity="top"
                         android:layout_marginTop="-100dp"
-                        android:fontFamily="@font/space"
+                        android:fontFamily="@font/spacebar"
                         android:gravity="center"
                         android:text="Neptun"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </LinearLayout>
+
+
             </LinearLayout>
+
         </HorizontalScrollView>
 
         <ImageView
             android:id="@+id/chest"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_gravity="top|right"
+            android:layout_gravity="bottom|end"
             android:adjustViewBounds="false"
             app:srcCompat="@drawable/chest"
-            android:layout_marginBottom="-50dp"/>
-
-        <ImageView
-            android:id="@+id/alien"
-            android:layout_width="147dp"
-            android:layout_height="360dp"
-            android:layout_gravity="bottom|left"
-            android:adjustViewBounds="false"
-            app:srcCompat="@drawable/alien"
-            android:layout_marginBottom="-50dp"/>
+            android:layout_margin="20dp"
+            />
 
         <TextView
             android:id="@+id/ufoText"
             android:layout_width="200dp"
             android:layout_height="50dp"
-            android:layout_gravity="bottom|right"
+            android:layout_gravity="top|right"
             android:layout_margin="30dp"
             android:layout_marginBottom="100dip"
             android:layout_weight="1"
-            android:background="#cdb4db"
+            android:background="@drawable/rounded_courner"
             android:padding="15dp"
-
             android:text="AHOOOJ pozemstan"
+            android:textColor="@color/white" />
 
-            android:textColor="#264653" />
+        <ImageView
+            android:id="@+id/alien"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="top|left"
+            android:adjustViewBounds="false"
+            app:srcCompat="@drawable/alienship"
+            android:layout_marginBottom="-50dp"/>
+
+
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

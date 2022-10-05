@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="galaxy_blue">#021F4B</color>
+    <color name="galaxy_purple">#4C3B71</color>
+    <color name="galaxy_green">#115268</color>
+    <color name="galaxy_purple_light">#9f45b0</color>
 </resources>

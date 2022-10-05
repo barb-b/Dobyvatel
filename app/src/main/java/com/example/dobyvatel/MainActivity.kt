@@ -27,13 +27,15 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        binding.decision.setOnClickListener {
+        binding.savegame.setOnClickListener {
 
-            val intent = Intent(this, DecisionPage::class.java)
-            startActivity(intent)
+            // load saved game
+
         }
     }
 
+
+    /// TODO
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)

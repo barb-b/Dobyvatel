@@ -62,43 +62,115 @@ class MilkyWay : AppCompatActivity() {
 
         //        VENUSA
         binding.venus.setOnClickListener{
+            MilkyWayPlanets.venusIsPlaying = true
 
+            if(MilkyWayPlanets.mercuryDone == true){
+                ///TODO slnko je zvladnute takze sa ide do hry
+                val intent = Intent(this, DecisionPage::class.java)
+                resultLauncher.launch(intent)
+//                val intent = Intent(this, DecisionPage::class.java)
+//                startActivity(intent)
 
+            }else{
+                ///TODO neotvori sa nic button je neaktivny
+            }
         }
 
         //        ZEM
         binding.earth.setOnClickListener{
+            MilkyWayPlanets.earthIsPlaying = true
 
+            if(MilkyWayPlanets.venusDone == true){
+                ///TODO slnko je zvladnute takze sa ide do hry
+                val intent = Intent(this, DecisionPage::class.java)
+                resultLauncher.launch(intent)
+//                val intent = Intent(this, DecisionPage::class.java)
+//                startActivity(intent)
 
+            }else{
+                ///TODO neotvori sa nic button je neaktivny
+            }
         }
 
         //        MARS
         binding.mars.setOnClickListener{
+            MilkyWayPlanets.marsIsPlaying = true
 
+            if(MilkyWayPlanets.earthDone == true){
+                ///TODO slnko je zvladnute takze sa ide do hry
+                val intent = Intent(this, DecisionPage::class.java)
+                resultLauncher.launch(intent)
+//                val intent = Intent(this, DecisionPage::class.java)
+//                startActivity(intent)
+
+            }else{
+                ///TODO neotvori sa nic button je neaktivny
+            }
 
         }
 
         //        JUPITER
         binding.jupiter.setOnClickListener{
+            MilkyWayPlanets.jupiterIsPlaying = true
 
+            if(MilkyWayPlanets.marsDone == true){
+                ///TODO slnko je zvladnute takze sa ide do hry
+                val intent = Intent(this, DecisionPage::class.java)
+                resultLauncher.launch(intent)
+//                val intent = Intent(this, DecisionPage::class.java)
+//                startActivity(intent)
 
+            }else{
+                ///TODO neotvori sa nic button je neaktivny
+            }
         }
 
         //        SATURN
         binding.saturn.setOnClickListener{
+            MilkyWayPlanets.saturnIsPlaying = true
 
+            if(MilkyWayPlanets.jupiterDone == true){
+                ///TODO slnko je zvladnute takze sa ide do hry
+                val intent = Intent(this, DecisionPage::class.java)
+                resultLauncher.launch(intent)
+//                val intent = Intent(this, DecisionPage::class.java)
+//                startActivity(intent)
 
+            }else{
+                ///TODO neotvori sa nic button je neaktivny
+            }
         }
 
         //        URAN
         binding.uranus.setOnClickListener{
+            MilkyWayPlanets.uranusIsPlaying = true
 
+            if(MilkyWayPlanets.saturnDone == true){
+                ///TODO slnko je zvladnute takze sa ide do hry
+                val intent = Intent(this, DecisionPage::class.java)
+                resultLauncher.launch(intent)
+//                val intent = Intent(this, DecisionPage::class.java)
+//                startActivity(intent)
 
+            }else{
+                ///TODO neotvori sa nic button je neaktivny
+            }
         }
 
         //        NEPTUN
         binding.neptune.setOnClickListener{
+            MilkyWayPlanets.neptuneIsPlaying = true
 
+            if(MilkyWayPlanets.uranusDone == true){
+                ///TODO slnko je zvladnute takze sa ide do hry
+                val intent = Intent(this, DecisionPage::class.java)
+                resultLauncher.launch(intent)
+//                val intent = Intent(this, DecisionPage::class.java)
+//                startActivity(intent)
+
+            }else{
+                ///TODO neotvori sa nic button je neaktivny
+            }
 
             //TODO otvorenie suhvezdi
         }

@@ -83,40 +83,48 @@ class ImageGame : AppCompatActivity() {
                     //HAPPY PATH -> hrac vyhral
                     endOfGame = true
                     winOrLoose("win")
+
+                    // Aplikacia pocka niekolko sekund a potom sa vypne
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        val intent = Intent()
+                        ///TODO ako sledovat planety
+                        if (MilkyWayPlanets.sunIsPlaying) {
+                            MilkyWayPlanets.planetIsDone("sun")
+                        } else if (MilkyWayPlanets.mercuryIsPlaying) {
+                            MilkyWayPlanets.planetIsDone("mercury")
+                        } else if (MilkyWayPlanets.venusIsPlaying) {
+                            MilkyWayPlanets.planetIsDone("venus")
+                        } else if (MilkyWayPlanets.earthIsPlaying) {
+                            MilkyWayPlanets.planetIsDone("earth")
+                        } else if (MilkyWayPlanets.marsIsPlaying) {
+                            MilkyWayPlanets.planetIsDone("mars")
+                        } else if (MilkyWayPlanets.jupiterIsPlaying) {
+                            MilkyWayPlanets.planetIsDone("jupiter")
+                        } else if (MilkyWayPlanets.saturnIsPlaying) {
+                            MilkyWayPlanets.planetIsDone("saturn")
+                        } else if (MilkyWayPlanets.uranusIsPlaying) {
+                            MilkyWayPlanets.planetIsDone("uranus")
+                        } else if (MilkyWayPlanets.neptuneIsPlaying) {
+                            MilkyWayPlanets.planetIsDone("neptune")
+                        }
+
+//                    intent.putExtra("boolSun", endOfGame)
+                        setResult(Activity.RESULT_OK, intent)
+                        finish()
+                    }, 5000)
                 } else {
                     //UNHAPPY PATH -> hrac prehral
                     winOrLoose("loose")
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        val intent = Intent()
+//                    intent.putExtra("boolSun", endOfGame)
+                        setResult(Activity.RESULT_OK, intent)
+                        finish()
+                    }, 5000)
                 }
 
-                // Aplikacia pocka niekolko sekund a potom sa vypne
-                Handler(Looper.getMainLooper()).postDelayed({
-                    val intent = Intent()
 
-                    ///TODO ako sledovat planety
-                    if (MilkyWayPlanets.sunIsPlaying) {
-                        MilkyWayPlanets.planetIsDone("sun")
-                    } else if (MilkyWayPlanets.mercuryIsPlaying) {
-                        MilkyWayPlanets.planetIsDone("mercury")
-                    } else if (MilkyWayPlanets.venusIsPlaying) {
-                        MilkyWayPlanets.planetIsDone("venus")
-                    } else if (MilkyWayPlanets.earthIsPlaying) {
-                        MilkyWayPlanets.planetIsDone("earth")
-                    } else if (MilkyWayPlanets.marsIsPlaying) {
-                        MilkyWayPlanets.planetIsDone("mars")
-                    } else if (MilkyWayPlanets.jupiterIsPlaying) {
-                        MilkyWayPlanets.planetIsDone("jupiter")
-                    } else if (MilkyWayPlanets.saturnIsPlaying) {
-                        MilkyWayPlanets.planetIsDone("saturn")
-                    } else if (MilkyWayPlanets.uranusIsPlaying) {
-                        MilkyWayPlanets.planetIsDone("uran")
-                    } else if (MilkyWayPlanets.neptuneIsPlaying) {
-                        MilkyWayPlanets.planetIsDone("neptune")
-                    }
-
-//                    intent.putExtra("boolSun", endOfGame)
-                    setResult(Activity.RESULT_OK, intent)
-                    finish()
-                }, 10000)
             }
         }.start()
 
@@ -250,7 +258,7 @@ class ImageGame : AppCompatActivity() {
                     val intent = Intent()
                     setResult(Activity.RESULT_OK, intent)
                     finish()
-                }, 10000)
+                }, 5000)
             }
             2 -> {
                 binding.redx2.visibility = View.INVISIBLE

@@ -23,14 +23,13 @@ class MilkyWay : AppCompatActivity() {
 
         //        SLNKO
         binding.sun.setOnClickListener{
-
-            MilkyWayPlanets.sunIsPlaying = true
-
 //            val intent = Intent(this, ImageGame::class.java)
 ////            startActivity(intent)
 //            startActivityForResult(intent,0)
 
             if(MilkyWayPlanets.sunDone == false){
+
+                MilkyWayPlanets.sunIsPlaying = true
 
                 val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
@@ -46,9 +45,8 @@ class MilkyWay : AppCompatActivity() {
         //        MERKUR
         binding.mercury.setOnClickListener{
 
-            MilkyWayPlanets.mercuryIsPlaying = true
-
-            if(MilkyWayPlanets.sunDone == true){
+            if(MilkyWayPlanets.mercuryIsPlaying){
+                MilkyWayPlanets.mercuryIsPlaying = true
                 ///TODO slnko je zvladnute takze sa ide do hry
                 val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
@@ -62,9 +60,9 @@ class MilkyWay : AppCompatActivity() {
 
         //        VENUSA
         binding.venus.setOnClickListener{
-            MilkyWayPlanets.venusIsPlaying = true
 
-            if(MilkyWayPlanets.mercuryDone == true){
+            if(MilkyWayPlanets.venusIsPlaying){
+
                 ///TODO slnko je zvladnute takze sa ide do hry
                 val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
@@ -78,9 +76,8 @@ class MilkyWay : AppCompatActivity() {
 
         //        ZEM
         binding.earth.setOnClickListener{
-            MilkyWayPlanets.earthIsPlaying = true
 
-            if(MilkyWayPlanets.venusDone == true){
+            if(MilkyWayPlanets.earthIsPlaying){
                 ///TODO slnko je zvladnute takze sa ide do hry
                 val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
@@ -94,9 +91,8 @@ class MilkyWay : AppCompatActivity() {
 
         //        MARS
         binding.mars.setOnClickListener{
-            MilkyWayPlanets.marsIsPlaying = true
 
-            if(MilkyWayPlanets.earthDone == true){
+            if(MilkyWayPlanets.marsIsPlaying){
                 ///TODO slnko je zvladnute takze sa ide do hry
                 val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
@@ -111,9 +107,9 @@ class MilkyWay : AppCompatActivity() {
 
         //        JUPITER
         binding.jupiter.setOnClickListener{
-            MilkyWayPlanets.jupiterIsPlaying = true
 
-            if(MilkyWayPlanets.marsDone == true){
+            if(MilkyWayPlanets.jupiterIsPlaying){
+
                 ///TODO slnko je zvladnute takze sa ide do hry
                 val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
@@ -127,9 +123,9 @@ class MilkyWay : AppCompatActivity() {
 
         //        SATURN
         binding.saturn.setOnClickListener{
-            MilkyWayPlanets.saturnIsPlaying = true
 
-            if(MilkyWayPlanets.jupiterDone == true){
+            if(MilkyWayPlanets.saturnIsPlaying){
+
                 ///TODO slnko je zvladnute takze sa ide do hry
                 val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
@@ -143,9 +139,9 @@ class MilkyWay : AppCompatActivity() {
 
         //        URAN
         binding.uranus.setOnClickListener{
-            MilkyWayPlanets.uranusIsPlaying = true
 
-            if(MilkyWayPlanets.saturnDone == true){
+            if(MilkyWayPlanets.uranusIsPlaying){
+
                 ///TODO slnko je zvladnute takze sa ide do hry
                 val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
@@ -159,9 +155,9 @@ class MilkyWay : AppCompatActivity() {
 
         //        NEPTUN
         binding.neptune.setOnClickListener{
-            MilkyWayPlanets.neptuneIsPlaying = true
 
-            if(MilkyWayPlanets.uranusDone == true){
+            if(MilkyWayPlanets.neptuneIsPlaying){
+
                 ///TODO slnko je zvladnute takze sa ide do hry
                 val intent = Intent(this, DecisionPage::class.java)
                 resultLauncher.launch(intent)
@@ -178,14 +174,18 @@ class MilkyWay : AppCompatActivity() {
         binding.chest.setOnClickListener{
             //TODO presmerovanie na stranku, kde budu ulozene karticky
 
-            binding.mercury.setImageResource(R.drawable.milkyway_mercury)
-            binding.venus.setImageResource(R.drawable.milkyway_venus)
-            binding.mars.setImageResource(R.drawable.milkyway_mars)
-            binding.earth.setImageResource(R.drawable.milkyway_earth)
-            binding.jupiter.setImageResource(R.drawable.milkyway_jupiter)
-            binding.saturn.setImageResource(R.drawable.milkyway_saturn)
-            binding.neptune.setImageResource(R.drawable.milkyway_neptune)
-            binding.uranus.setImageResource(R.drawable.milkyway_uran)
+            val intent = Intent(this, Testadebug::class.java)
+            startActivity(intent)
+
+
+//            binding.mercury.setImageResource(R.drawable.milkyway_mercury)
+//            binding.venus.setImageResource(R.drawable.milkyway_venus)
+//            binding.mars.setImageResource(R.drawable.milkyway_mars)
+//            binding.earth.setImageResource(R.drawable.milkyway_earth)
+//            binding.jupiter.setImageResource(R.drawable.milkyway_jupiter)
+//            binding.saturn.setImageResource(R.drawable.milkyway_saturn)
+//            binding.neptune.setImageResource(R.drawable.milkyway_neptune)
+//            binding.uranus.setImageResource(R.drawable.milkyway_uran)
         }
     }
 

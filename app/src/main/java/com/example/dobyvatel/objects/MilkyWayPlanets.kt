@@ -27,34 +27,42 @@ object MilkyWayPlanets {
             "sun" -> {
                 sunIsPlaying = false
                 sunDone = true
+                mercuryIsPlaying = true
             }
             "mercury" -> {
                 mercuryIsPlaying = false
                 mercuryDone = true
+                venusIsPlaying = true
             }
             "venus" -> {
                 venusIsPlaying = false
                 venusDone = true
+                earthIsPlaying = true
             }
             "earth" -> {
                 earthIsPlaying = false
                 earthDone = true
+                marsIsPlaying = true
             }
             "mars" -> {
                 marsIsPlaying = false
                 marsDone = true
+                jupiterIsPlaying = true
             }
             "jupiter" -> {
                 jupiterIsPlaying = false
                 jupiterDone = true
+                saturnIsPlaying = true
             }
             "saturn" -> {
                 saturnIsPlaying = false
                 saturnDone = true
+                uranusIsPlaying = true
             }
             "uranus" -> {
                 uranusIsPlaying = false
                 uranusDone = true
+                neptuneIsPlaying = true
             }
             "neptune" -> {
                 neptuneIsPlaying = false

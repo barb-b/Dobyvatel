@@ -10,6 +10,8 @@ import android.os.Looper
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import com.example.dobyvatel.databinding.ActivityDecisionPageBinding
 import com.example.dobyvatel.objects.MilkyWayPlanets
 import kotlin.random.Random
@@ -24,38 +26,73 @@ class DecisionPage : AppCompatActivity() {
         binding = ActivityDecisionPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val imageSlider = binding.imageSlider
+        val imageList = ArrayList<SlideModel>()
+
+
+
+
         //TODO hlavny obrazok podla toho aka planeta je otvorena
         // text podla toho aka planeta je otvorena
 
         // nastavy sa text a hlavny obrazok podla toho, co sa hra
         if (MilkyWayPlanets.sunIsPlaying) {
 
-            binding.mainPicture.setImageResource(R.drawable.decision_sun)
+            imageList.clear()
+            imageList.add(SlideModel("https://i.ibb.co/52DwRgn/slnkoblizko.jpg","Slnko z blizka"))
+            imageList.add(SlideModel("https://i.ibb.co/2c1sx1G/povrch-slnka.jpg","Povrch slnka"))
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
+
 //            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.mercuryIsPlaying) {
 
+            imageList.clear()
+            imageList.add(SlideModel("https://i.ibb.co/bB64gtk/povrch-merkuru.jpg","Povrch Merkuru"))
+            imageList.add(SlideModel("https://i.ibb.co/KVn8zM7/mineralyapovrchoveprocesy.jpg","Stopy minerálov a povrchových procesoch"))
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
 //            binding.mainPicture.setImageResource(R.drawable.decision_sun)
 //            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.venusIsPlaying) {
-//            binding.mainPicture.setImageResource(R.drawable.decision_sun)
+            imageList.clear()
+            imageList.add(SlideModel("https://i.ibb.co/hVwCrVW/venusapovrh.jpg","Povrch Venuse"))
+            imageList.add(SlideModel("https://i.ibb.co/SvdhFCX/19-SCI-OUTTHERE-VENUS1-video-Sixteen-By-Nine3000.jpg","Venusa zabalena v hustej vrstve toxických mrakov"))
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
 //            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.earthIsPlaying) {
-//            binding.mainPicture.setImageResource(R.drawable.decision_sun)
+            imageList.clear()
+            imageList.add(SlideModel("https://i.ibb.co/XjsdTqG/tornadozem.jpg","Tornado"))
+            imageList.add(SlideModel("https://i.ibb.co/qYTTRc7/detailnezem.jpg","Detail zeme"))
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
 //            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.marsIsPlaying) {
-//            binding.mainPicture.setImageResource(R.drawable.decision_sun)
+            imageList.clear()
+            imageList.add(SlideModel("https://i.ibb.co/F4ZRQ7W/mars.jpg","Mars"))
+            imageList.add(SlideModel("https://i.ibb.co/pKBSRjm/marsrover.jpg","Rover"))
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
 //            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.jupiterIsPlaying) {
-//            binding.mainPicture.setImageResource(R.drawable.decision_sun)
+            imageList.clear()
+            imageList.add(SlideModel("https://i.ibb.co/fqGNmPX/jupiterzblizka.jpg","Jupiter z blizka"))
+            imageList.add(SlideModel("https://i.ibb.co/QKLNtH9/jupiter.jpg","Jupiter"))
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
 //            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.saturnIsPlaying) {
-//            binding.mainPicture.setImageResource(R.drawable.decision_sun)
+            imageList.clear()
+            imageList.add(SlideModel("https://i.ibb.co/cbgXJmK/saturn.jpg","Saturn"))
+            imageList.add(SlideModel("https://i.ibb.co/bdf82LL/saturnvortex.jpg","Saturn"))
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
 //            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.uranusIsPlaying) {
-//            binding.mainPicture.setImageResource(R.drawable.decision_sun)
+            imageList.clear()
+            imageList.add(SlideModel("https://i.ibb.co/drm6CRd/uranus.jpg","Uran"))
+            imageList.add(SlideModel("https://i.ibb.co/1TNfRBt/uranusfalsecolor.jpg","Uran"))
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
 //            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.neptuneIsPlaying) {
-//            binding.mainPicture.setImageResource(R.drawable.decision_sun)
+            imageList.clear()
+            imageList.add(SlideModel("https://i.ibb.co/LzjM54b/neptuneclouds.jpg","Neptun"))
+            imageList.add(SlideModel("https://i.ibb.co/LJSn02y/neptunevertical.jpg","Neptun"))
+            imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
 //            binding.textAboutPlanet.text = ""
         }
 

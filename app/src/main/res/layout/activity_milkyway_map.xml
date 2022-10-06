@@ -330,15 +330,28 @@
 
         </HorizontalScrollView>
 
-        <ImageView
+
+        <ImageButton
             android:id="@+id/chest"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:layout_gravity="bottom|end"
-            android:adjustViewBounds="false"
             app:srcCompat="@drawable/chest"
+            android:layout_gravity="bottom|end"
+            android:adjustViewBounds="true"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:scaleType="fitCenter"/>
+
+        <ImageButton
+            android:id="@+id/saveButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/save"
+            android:layout_gravity="bottom|start"
+            android:adjustViewBounds="true"
             android:layout_margin="20dp"
-            />
+            android:background="@null"
+            android:scaleType="fitCenter"/>
 
         <TextView
             android:id="@+id/ufoText"

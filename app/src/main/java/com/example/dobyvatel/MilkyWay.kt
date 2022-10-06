@@ -1,11 +1,14 @@
 package com.example.dobyvatel
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dobyvatel.databinding.ActivityMilkywayMapBinding
+import com.example.dobyvatel.objects.Constants
 import com.example.dobyvatel.objects.MilkyWayPlanets
 
 class MilkyWay : AppCompatActivity() {
@@ -187,6 +190,10 @@ class MilkyWay : AppCompatActivity() {
 //            binding.neptune.setImageResource(R.drawable.milkyway_neptune)
 //            binding.uranus.setImageResource(R.drawable.milkyway_uran)
         }
+
+        binding.saveButton.setOnClickListener{
+            saveData()
+        }
     }
 
     fun setImages(){
@@ -214,6 +221,38 @@ class MilkyWay : AppCompatActivity() {
         if(MilkyWayPlanets.uranusDone){
             binding.neptune.setImageResource(R.drawable.milkyway_neptune)
         }
+    }
+
+    fun saveData(){
+
+        Constants.isSaved = true
+
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply{
+            putBoolean("SUN_DONE",MilkyWayPlanets.sunDone)
+            putBoolean("MERCURY_DONE",MilkyWayPlanets.mercuryDone)
+            putBoolean("VENUS_DONE",MilkyWayPlanets.venusDone)
+            putBoolean("EARTH_DONE",MilkyWayPlanets.earthDone)
+            putBoolean("MARS_DONE",MilkyWayPlanets.marsDone)
+            putBoolean("JUPITER_DONE",MilkyWayPlanets.jupiterDone)
+            putBoolean("SATURN_DONE",MilkyWayPlanets.saturnDone)
+            putBoolean("URANUS_DONE",MilkyWayPlanets.uranusDone)
+            putBoolean("NEPTUNE_DONE",MilkyWayPlanets.neptuneDone)
+            putBoolean("SUN_IS_PLAYING",MilkyWayPlanets.sunIsPlaying)
+            putBoolean("MERCURY_IS_PLAYING",MilkyWayPlanets.mercuryIsPlaying)
+            putBoolean("VENUS_IS_PLAYING",MilkyWayPlanets.venusIsPlaying)
+            putBoolean("EARTH_IS_PLAYING",MilkyWayPlanets.earthIsPlaying)
+            putBoolean("MARS_IS_PLAYING",MilkyWayPlanets.marsIsPlaying)
+            putBoolean("JUPITER_IS_PLAYING",MilkyWayPlanets.jupiterIsPlaying)
+            putBoolean("SATURN_IS_PLAYING",MilkyWayPlanets.saturnIsPlaying)
+            putBoolean("URANUS_IS_PLAYING",MilkyWayPlanets.uranusIsPlaying)
+            putBoolean("NEPTUNE_IS_PLAYING",MilkyWayPlanets.neptuneIsPlaying)
+
+            putBoolean("IS_SAVED",Constants.isSaved)
+        }.apply()
+
+        Toast.makeText(this,"Data saved", Toast.LENGTH_SHORT).show()
     }
 
     var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

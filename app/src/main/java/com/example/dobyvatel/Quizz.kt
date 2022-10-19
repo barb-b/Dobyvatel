@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.dobyvatel.databinding.ActivityQuizzBinding
+import com.example.dobyvatel.objects.QuizzClass
 import org.apache.poi.ss.usermodel.WorkbookFactory
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.BufferedInputStream
@@ -24,15 +25,39 @@ class Quizz : AppCompatActivity() {
         binding = ActivityQuizzBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var listOfQuestion = ArrayList<QuizzClass>()
 
-        val o = assets.open("planety_quizz.xlsx")
 
-        val workBook = XSSFWorkbook(o)
-
+        ///Otvor excel
+        val open = assets.open("planety_quizz.xlsx")
+        val workBook = XSSFWorkbook(open)
         val sheet = workBook.getSheetAt(0)
-        val name = sheet.getRow(0).getCell(0)
 
-        val f = sheet.rowIterator().forEach { row -> row.rowNum  }
+
+        val name = sheet.getRow(0).getCell(0)
+        val rowIterator = sheet.rowIterator()
+
+        var row = 0
+        val otazka = 1
+        val odp = 2
+        val col2 = 3
+        val correctcolu = 4
+
+        while(rowIterator.hasNext()){
+
+            if(sheet.getRow(row).getCell(0).toString() == "SLNKO"){
+
+                val otazka = QuizzClass(sheet.getRow(row).getCell(otazka).toString(),
+                    sheet.getRow(row).getCell(odp).toString(),
+                    sheet.getRow(row).getCell(col2).toString(),
+                    sheet.getRow(row).getCell(correctcolu).toString())
+                listOfQuestion.add(otazka)
+                row++
+            }
+            rowIterator.next()
+        }
+
+        println()
         
 
 

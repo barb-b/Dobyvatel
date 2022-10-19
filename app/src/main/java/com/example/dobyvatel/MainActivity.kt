@@ -46,6 +46,12 @@ class MainActivity : AppCompatActivity() {
             // load saved game
         }
 
+        binding.debug.setOnClickListener {
+            val intent = Intent(this, Quizz::class.java)
+            startActivity(intent)
+            finish()
+        }
+
     }
 
     fun loadData(){

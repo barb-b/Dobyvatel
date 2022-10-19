@@ -7,6 +7,8 @@
     tools:context=".MilkyWay"
     android:background="@color/black">
 
+
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,11 +25,14 @@
                 android:orientation="horizontal">
 
                 <!--               SUN   />-->
+
+
+                <!--               MERCURY   />-->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginEnd="35dp">
+                    android:layout_marginEnd="35dp"
+                    android:orientation="vertical">
 
 
                     <ImageButton
@@ -37,26 +42,22 @@
                         android:layout_weight="1"
                         android:adjustViewBounds="true"
                         android:background="@null"
-                        android:scaleType="fitStart"
                         android:contentDescription="@string/app_name"
+                        android:scaleType="fitStart"
                         app:srcCompat="@drawable/milkyway_sun" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="80dp"
-                        android:layout_marginTop="-50dp"
-                        android:gravity="center"
-                        android:textSize="30sp"
                         android:layout_gravity="top"
-                        android:text="SLNKO"
+                        android:layout_marginTop="-50dp"
                         android:fontFamily="@font/spacebar"
+                        android:gravity="center"
+                        android:text="SLNKO"
                         android:textColor="@color/white"
-                        />
+                        android:textSize="30sp" />
                 </LinearLayout>
 
-
-
-                <!--               MERCURY   />-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -346,12 +347,13 @@
             android:id="@+id/saveButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/save"
             android:layout_gravity="bottom|start"
-            android:adjustViewBounds="true"
             android:layout_margin="20dp"
+            android:adjustViewBounds="true"
             android:background="@null"
-            android:scaleType="fitCenter"/>
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/save"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/ufoText"
@@ -375,8 +377,15 @@
             app:srcCompat="@drawable/alienship"
             android:layout_marginBottom="-50dp"/>
 
-
-
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_marginTop="80dp"
+            android:id="@+id/collectionfragment"
+            android:visibility="gone"
+            android:name="com.example.dobyvatel.CollectionFragment"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            tools:ignore="MissingConstraints" />
     </FrameLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

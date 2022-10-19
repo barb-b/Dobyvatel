@@ -11,4 +11,6 @@
     <color name="galaxy_purple">#4C3B71</color>
     <color name="galaxy_green">#115268</color>
     <color name="galaxy_purple_light">#9f45b0</color>
+    <color name="galaxy_grey">#252525</color>
+
 </resources>

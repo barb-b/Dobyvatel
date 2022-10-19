@@ -4,9 +4,12 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+
 import com.example.dobyvatel.databinding.ActivityMilkywayMapBinding
 import com.example.dobyvatel.objects.Constants
 import com.example.dobyvatel.objects.MilkyWayPlanets
@@ -79,6 +82,8 @@ class MilkyWay : AppCompatActivity() {
 
         //        ZEM
         binding.earth.setOnClickListener{
+
+            Constants.isTrue = true
 
             if(MilkyWayPlanets.earthIsPlaying){
                 ///TODO slnko je zvladnute takze sa ide do hry
@@ -177,8 +182,27 @@ class MilkyWay : AppCompatActivity() {
         binding.chest.setOnClickListener{
             //TODO presmerovanie na stranku, kde budu ulozene karticky
 
-            val intent = Intent(this, Testadebug::class.java)
-            startActivity(intent)
+
+            binding.ufoText.text = "isTrue " + Constants.isTrue.toString()
+
+
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.collectionfragment, CollectionFragment())
+                commit()
+            }
+
+            if(binding.collectionfragment.isVisible){
+                binding.collectionfragment.visibility = View.GONE
+            }else{
+                binding.collectionfragment.visibility = View.VISIBLE
+            }
+
+
+
+
+
+//            val intent = Intent(this, Testadebug::class.java)
+//            startActivity(intent)
 
 
 //            binding.mercury.setImageResource(R.drawable.milkyway_mercury)

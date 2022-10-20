@@ -1,5 +1,6 @@
 package com.example.dobyvatel
 
+import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -25,6 +26,9 @@ class Quizz : AppCompatActivity() {
     val answer2 = 3
     val rightAnswer = 4
     var currentPlanet = "SLNKO"
+    var scoreQuestion = 0
+
+    var currentQuestion = QuizzClass("","","","")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,9 +86,8 @@ class Quizz : AppCompatActivity() {
 
 
 
-        binding.button.setOnClickListener {
-            val radio: RadioButton = findViewById(binding.radioGroup.checkedRadioButtonId)
-            binding.textView2.text = radio.text
+        binding.nextQuestion.setOnClickListener {
+            isCorrectAnswer(currentQuestion)
             createRandomQuestion(listOfQuestion, randomOrderRadio)
         }
 
@@ -114,21 +117,38 @@ class Quizz : AppCompatActivity() {
     }
 
     fun createRandomQuestion(list: ArrayList<QuizzClass>, radioButton:ArrayList<RadioButton>){
-        val randomNu = Random.nextInt(0, list.size)
-        val objectQuestion = list.get(randomNu)
 
+        val randomNu = Random.nextInt(0, list.size)
+        currentQuestion = list.get(randomNu)
+
+        //TODO vyhodnotenie
+
+
+        //TODO predtym ako sa vsetko znova nacita treba urobit vyhodnotenie
         binding.radioGroup.clearCheck()
         binding.radioGroup.removeAllViews()
 
-        binding.radioButton2.text = objectQuestion.answer1
-        binding.radioButton3.text = objectQuestion.answer2
-        binding.radioButton4.text = objectQuestion.correctAns
+        binding.question.text = currentQuestion.question
+        binding.radioButton2.text = currentQuestion.answer1
+        binding.radioButton3.text = currentQuestion.answer2
+        binding.radioButton4.text = currentQuestion.correctAns
 
         radioButton.shuffle()
 
         for (radio in radioButton) {
             binding.radioGroup.addView(radio)
         }
+
+    }
+
+    fun isCorrectAnswer(quizzCorrect: QuizzClass){
+        val radio: RadioButton = findViewById(binding.radioGroup.checkedRadioButtonId)
+        if(radio.text == quizzCorrect.correctAns){
+            scoreQuestion++
+            ObjectAnimator.ofInt(binding.progressBar,"progress", scoreQuestion)
+                .start()
+        }
+
 
     }
 

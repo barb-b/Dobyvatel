@@ -122,6 +122,18 @@ class DecisionPage : AppCompatActivity() {
         binding.peace.setOnClickListener {
             //TODO mierova dohoda?? kam to bude
             // detto algoritmus ci sa rozhodnu to schvalit
+            binding.scrollPlanet.visibility = View.GONE
+            binding.textAboutPlanet.visibility = View.GONE
+            binding.peace.visibility = View.GONE
+            binding.fight.visibility = View.GONE
+
+            binding.progressDecision.visibility = View.VISIBLE
+
+            //najprv je loading a potom je vypisana decission
+            Handler(Looper.getMainLooper()).postDelayed({
+                binding.progressDecision.visibility = View.GONE
+                acceptedOrNot(0)
+            }, 5000)
         }
 
 
@@ -136,8 +148,39 @@ class DecisionPage : AppCompatActivity() {
             if (fightOrPeace == yesOrNo) {
                 //TODO mimozenstania akceptovali
                 // presmeruje sa na peace stranku
+
+                binding.decisionMade.visibility = View.VISIBLE
+                binding.decisionMade.text = "MIER sa akceptoval"
+
+                Handler(Looper.getMainLooper()).postDelayed({
+
+//                    val intent = Intent(this, ImageGame::class.java)
+//                    startActivity(intent)
+//                    finish()
+
+                    val intent = Intent(this, Quizz::class.java)
+                    resultLauncher.launch(intent)
+                }, 5000)
             } else {
                 //TODO neakceptovali, mimozenstania chcu bojovat
+                //TODO mimozenstania chcu bojovat
+                // presmerovanie na fight stranku
+                // zmizne button peace
+
+                binding.decisionMade.visibility = View.VISIBLE
+                binding.decisionMade.text = "Boj sa akceptoval"
+
+                Handler(Looper.getMainLooper()).postDelayed({
+
+//                    val intent = Intent(this, ImageGame::class.java)
+//                    startActivity(intent)
+//                    finish()
+
+                    val intent = Intent(this, ImageGame::class.java)
+                    resultLauncher.launch(intent)
+                }, 5000)
+
+
             }
 
         } else if (fightOrPeace == 1) {
@@ -163,6 +206,19 @@ class DecisionPage : AppCompatActivity() {
 
             } else {
                 //TODO mimozenstania sa vzdavaju
+
+                binding.decisionMade.visibility = View.VISIBLE
+                binding.decisionMade.text = "MIER sa akceptoval"
+
+                Handler(Looper.getMainLooper()).postDelayed({
+
+//                    val intent = Intent(this, ImageGame::class.java)
+//                    startActivity(intent)
+//                    finish()
+
+                    val intent = Intent(this, Quizz::class.java)
+                    resultLauncher.launch(intent)
+                }, 5000)
             }
         }
 

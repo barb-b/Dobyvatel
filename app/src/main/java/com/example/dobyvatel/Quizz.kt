@@ -25,7 +25,7 @@ class Quizz : AppCompatActivity() {
     val answer1 = 2
     val answer2 = 3
     val rightAnswer = 4
-    var currentPlanet = "SLNKO"
+    var currentPlanet = ""
     var scoreQuestion = 0
 
     var currentQuestion = QuizzClass("","","","")
@@ -36,7 +36,7 @@ class Quizz : AppCompatActivity() {
         binding = ActivityQuizzBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-//        whatIsCurrentPlanet()
+        whatIsCurrentPlanet()
 
         var listOfQuestion = ArrayList<QuizzClass>()
 
@@ -87,8 +87,14 @@ class Quizz : AppCompatActivity() {
 
 
         binding.nextQuestion.setOnClickListener {
-            isCorrectAnswer(currentQuestion)
-            createRandomQuestion(listOfQuestion, randomOrderRadio)
+
+            if(binding.radioGroup.checkedRadioButtonId == -1){
+                ///Ak radiobutton nie je zaskrtnyty nic sa nespravi
+
+            }else{
+                isCorrectAnswer(currentQuestion)
+                createRandomQuestion(listOfQuestion, randomOrderRadio)
+            }
         }
 
 
@@ -148,9 +154,5 @@ class Quizz : AppCompatActivity() {
             ObjectAnimator.ofInt(binding.progressBar,"progress", scoreQuestion)
                 .start()
         }
-
-
     }
-
-
 }

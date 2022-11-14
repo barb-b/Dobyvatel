@@ -2,7 +2,6 @@ package com.example.dobyvatel
 
 import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.novahra.setOnClickListener {
 
-            val intent = Intent(this, LevelsPage::class.java)
+            val intent = Intent(this, WelcomeAlien::class.java)
             startActivity(intent)
             finish()
         }

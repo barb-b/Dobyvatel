@@ -3,9 +3,12 @@ package com.example.dobyvatel
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.View
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dobyvatel.databinding.ActivityQuizzBinding
@@ -59,8 +62,8 @@ class Quizz : AppCompatActivity() {
                     sheet.getRow(row).getCell(rightAnswer).toString()
                 )
                 listOfQuestion.add(otazka)
-                row++
             }
+            row++
             rowIterator.next()
         }
 
@@ -81,7 +84,12 @@ class Quizz : AppCompatActivity() {
 
             }else{
                 isCorrectAnswer(currentQuestion)
-                createRandomQuestion(listOfQuestion, randomOrderRadio)
+
+                Handler(Looper.getMainLooper()).postDelayed({
+
+                    createRandomQuestion(listOfQuestion, randomOrderRadio)
+                }, 3000)
+
             }
         }
     }
@@ -114,9 +122,19 @@ class Quizz : AppCompatActivity() {
         if(numberOfQuestions == 3){
             // 3 otazky -> navrat ku planetam a vyhodnotenie
             //TODO VYHODNOTENIE
+            // Clear vsetko
+
+            // Nastavenie visibility
+            binding.radioGroup.visibility = View.GONE
+            binding.question.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
+            binding.nextQuestion.visibility = View.GONE
+            binding.finish.visibility = View.VISIBLE
 
             if (scoreQuestion == 3){
                 // HRAC VYHRAL
+
+                binding.finish.text = "Vyhral si"
 
                 Handler(Looper.getMainLooper()).postDelayed({
                     val intent = Intent()
@@ -147,8 +165,13 @@ class Quizz : AppCompatActivity() {
             }else{
                 // HRAC PREHRAL
 
-                setResult(Activity.RESULT_OK, intent)
-                finish()
+                binding.finish.text = "Prehral si"
+                Handler(Looper.getMainLooper()).postDelayed({
+
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                }, 3000)
+
             }
 
 
@@ -185,10 +208,20 @@ class Quizz : AppCompatActivity() {
     // Je odpoved na otazky sprana?
     fun isCorrectAnswer(quizzCorrect: QuizzClass){
         val radio: RadioButton = findViewById(binding.radioGroup.checkedRadioButtonId)
+        ///TODO oznac spravnu odpoved na zeleno a zlu na cerveno
+
         if(radio.text == quizzCorrect.correctAns){
             scoreQuestion++
+            radio.setBackgroundColor(Color.GREEN)
             ObjectAnimator.ofInt(binding.progressBar,"progress", scoreQuestion)
                 .start()
+        }else{
+            //zla odpoved
+            radio.setBackgroundColor(Color.RED)
+
         }
+        Handler(Looper.getMainLooper()).postDelayed({
+            radio.background = null
+        }, 3000)
     }
 }

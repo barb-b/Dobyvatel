@@ -149,7 +149,7 @@ class DecisionPage : AppCompatActivity() {
 
     fun acceptedOrNot(fightOrPeace: Int) {
 
-        var yesOrNo = Random.nextInt(0, 1)
+        var yesOrNo = Random.nextInt(0, 2)
 
         ///TODO 0 je pre mier 1 je pre boj
         if (fightOrPeace == 0) {
@@ -193,7 +193,6 @@ class DecisionPage : AppCompatActivity() {
             }
 
         } else if (fightOrPeace == 1) {
-            yesOrNo = 1
             if (fightOrPeace == yesOrNo) {
                 //TODO mimozenstania chcu bojovat
                 // presmerovanie na fight stranku

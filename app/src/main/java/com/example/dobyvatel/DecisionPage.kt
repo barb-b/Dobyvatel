@@ -3,6 +3,7 @@ package com.example.dobyvatel
 import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
@@ -21,6 +22,8 @@ class DecisionPage : AppCompatActivity() {
 
     private lateinit var binding: ActivityDecisionPageBinding
 
+    var howManyTimes = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDecisionPageBinding.inflate(layoutInflater)
@@ -29,8 +32,11 @@ class DecisionPage : AppCompatActivity() {
         val imageSlider = binding.imageSlider
         val imageList = ArrayList<SlideModel>()
 
-
-
+        //tlacitka nebudu enable dokym si uzivatel neprecita vsetko
+        binding.fight.isEnabled = false
+        binding.fight.setBackgroundColor(Color.GRAY)
+        binding.peace.isEnabled = false
+        binding.peace.setBackgroundColor(Color.GRAY)
 
         //TODO hlavny obrazok podla toho aka planeta je otvorena
         // text podla toho aka planeta je otvorena
@@ -42,7 +48,7 @@ class DecisionPage : AppCompatActivity() {
             imageList.add(SlideModel("https://i.ibb.co/52DwRgn/slnkoblizko.jpg","Slnko z blizka"))
             imageList.add(SlideModel("https://i.ibb.co/2c1sx1G/povrch-slnka.jpg","Povrch slnka"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-            binding.textAboutPlanet.text = "Slnko opis"
+            binding.textAboutPlanet.text = "Slnko opis bla bla bla bla bla "
 
         } else if (MilkyWayPlanets.mercuryIsPlaying) {
 
@@ -105,6 +111,8 @@ class DecisionPage : AppCompatActivity() {
         }
 
 
+
+        ///LISTENERS
         binding.fight.setOnClickListener {
             //TODO presmerovanie na imageGame stranku
             // algoritmus -> ci sa akceptuje boj alebo nie
@@ -145,6 +153,140 @@ class DecisionPage : AppCompatActivity() {
         }
 
 
+        ///LISTENERS QUESTION
+        binding.question1.setOnClickListener {
+            howManyTimes++
+            if(howManyTimes == 3){
+                //Ak su uz vsetky otazky zodpovedane
+                binding.fight.isEnabled = true
+                binding.peace.isEnabled = true
+                binding.fight.setBackgroundColor(resources.getColor(R.color.neon_green))
+                binding.peace.setBackgroundColor(resources.getColor(R.color.neon_green))
+
+                val actualText = binding.textAboutPlanet.text.toString()
+                val question = returnQuestion(1)
+                binding.textAboutPlanet.text = actualText + question
+
+            }else{
+
+                val actualText = binding.textAboutPlanet.text.toString()
+                val question = returnQuestion(1)
+                binding.textAboutPlanet.text = actualText + question
+            }
+
+            //zmiznutie otazky
+            binding.question1.visibility = View.INVISIBLE
+        }
+
+        binding.question2.setOnClickListener {
+
+            howManyTimes++
+            if(howManyTimes == 3){
+                //Ak su uz vsetky otazky zodpovedane
+                binding.fight.isEnabled = true
+                binding.peace.isEnabled = true
+                binding.fight.setBackgroundColor(resources.getColor(R.color.neon_green))
+                binding.peace.setBackgroundColor(resources.getColor(R.color.neon_green))
+
+                val actualText = binding.textAboutPlanet.text.toString()
+                val question = returnQuestion(2)
+                binding.textAboutPlanet.text = actualText + question
+
+            }else{
+
+                val actualText = binding.textAboutPlanet.text.toString()
+                val question = returnQuestion(2)
+                binding.textAboutPlanet.text = actualText + question
+            }
+
+            //zmiznutie otazky
+            binding.question2.visibility = View.INVISIBLE
+        }
+
+        binding.question3.setOnClickListener {
+            howManyTimes++
+
+            if(howManyTimes == 3){
+                //Ak su uz vsetky otazky zodpovedane
+                binding.fight.isEnabled = true
+                binding.peace.isEnabled = true
+                binding.fight.setBackgroundColor(resources.getColor(R.color.neon_green))
+                binding.peace.setBackgroundColor(resources.getColor(R.color.neon_green))
+
+                val actualText = binding.textAboutPlanet.text.toString()
+                val question = returnQuestion(3)
+                binding.textAboutPlanet.text = actualText + question
+
+            }else{
+
+                val actualText = binding.textAboutPlanet.text.toString()
+                val question = returnQuestion(3)
+                binding.textAboutPlanet.text = actualText + question
+            }
+
+            //zmiznutie otazky
+            binding.question3.visibility = View.INVISIBLE
+        }
+
+    }
+
+    fun returnQuestion (numberOfQuestion:Int) :String{
+        if (MilkyWayPlanets.sunIsPlaying) {
+            when(numberOfQuestion){
+                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+            }
+        } else if (MilkyWayPlanets.mercuryIsPlaying) {
+            when(numberOfQuestion){
+                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+            }
+        } else if (MilkyWayPlanets.venusIsPlaying) {
+            when(numberOfQuestion){
+                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+            }
+        } else if (MilkyWayPlanets.earthIsPlaying) {
+            when(numberOfQuestion){
+                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+            }
+        } else if (MilkyWayPlanets.marsIsPlaying) {
+            when(numberOfQuestion){
+                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+            }
+        } else if (MilkyWayPlanets.jupiterIsPlaying) {
+            when(numberOfQuestion){
+                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+            }
+        } else if (MilkyWayPlanets.saturnIsPlaying) {
+            when(numberOfQuestion){
+                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+            }
+        } else if (MilkyWayPlanets.uranusIsPlaying) {
+            when(numberOfQuestion){
+                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+            }
+        } else if (MilkyWayPlanets.neptuneIsPlaying) {
+            when(numberOfQuestion){
+                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+            }
+        }
+        return ""
     }
 
     fun acceptedOrNot(fightOrPeace: Int) {

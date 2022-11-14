@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
         if(Constants.isSaved ==false){
-//            binding.savegame.setBackgroundColor(Color.GRAY)
+            binding.savegame.setBackgroundColor(Color.GRAY)
             binding.savegame.isEnabled = false
         }
 
@@ -46,11 +46,7 @@ class MainActivity : AppCompatActivity() {
             // load saved game
         }
 
-        binding.debug.setOnClickListener {
-            val intent = Intent(this, Quizz::class.java)
-            startActivity(intent)
-            finish()
-        }
+
 
     }
 

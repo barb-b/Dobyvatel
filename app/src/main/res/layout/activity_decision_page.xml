@@ -46,9 +46,9 @@
         android:id="@+id/scrollPlanet"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:outlineAmbientShadowColor="@color/galaxy_blue"
+        android:outlineAmbientShadowColor="@color/button_colortext"
         android:outlineSpotShadowColor="@color/teal_700"
-        android:scrollbarThumbVertical="@color/galaxy_purple_light"
+        android:scrollbarThumbVertical="@color/button_colortext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,6 +74,49 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/question1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:backgroundTint="@color/button_colortext"
+        android:text="Otazka 1"
+        android:textAllCaps="false"
+        android:textColor="@color/neon_green"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/peace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollPlanet" />
+
+    <Button
+        android:id="@+id/question2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/button_colortext"
+        android:text="Otazka 2"
+        android:textAllCaps="false"
+        android:textColor="@color/neon_green"
+        android:textSize="12sp"
+        android:layout_marginLeft="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/peace"
+        app:layout_constraintStart_toEndOf="@+id/question1"
+        app:layout_constraintTop_toBottomOf="@+id/scrollPlanet" />
+
+    <Button
+        android:id="@+id/question3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/button_colortext"
+        android:text="Otazka 3"
+        android:textAllCaps="false"
+        android:textColor="@color/neon_green"
+        android:textSize="12sp"
+        android:layout_marginLeft="15dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/peace"
+        app:layout_constraintStart_toEndOf="@+id/question2"
+        app:layout_constraintTop_toBottomOf="@+id/scrollPlanet" />
 
 
     <Button

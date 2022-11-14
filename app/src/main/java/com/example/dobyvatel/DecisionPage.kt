@@ -42,16 +42,16 @@ class DecisionPage : AppCompatActivity() {
             imageList.add(SlideModel("https://i.ibb.co/52DwRgn/slnkoblizko.jpg","Slnko z blizka"))
             imageList.add(SlideModel("https://i.ibb.co/2c1sx1G/povrch-slnka.jpg","Povrch slnka"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
+            binding.textAboutPlanet.text = "Slnko opis"
 
-//            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.mercuryIsPlaying) {
 
             imageList.clear()
             imageList.add(SlideModel("https://i.ibb.co/bB64gtk/povrch-merkuru.jpg","Povrch Merkuru"))
             imageList.add(SlideModel("https://i.ibb.co/KVn8zM7/mineralyapovrchoveprocesy.jpg","Stopy minerálov a povrchových procesoch"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-//            binding.mainPicture.setImageResource(R.drawable.decision_sun)
-//            binding.textAboutPlanet.text = ""
+            binding.textAboutPlanet.text = "Merkus opis"
+
         } else if (MilkyWayPlanets.venusIsPlaying) {
             imageList.clear()
             imageList.add(SlideModel("https://i.ibb.co/hVwCrVW/venusapovrh.jpg","Povrch Venuse"))
@@ -59,41 +59,49 @@ class DecisionPage : AppCompatActivity() {
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
 //            binding.textAboutPlanet.text = ""
         } else if (MilkyWayPlanets.earthIsPlaying) {
+
             imageList.clear()
             imageList.add(SlideModel("https://i.ibb.co/XjsdTqG/tornadozem.jpg","Tornado"))
             imageList.add(SlideModel("https://i.ibb.co/qYTTRc7/detailnezem.jpg","Detail zeme"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-//            binding.textAboutPlanet.text = ""
+            binding.textAboutPlanet.text = "Venusa opis"
+
         } else if (MilkyWayPlanets.marsIsPlaying) {
+
             imageList.clear()
             imageList.add(SlideModel("https://i.ibb.co/F4ZRQ7W/mars.jpg","Mars"))
             imageList.add(SlideModel("https://i.ibb.co/pKBSRjm/marsrover.jpg","Rover"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-//            binding.textAboutPlanet.text = ""
+            binding.textAboutPlanet.text = "Mars opis"
+
         } else if (MilkyWayPlanets.jupiterIsPlaying) {
+
             imageList.clear()
             imageList.add(SlideModel("https://i.ibb.co/fqGNmPX/jupiterzblizka.jpg","Jupiter z blizka"))
             imageList.add(SlideModel("https://i.ibb.co/QKLNtH9/jupiter.jpg","Jupiter"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-//            binding.textAboutPlanet.text = ""
+            binding.textAboutPlanet.text = "Jupiter opis"
+
         } else if (MilkyWayPlanets.saturnIsPlaying) {
             imageList.clear()
             imageList.add(SlideModel("https://i.ibb.co/cbgXJmK/saturn.jpg","Saturn"))
             imageList.add(SlideModel("https://i.ibb.co/bdf82LL/saturnvortex.jpg","Saturn"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-//            binding.textAboutPlanet.text = ""
+            binding.textAboutPlanet.text = "Saturn opis"
+
         } else if (MilkyWayPlanets.uranusIsPlaying) {
             imageList.clear()
             imageList.add(SlideModel("https://i.ibb.co/drm6CRd/uranus.jpg","Uran"))
             imageList.add(SlideModel("https://i.ibb.co/1TNfRBt/uranusfalsecolor.jpg","Uran"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-//            binding.textAboutPlanet.text = ""
+            binding.textAboutPlanet.text = "Uran opis"
+
         } else if (MilkyWayPlanets.neptuneIsPlaying) {
             imageList.clear()
             imageList.add(SlideModel("https://i.ibb.co/LzjM54b/neptuneclouds.jpg","Neptun"))
             imageList.add(SlideModel("https://i.ibb.co/LJSn02y/neptunevertical.jpg","Neptun"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-//            binding.textAboutPlanet.text = ""
+            binding.textAboutPlanet.text = "Neptune opis"
         }
 
 
@@ -161,6 +169,7 @@ class DecisionPage : AppCompatActivity() {
                     val intent = Intent(this, Quizz::class.java)
                     resultLauncher.launch(intent)
                 }, 5000)
+
             } else {
                 //TODO neakceptovali, mimozenstania chcu bojovat
                 //TODO mimozenstania chcu bojovat
@@ -168,7 +177,7 @@ class DecisionPage : AppCompatActivity() {
                 // zmizne button peace
 
                 binding.decisionMade.visibility = View.VISIBLE
-                binding.decisionMade.text = "Boj sa akceptoval"
+                binding.decisionMade.text = "MIER SA NEAKCEPTUJE. BOJ!!!!"
 
                 Handler(Looper.getMainLooper()).postDelayed({
 
@@ -208,7 +217,7 @@ class DecisionPage : AppCompatActivity() {
                 //TODO mimozenstania sa vzdavaju
 
                 binding.decisionMade.visibility = View.VISIBLE
-                binding.decisionMade.text = "MIER sa akceptoval"
+                binding.decisionMade.text = "NECHCEME BOJOVAT. Je to MIER!"
 
                 Handler(Looper.getMainLooper()).postDelayed({
 
@@ -223,6 +232,7 @@ class DecisionPage : AppCompatActivity() {
         }
 
     }
+
 
     var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {

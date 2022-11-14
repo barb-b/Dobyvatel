@@ -19,7 +19,7 @@ class CollectionFragment : Fragment(R.layout.fragment_collection) {
         val view = inflater.inflate(R.layout.fragment_collection, container, false)
         val image = view.findViewById<ImageView>(R.id.goldemImage)
 
-                if (Constants.isTrue){
+        if (Constants.isTrue){
             image.visibility = View.VISIBLE
         }
 

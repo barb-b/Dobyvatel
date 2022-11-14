@@ -12,5 +12,9 @@
     <color name="galaxy_green">#115268</color>
     <color name="galaxy_purple_light">#9f45b0</color>
     <color name="galaxy_grey">#252525</color>
+    <color name="background_text">#9a6f9b</color>
+    <color name="neon_green">#a9f265</color>
+    <color name="button_colortext">#573d54</color>
 
+    <color name="text_color">#6ca933</color>
 </resources>

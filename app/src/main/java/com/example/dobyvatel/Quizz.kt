@@ -174,7 +174,6 @@ class Quizz : AppCompatActivity() {
 
             }
 
-
         }else{
             // Generuje sa dalsia otazka
 

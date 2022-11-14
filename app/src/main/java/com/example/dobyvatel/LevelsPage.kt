@@ -23,5 +23,8 @@ class LevelsPage : AppCompatActivity() {
             val intent = Intent(this, MilkyWay::class.java)
             startActivity(intent)
         }
+
+
+        //TODO ostatne levely
     }
 }

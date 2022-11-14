@@ -183,6 +183,8 @@ class MilkyWay : AppCompatActivity() {
             //TODO presmerovanie na stranku, kde budu ulozene karticky
 
 
+            //TODO aktualizacia karticiek
+            //zasa na zaklade co je done -> karticka bude visible
             binding.ufoText.text = "isTrue " + Constants.isTrue.toString()
 
 
@@ -276,7 +278,7 @@ class MilkyWay : AppCompatActivity() {
             putBoolean("IS_SAVED",Constants.isSaved)
         }.apply()
 
-        Toast.makeText(this,"Data saved", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this,"Hra uložená", Toast.LENGTH_SHORT).show()
     }
 
     var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

@@ -36,13 +36,12 @@
 
     <TextView
         android:id="@+id/aboutTod"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-
-        android:layout_marginEnd="378dp"
-        android:text="Ja som Tod"
-        android:textAlignment="viewStart"
+        android:layout_marginLeft="-200dp"
+        android:text="Moje meno je Tod \nMiesto pobytu: Daleka galaxia \nVek: Neurcito \nPovolanie: Lietajuci v galaxii \n O mne: bla bla bla bla bla bla bla bla baasdf asdfjfalfasdjakdfhlasdkjf afsadf"
+        android:textAlignment="textStart"
         android:textColor="@color/background_text"
         android:textSize="15sp"
 

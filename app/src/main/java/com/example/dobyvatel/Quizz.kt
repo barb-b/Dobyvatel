@@ -209,18 +209,26 @@ class Quizz : AppCompatActivity() {
         val radio: RadioButton = findViewById(binding.radioGroup.checkedRadioButtonId)
         ///TODO oznac spravnu odpoved na zeleno a zlu na cerveno
 
+        binding.nextQuestion.isEnabled = false
+        binding.nextQuestion.setBackgroundColor(Color.GRAY)
+
         if(radio.text == quizzCorrect.correctAns){
             scoreQuestion++
             radio.setBackgroundColor(Color.GREEN)
+            radio.setTextColor(Color.BLACK)
             ObjectAnimator.ofInt(binding.progressBar,"progress", scoreQuestion)
                 .start()
         }else{
             //zla odpoved
             radio.setBackgroundColor(Color.RED)
+            radio.setTextColor(Color.BLACK)
 
         }
         Handler(Looper.getMainLooper()).postDelayed({
             radio.background = null
+            radio.setTextColor(Color.WHITE)
+            binding.nextQuestion.isEnabled = true
+            binding.nextQuestion.setBackgroundColor(resources.getColor(R.color.neon_green))
         }, 3000)
     }
 }

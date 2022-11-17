@@ -14,10 +14,6 @@ class WelcomeAlien : AppCompatActivity() {
         binding = ActivityWelcomeAlienBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.aboutTod.text = "Moje meno je Tod \n Miesto pobytu: Daleka galaxia \n Vek: Neurcito" +
-                "\n Povolanie: Lietajuci v galaxii" +
-                "\n O mne: bla bla bla bla bla bla bla bla baasdf asdfjfalfasdjakdfhlasdkjf afsadf"
-
         binding.next.setOnClickListener {
             val intent = Intent(this, LevelsPage::class.java)
             startActivity(intent)

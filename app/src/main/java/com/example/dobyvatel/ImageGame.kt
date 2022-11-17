@@ -36,6 +36,7 @@ class ImageGame : AppCompatActivity() {
     var endNumber = 14
     var timerIsRunning = false
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityImageGameBinding.inflate(layoutInflater)

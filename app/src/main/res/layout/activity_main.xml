@@ -27,12 +27,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="16dp"
+
+        android:layout_marginTop="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/vesmirnydobyvatel2" />
+        app:srcCompat="@drawable/logo" />
 
     <Button
         android:id="@+id/novahra"
@@ -41,6 +42,8 @@
         android:text="Nova hra"
         android:textSize="16sp"
 
+        android:backgroundTint="@color/neon_green"
+        android:textColor="@color/button_colortext"
         android:layout_marginTop="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,9 +57,15 @@
         android:text="Uložená hra"
         android:textSize="16sp"
         android:layout_marginTop="-40dp"
+
+        android:backgroundTint="@color/neon_green"
+        android:textColor="@color/button_colortext"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/novahra" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

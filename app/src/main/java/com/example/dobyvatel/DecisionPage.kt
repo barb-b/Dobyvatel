@@ -1,11 +1,9 @@
 package com.example.dobyvatel
 
-import android.animation.ObjectAnimator
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
 import android.view.View
@@ -38,9 +36,6 @@ class DecisionPage : AppCompatActivity() {
         binding.peace.isEnabled = false
         binding.peace.setBackgroundColor(Color.GRAY)
 
-        //TODO hlavny obrazok podla toho aka planeta je otvorena
-        // text podla toho aka planeta je otvorena
-
         // nastavy sa text a hlavny obrazok podla toho, co sa hra
         if (MilkyWayPlanets.sunIsPlaying) {
 
@@ -48,7 +43,13 @@ class DecisionPage : AppCompatActivity() {
             imageList.add(SlideModel("https://i.ibb.co/52DwRgn/slnkoblizko.jpg","Slnko z blizka"))
             imageList.add(SlideModel("https://i.ibb.co/2c1sx1G/povrch-slnka.jpg","Povrch slnka"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-            binding.textAboutPlanet.text = "Slnko opis bla bla bla bla bla "
+            binding.textAboutPlanet.text = "Slnko je najžiarivejšia hviezda, ktorú môžeš vidieť na oblohe. Je stredom slnešnej sústavy" +
+                    " a okolo slnka obieha 8 planét. Jeho energia je nevyhnutná pre život na Zemi."
+
+
+            binding.question1.text = "Rýchlosť"
+            binding.question2.text = "Svetlo"
+            binding.question3.text = "Zatmenie Slnka"
 
         } else if (MilkyWayPlanets.mercuryIsPlaying) {
 
@@ -57,6 +58,10 @@ class DecisionPage : AppCompatActivity() {
             imageList.add(SlideModel("https://i.ibb.co/KVn8zM7/mineralyapovrchoveprocesy.jpg","Stopy minerálov a povrchových procesoch"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
             binding.textAboutPlanet.text = "Merkus opis"
+
+            binding.question1.text = "Rýchlosť"
+            binding.question2.text = "Svetlo"
+            binding.question3.text = "Zatmenie Slnka"
 
         } else if (MilkyWayPlanets.venusIsPlaying) {
             imageList.clear()
@@ -233,9 +238,12 @@ class DecisionPage : AppCompatActivity() {
     fun returnQuestion (numberOfQuestion:Int) :String{
         if (MilkyWayPlanets.sunIsPlaying) {
             when(numberOfQuestion){
-                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
-                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
-                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                1 -> return "\n TED: Čo mi vieľ povedať o rýchlosti? \n DOMORODEC: Svetlo sa zo Slnka na Zem dostane za 8 minút a 20 sekúnd. Keby si" +
+                        "ty chcel cestovať na Slnko trvalo by ti to 222 dní. Nehovoriac o tom, že by si tam zhorel. \n"
+                2 -> return "\n TED: Čo vyžaruje Slnko? \n DOMORODEC: Vďaka slnečnému svetlu, ktoré vyžaruje Slnko, je vidieť všetky ostatné telesá v" +
+                        "slnečnej sústave, pretože odrážajú slnečné svetlo alebo žiaria vďaka slnešnej energii. \n"
+                3-> return "\n TED: Čo je zatmenie Slnka? \n DOMORODEC: Zatmenie Slnka nastáva vtedy, keď Slnko, Mesiac a Zem sú v jednej priamke." +
+                        "Vtedy je Slnko zakryté Mesiacom.  \n"
             }
         } else if (MilkyWayPlanets.mercuryIsPlaying) {
             when(numberOfQuestion){
@@ -291,7 +299,7 @@ class DecisionPage : AppCompatActivity() {
 
     fun acceptedOrNot(fightOrPeace: Int) {
 
-        var yesOrNo = Random.nextInt(0, 2)
+        var yesOrNo = next()
 
         ///TODO 0 je pre mier 1 je pre boj
         if (fightOrPeace == 0) {
@@ -372,6 +380,19 @@ class DecisionPage : AppCompatActivity() {
             }
         }
 
+    }
+
+
+
+    private operator fun next(): Int {
+
+         val random = Random
+
+        return if (random.nextBoolean()) {
+            0
+        } else {
+            1
+        }
     }
 
 

@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.LifecycleObserver
 
 import com.example.dobyvatel.databinding.ActivityMilkywayMapBinding
 import com.example.dobyvatel.objects.Constants
@@ -192,6 +193,7 @@ class MilkyWay : AppCompatActivity() {
                 replace(R.id.collectionfragment, CollectionFragment())
                 commit()
             }
+
 
             if(binding.collectionfragment.isVisible){
                 binding.collectionfragment.visibility = View.GONE

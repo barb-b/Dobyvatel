@@ -45,14 +45,14 @@
     <ScrollView
         android:id="@+id/scrollPlanet"
         android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_height="320dp"
         android:outlineAmbientShadowColor="@color/button_colortext"
         android:outlineSpotShadowColor="@color/teal_700"
         android:scrollbarThumbVertical="@color/button_colortext"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="-50dp"
+        android:layout_marginTop="-120dp"
 
         app:layout_constraintTop_toBottomOf="@+id/imageSlider"
         tools:targetApi="p">
@@ -67,7 +67,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/neon_green"
-                android:textSize="20sp"
+                android:textSize="18sp"
 
                 android:text="sdggfdgdfgd"
                 android:textColor="@color/text_color" />
@@ -79,7 +79,7 @@
         android:id="@+id/question1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="10dp"
         android:backgroundTint="@color/button_colortext"
         android:text="Otazka 1"
         android:textAllCaps="false"

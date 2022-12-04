@@ -30,9 +30,6 @@ class MilkyWay : AppCompatActivity() {
 
         //        SLNKO
         binding.sun.setOnClickListener{
-//            val intent = Intent(this, ImageGame::class.java)
-////            startActivity(intent)
-//            startActivityForResult(intent,0)
 
             if(MilkyWayPlanets.sunDone == false){
 
@@ -44,9 +41,6 @@ class MilkyWay : AppCompatActivity() {
 
                 //TODO level je splneny, malo by sa nieco vypisat
             }
-            ///TODO urobit to takto, cez imageSource. Nechat len jeden obrazok
-            ///TODO ktoremu sa bude nastavovat rozne source
-//            binding.mercuryBlack.setImageResource(R.drawable.milkyway_mercury)
         }
 
         //        MERKUR

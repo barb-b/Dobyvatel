@@ -40,11 +40,11 @@ class DecisionPage : AppCompatActivity() {
         if (MilkyWayPlanets.sunIsPlaying) {
 
             imageList.clear()
-            imageList.add(SlideModel("https://i.ibb.co/52DwRgn/slnkoblizko.jpg","Slnko z blizka"))
+            imageList.add(SlideModel("https://i.ibb.co/52DwRgn/slnkoblizko.jpg","Slnko zblizka"))
             imageList.add(SlideModel("https://i.ibb.co/2c1sx1G/povrch-slnka.jpg","Povrch slnka"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-            binding.textAboutPlanet.text = "Slnko je najžiarivejšia hviezda, ktorú môžeš vidieť na oblohe. Je stredom slnešnej sústavy" +
-                    " a okolo slnka obieha 8 planét. Jeho energia je nevyhnutná pre život na Zemi."
+            binding.textAboutPlanet.text = "Slnko je najžiarivejšia hviezda, ktorú môžeš vidieť na oblohe. Je stredom slnečnej sústavy" +
+                    " a okolo slnka obieha 8 planét. Jeho energia je nevyhnutná pre život na Zemi. \n"
 
 
             binding.question1.text = "Rýchlosť"

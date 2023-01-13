@@ -36,6 +36,10 @@ class DecisionPage : AppCompatActivity() {
         binding.peace.isEnabled = false
         binding.peace.setBackgroundColor(Color.GRAY)
 
+        binding.question1.text = "Profil"
+        binding.question2.text = "Dráha"
+        binding.question3.text = "Atmosfera"
+
         // nastavy sa text a hlavny obrazok podla toho, co sa hra
         if (MilkyWayPlanets.sunIsPlaying) {
 
@@ -45,23 +49,16 @@ class DecisionPage : AppCompatActivity() {
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
             binding.textAboutPlanet.text = "Slnko je najžiarivejšia hviezda, ktorú môžeš vidieť na oblohe. Je stredom slnečnej sústavy" +
                     " a okolo slnka obieha 8 planét. Jeho energia je nevyhnutná pre život na Zemi. \n"
-
-
-            binding.question1.text = "Rýchlosť"
-            binding.question2.text = "Svetlo"
-            binding.question3.text = "Zatmenie Slnka"
-
+            binding.question2.text = "Povrch"
         } else if (MilkyWayPlanets.mercuryIsPlaying) {
 
             imageList.clear()
             imageList.add(SlideModel("https://i.ibb.co/bB64gtk/povrch-merkuru.jpg","Povrch Merkuru"))
             imageList.add(SlideModel("https://i.ibb.co/KVn8zM7/mineralyapovrchoveprocesy.jpg","Stopy minerálov a povrchových procesoch"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-            binding.textAboutPlanet.text = "Merkus opis"
-
-            binding.question1.text = "Rýchlosť"
-            binding.question2.text = "Svetlo"
-            binding.question3.text = "Zatmenie Slnka"
+            binding.textAboutPlanet.text = "Merkúr je druhá najmenšia planéta slnešnej sústavy, najbližšia pri Slnku a " +
+                    "najbohatšia na železo. Podmienky na jeho povrchu sú mimoriadne drsné. Nemá takmer žiadnu ochrannú atmosféru" +
+                    "a počas dňa teploty stúpajú na neskutočných 430 C, kým v noci padajú na mrazivých -180 C. \n"
 
         } else if (MilkyWayPlanets.venusIsPlaying) {
             imageList.clear()
@@ -88,7 +85,7 @@ class DecisionPage : AppCompatActivity() {
         } else if (MilkyWayPlanets.jupiterIsPlaying) {
 
             imageList.clear()
-            imageList.add(SlideModel("https://i.ibb.co/fqGNmPX/jupiterzblizka.jpg","Jupiter z blizka"))
+            imageList.add(SlideModel("https://i.ibb.co/fqGNmPX/jupiterzblizka.jpg","Jupiter zblizka"))
             imageList.add(SlideModel("https://i.ibb.co/QKLNtH9/jupiter.jpg","Jupiter"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
             binding.textAboutPlanet.text = "Jupiter opis"
@@ -238,18 +235,26 @@ class DecisionPage : AppCompatActivity() {
     fun returnQuestion (numberOfQuestion:Int) :String{
         if (MilkyWayPlanets.sunIsPlaying) {
             when(numberOfQuestion){
-                1 -> return "\n TED: Čo mi vieľ povedať o rýchlosti? \n DOMORODEC: Svetlo sa zo Slnka na Zem dostane za 8 minút a 20 sekúnd. Keby si" +
-                        "ty chcel cestovať na Slnko trvalo by ti to 222 dní. Nehovoriac o tom, že by si tam zhorel. \n"
-                2 -> return "\n TED: Čo vyžaruje Slnko? \n DOMORODEC: Vďaka slnečnému svetlu, ktoré vyžaruje Slnko, je vidieť všetky ostatné telesá v" +
-                        "slnečnej sústave, pretože odrážajú slnečné svetlo alebo žiaria vďaka slnešnej energii. \n"
-                3-> return "\n TED: Čo je zatmenie Slnka? \n DOMORODEC: Zatmenie Slnka nastáva vtedy, keď Slnko, Mesiac a Zem sú v jednej priamke." +
-                        "Vtedy je Slnko zakryté Mesiacom.  \n"
+                1 -> return "\n Povrchová teplota Slnka dosahuje teplotu 5500 C a teplota v jadre sa môže vyštverať až na 15 miliónov stupňov. Vzdialené" +
+                        "od zeme je 149,6 milióna kilometrov a svetlo zo Slnka sa dostaneme na zem za" +
+                        "8 minút a 20 sekúnd.\n"
+                2 -> return "\n Viditeľný povrch Slna sa volá fotosféra. Nie je to pevný povrch, ale vrstva plazmy hrubá približne 100 kilometrov," +
+                        "ktorá vyzerá ako keby kypela. Taktiež môžme vidieť slnečné škrvny, čo sú chladnejšie oblasti, viditeľné ako tmavé škvrny. Na" +
+                        " Slnku prebiehajú aj slnečné erupcie - nesmierne výbuchy na povrchu Slnka." +
+                        "Vďaka slnečnému svetlu je možné vidieť všetky ostatné telesá v" +
+                        "slnečnej sústave, pretože odrážajú slnečné svetlo alebo žiaria vďaka slnečnej energii. \n"
+                3-> return "\n Fotosféra je najspodnejšia časť slnešnej atmosféry. Nad fotosférou leží hlboká pomarančovočervená chromosféra." +
+                        "Koróna je najvrchnejšia časť a je možné ju vidieť počas zatmenia Slnka. Zatmenie Slnka nastáva vtedy, keď Slnko, Mesiac a Zem sú v jednej priamke.\n"
             }
         } else if (MilkyWayPlanets.mercuryIsPlaying) {
             when(numberOfQuestion){
-                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
-                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
-                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                1 -> return "\n Povrch Merkúra je tmavý, pokrytý prachom a znetvorený dopadmi meteoritov. Nemá žiadne mesiace a dĺžka roka" +
+                        "tam trvá 88 pozemských dní. \n"
+                2 -> return "\n S výnímkou Pluta má Merkúr najexcentrickejšiu obežnú dráhu. To znamená že najbližší bod pri Slnku je vziadelný len" +
+                        "46 miliónov kilometrov a najvzdialenejší bod je 69,8 milióna kilometrov. Os rotácie Merkúru je takmer rovná, takže z toho vypláva," +
+                        "že planéta nemá ročné obdobia a že niektoré kráterz v blížkosti rovníka nikdy nezasiahne slnešné svetlo.\n"
+                3-> return "\n Merkúr ma veľmi riedku a nestálu atmosféru, pretože hmotnosť tejto planéty je príliš malá na to, aby" +
+                        "si atmosféru udržala. \n"
             }
         } else if (MilkyWayPlanets.venusIsPlaying) {
             when(numberOfQuestion){
@@ -299,7 +304,7 @@ class DecisionPage : AppCompatActivity() {
 
     fun acceptedOrNot(fightOrPeace: Int) {
 
-        var yesOrNo = next()
+        val yesOrNo = next()
 
         ///TODO 0 je pre mier 1 je pre boj
         if (fightOrPeace == 0) {

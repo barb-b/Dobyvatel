@@ -9,4 +9,20 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_debuger">Debuger</string>
 
+    <!-- TOD PAGE -->
+    <string name="tod_bio">Moje meno je Tod skrátene pre TraskedoOtersodosdos\n
+        \nPlaneta: Y34xQ-wXk23
+        \nVek: Neurčitý
+        \nPovolanie: Zbierač lietajucích odpakov
+        \n
+        \nO mne: Pri mojej rutinej prechádzke som našiel NASA tričko, ktoré mi zmenilo život.
+    Rozhodol som sa preskúmať ďaleký vesmír a ty sa ku mne pridáš. Spoločne sa pozrieme na to, čo je slnečná sústava
+    aké existujú súhvezdia a aké sú okolité mesiace v slnečnej sústave. Spoločne dobyjeme všetko čo sa bude dať
+    \n
+    \nPravidlá hry: Spoločne budeme dobýjať vesmírne objekty. Keď objekt spoločne dobyjeme dostaneme kartičku, ktorá bude
+        znamenať vlastníctvo daného objektu.
+        \nAle každý objekt má svojho ochrancu. Preto budeš mať na výber dve možnosti ako dobyť daný objekt. Môžeš
+    to skúsiť mierovou dohodou alebo sa o objekt pobiť. ALE POZOR! Objekt ti môže vzdorovať alebo sa nakoniec vzdať.
+    Takže sa priprav na dobrodužnú jazdu a začnime spoločne dobývať!</string>
+
 </resources>

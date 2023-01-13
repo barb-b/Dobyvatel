@@ -180,7 +180,7 @@ class MilkyWay : AppCompatActivity() {
 
             //TODO aktualizacia karticiek
             //zasa na zaklade co je done -> karticka bude visible
-            binding.ufoText.text = "isTrue " + Constants.isTrue.toString()
+//            binding.ufoText.text = "isTrue " + Constants.isTrue.toString()
 
 
             supportFragmentManager.beginTransaction().apply {
@@ -287,7 +287,7 @@ class MilkyWay : AppCompatActivity() {
 //            MilkyWayDone.sun = data?.getBooleanExtra("boolSun",false) == true
 //            MilkyWayDone.mercury = data?.getBooleanExtra("boolMerc",false) == true
             setImages()
-            binding.ufoText.text = "data sa poslali"
+//            binding.ufoText.text = "data sa poslali"
         }
     }
 }

@@ -355,30 +355,29 @@
             app:srcCompat="@drawable/save"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <TextView
-            android:id="@+id/ufoText"
-            android:layout_width="170dp"
-            android:layout_height="80dp"
-            android:layout_gravity="top|right"
-            android:layout_margin="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="100dip"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_courner"
-            android:padding="10dp"
-            android:text="Vyber si planetu na dobyvanie"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
+<!--        <TextView-->
+<!--            android:id="@+id/ufoText"-->
+<!--            android:layout_width="170dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_gravity="top|right"-->
+<!--            android:layout_margin="30dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginBottom="100dip"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/rounded_courner"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="Vyber si planetu na dobyvanie"-->
+<!--            android:textColor="@color/black" />-->
 
-        <ImageView
-            android:id="@+id/alien"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_gravity="top|left"
-            android:adjustViewBounds="false"
-            app:srcCompat="@drawable/alien"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="-50dp"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/alien"-->
+<!--            android:layout_width="150dp"-->
+<!--            android:layout_height="100dp"-->
+<!--            android:layout_gravity="top|left"-->
+<!--            android:adjustViewBounds="false"-->
+<!--            app:srcCompat="@drawable/alien"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:layout_marginBottom="-50dp"/>-->
 
         <androidx.fragment.app.FragmentContainerView
             android:layout_marginTop="100dp"

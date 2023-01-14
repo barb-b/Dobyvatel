@@ -44,8 +44,9 @@ class DecisionPage : AppCompatActivity() {
         if (MilkyWayPlanets.sunIsPlaying) {
 
             imageList.clear()
-            imageList.add(SlideModel("https://i.ibb.co/52DwRgn/slnkoblizko.jpg","Slnko zblizka"))
-            imageList.add(SlideModel("https://i.ibb.co/2c1sx1G/povrch-slnka.jpg","Povrch slnka"))
+            imageList.add(SlideModel("https://i.ibb.co/52DwRgn/slnkoblizko.jpg","Slnečné erupcie"))
+            imageList.add(SlideModel("https://i.ibb.co/BrDtv21/slnecna-korona.jpg","Koronu možno vidieť pri zatmení Slnka"))
+            imageList.add(SlideModel("https://i.ibb.co/0CgP6FK/slnecne-skvrny.jpg","Slnečné škvrny"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
             binding.textAboutPlanet.text = "Slnko je najžiarivejšia hviezda, ktorú môžeš vidieť na oblohe. Je stredom slnečnej sústavy" +
                     " a okolo slnka obieha 8 planét. Jeho energia je nevyhnutná pre život na Zemi. \n"
@@ -53,26 +54,36 @@ class DecisionPage : AppCompatActivity() {
         } else if (MilkyWayPlanets.mercuryIsPlaying) {
 
             imageList.clear()
-            imageList.add(SlideModel("https://i.ibb.co/bB64gtk/povrch-merkuru.jpg","Povrch Merkuru"))
-            imageList.add(SlideModel("https://i.ibb.co/KVn8zM7/mineralyapovrchoveprocesy.jpg","Stopy minerálov a povrchových procesoch"))
+            imageList.add(SlideModel("https://i.ibb.co/bB64gtk/povrch-merkuru.jpg","Povrch Merkúra"))
+            imageList.add(SlideModel("https://i.ibb.co/xzLXXmQ/obezna-draha.jpg","Obežná dráha"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
             binding.textAboutPlanet.text = "Merkúr je druhá najmenšia planéta slnešnej sústavy, najbližšia pri Slnku a " +
                     "najbohatšia na železo. Podmienky na jeho povrchu sú mimoriadne drsné. Nemá takmer žiadnu ochrannú atmosféru" +
                     "a počas dňa teploty stúpajú na neskutočných 430 C, kým v noci padajú na mrazivých -180 C. \n"
 
         } else if (MilkyWayPlanets.venusIsPlaying) {
+
             imageList.clear()
-            imageList.add(SlideModel("https://i.ibb.co/hVwCrVW/venusapovrh.jpg","Povrch Venuse"))
+            imageList.add(SlideModel("https://i.ibb.co/hVwCrVW/venusapovrh.jpg","Povrch Venuše"))
             imageList.add(SlideModel("https://i.ibb.co/SvdhFCX/19-SCI-OUTTHERE-VENUS1-video-Sixteen-By-Nine3000.jpg","Venusa zabalena v hustej vrstve toxických mrakov"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-//            binding.textAboutPlanet.text = ""
+            binding.textAboutPlanet.text = "Venuša je druhá planéta od Slnka a najbližší vnútorný sused Zeme." +
+                    "Tieto dve planéty sú takmer identické veľkosťou a zložením, ale zároveň sú to veľmi " +
+                    "rozdielne svety. Venušu stále zahaľuje súvislá vrstva hustých mrakov, pod ktorými leží šerý, mŕtvý" +
+                    ", suchý svet so spáleným povrchom, horúcejším ako na hociktorej inej planéte slnečnej sústavy."
+
         } else if (MilkyWayPlanets.earthIsPlaying) {
 
             imageList.clear()
-            imageList.add(SlideModel("https://i.ibb.co/XjsdTqG/tornadozem.jpg","Tornado"))
-            imageList.add(SlideModel("https://i.ibb.co/qYTTRc7/detailnezem.jpg","Detail zeme"))
+            imageList.add(SlideModel("https://i.ibb.co/wC3m3n1/magneticke-pole.jpg","Magnetické pole"))
+            imageList.add(SlideModel("https://i.ibb.co/qYTTRc7/detailnezem.jpg","Detail Zeme"))
+            imageList.add(SlideModel("https://i.ibb.co/gjwJ1Y7/atmosfera.jpg","Atmosféra"))
             imageSlider.setImageList(imageList,ScaleTypes.CENTER_CROP)
-            binding.textAboutPlanet.text = "Venusa opis"
+            binding.textAboutPlanet.text = "Zem je tretia najbližšia planéta k Slnku. Ako najväčšia zo štyroch pevných" +
+                    " planét vznikla približne pred 4,56 miliardy rokov. Vnútornou stavbou je Zem podobná vnútram svojich" +
+                    " susedov, no v slnešnej sústave je jedničné tým, že na povrchu má dostatok kvapalnej vodz, že má atmosféru bohatú na kyslík " +
+                    "a že umožňuje život."
+            binding.question2.text = "Magnetické pole"
 
         } else if (MilkyWayPlanets.marsIsPlaying) {
 
@@ -233,6 +244,8 @@ class DecisionPage : AppCompatActivity() {
     }
 
     fun returnQuestion (numberOfQuestion:Int) :String{
+
+//        Profil / Draha / Atmosfera
         if (MilkyWayPlanets.sunIsPlaying) {
             when(numberOfQuestion){
                 1 -> return "\n Povrchová teplota Slnka dosahuje teplotu 5500 C a teplota v jadre sa môže vyštverať až na 15 miliónov stupňov. Vzdialené" +
@@ -258,15 +271,33 @@ class DecisionPage : AppCompatActivity() {
             }
         } else if (MilkyWayPlanets.venusIsPlaying) {
             when(numberOfQuestion){
-                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
-                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
-                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                1 -> return "\n" +
+                        " Povrchová teplota dosahuje 464 C. Nemá žiadne mesiace a dĺžka roka trvá 224,7 dní. " +
+                        "Venuša je najjasnejšia planéta na oblohe a v jasnosti ju prekonáva len Slnko a Mesiac." +
+                        "Vidieť ju možno skoro ráno (zornička) alebo na večernej oblohe (večernica)\n"
+                2 -> return "\n Obežná dráha Venuše je najmenej eliptická zo všetkých planét. Je takmer presne kruhová" +
+                        ". Pri obehu okolo Slnka rotuje okolo svojej osi veľmi pomaly - pomalšie než akákoľvek iná planéta - " +
+                        "a navyše rotuje v opačnom smere ako väčšina ostatných planét. Jeden deň na Venuši je dlhší ako rok, avšak" +
+                        "čas medzi dvoma po sebe nasledujúcimi východmi Slnka na Venuši je 117 pozemských dní. \n"
+                3-> return "\n Venušina atmosféra, bohatá na oxid uhličitý, sa dvíha do výšky 80 kilometrov od povrchu. Súčasťou " +
+                        "atmosféry je oblačná pokrývka s tromi odlišnými vrstvami. Najnižšia vrstva je najhustejšia a obsahuje " +
+                        "veľké kvapkt kyseliny sírovej. Stredvá vrstva obsahuje menej kvapiek a v hornej vrstve sú malé kvapky. \n"
             }
         } else if (MilkyWayPlanets.earthIsPlaying) {
             when(numberOfQuestion){
-                1 -> return "\n TED: bla bla bla bla bla bla otazka1 \n DOMORODEC: bla bla bla bla bla odpoved \n"
-                2 -> return "\n TED: bla bla bla bla bla bla otazka2 \n DOMORODEC: bla bla bla bla bla odpoved \n"
-                3-> return "\n TED: bla bla bla bla bla bla otazka3 \n DOMORODEC: bla bla bla bla bla odpoved \n"
+                1 -> return "\n Priemerná teplota na Zemi je 15 C. Rok tu trvá 365,26 dní a okolo Zeme krúží jeden Mesiac. Ako iné planéty, " +
+                        "aj Zem obieha okolo Slnka po eliptickej dráhe. V dôsledku toho jej povrch dostáva v januári o 7 percent slnečného " +
+                        "žiarenia viac ako v júli. Zemská kôra a vrchná časť plášťa spoločne tvoria lifosféru. Tá je polámaná na nieľko pevných " +
+                        "celkov nazývaných platne, čo plávajú na poloroztavených vrstvách plášťa pod nimi a vzájomne sa pohybujú.\n"
+                2 -> return "\n Zem má silné magnetické pole, o ktorom sa predpokladá, že vzniká rotáciou vonkajšieho tekutého kovového jadra. " +
+                        "Tento pohyb je hnaný kombináciou zemskej rotácie a konvektívnymi prúdmi vo vonkajšom jadre. Magnetické pole pôsobí tak, " +
+                        "akoby bol vo vnútri Zeme tyčový magnet sklonený pod istým uhlom voči jej osi rotácií. Magnetické pole siaha do kozmu " +
+                        "a pôsobí  ako ochranná vrstva proti vysokoráchlostnému prúdu elektrickách nabitých častíc, ktoré sa k Zemi šíria v podobe slnečného vetra. \n"
+                3-> return "\n Zem je obklopená armosférou, vrstvou plynov hrubou mnoho stoviek kilomtrov. Usudzuje sa, že atmosféra vznikla čiastočne z plynov" +
+                        " uvoľnených pri výbuchoch dávnych vulkánov, hoci jej kysliková zložka - taká podstatná pre väčšinu životných foriem - bola" +
+                        " vytvorená hlavne rastlinami. Vplyvom gravitácie je atmosféra najhustejšia pri zemskom povrchu a s rastúcou výškou rýchlo redne. " +
+                        "So stúpajúcou výškou sa mení aj teplota a klesá atmosferický tlak. Atmosféra sa skladá z: Troposféry, stratosféry, mezosféry a termosféry." +
+                        "\n"
             }
         } else if (MilkyWayPlanets.marsIsPlaying) {
             when(numberOfQuestion){

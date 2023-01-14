@@ -178,7 +178,7 @@ class Quizz : AppCompatActivity() {
             // Generuje sa dalsia otazka
 
             // Z listu sa vytiahne random otazka
-            val randomNu = (0..list.size).random()
+            val randomNu = (0 until list.size).random()
             currentQuestion = list.get(randomNu)
 
             //TODO vyhodnotenie

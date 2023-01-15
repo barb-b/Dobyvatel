@@ -20,26 +20,6 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal" >
 
-                <ImageView
-                    android:layout_marginHorizontal="50dp"
-                    android:id="@+id/image1"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/collection_goldcard" />
-
-                <ImageView
-                    android:layout_marginHorizontal="50dp"
-                    android:id="@+id/image2"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/collection_goldcard" />
-
-                <ImageView
-                    android:layout_marginHorizontal="50dp"
-                    android:id="@+id/image3"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/collection_goldcard" />
             </LinearLayout>
 
         </HorizontalScrollView>

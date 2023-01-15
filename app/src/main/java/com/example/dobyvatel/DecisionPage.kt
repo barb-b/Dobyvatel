@@ -93,7 +93,7 @@ class DecisionPage : AppCompatActivity() {
                 "Venuša je druhá planéta od Slnka a najbližší vnútorný sused Zeme." +
                         "Tieto dve planéty sú takmer identické veľkosťou a zložením, ale zároveň sú to veľmi " +
                         "rozdielne svety. Venušu stále zahaľuje súvislá vrstva hustých mrakov, pod ktorými leží šerý, mŕtvý" +
-                        ", suchý svet so spáleným povrchom, horúcejším ako na hociktorej inej planéte slnečnej sústavy."
+                        ", suchý svet so spáleným povrchom, horúcejším ako na hociktorej inej planéte slnečnej sústavy. \n"
 
         } else if (MilkyWayPlanets.earthIsPlaying) {
 
@@ -111,7 +111,7 @@ class DecisionPage : AppCompatActivity() {
                 "Zem je tretia najbližšia planéta k Slnku. Ako najväčšia zo štyroch pevných" +
                         " planét vznikla približne pred 4,56 miliardy rokov. Vnútornou stavbou je Zem podobná vnútram svojich" +
                         " susedov, no v slnečnej sústave je jedničné tým, že na povrchu má dostatok kvapalnej vody, že má atmosféru bohatú na kyslík " +
-                        "a že umožňuje život."
+                        "a že umožňuje život. \n"
             binding.question2.text = "Magnetické pole"
 
         } else if (MilkyWayPlanets.marsIsPlaying) {
@@ -124,7 +124,7 @@ class DecisionPage : AppCompatActivity() {
                     "pevných planét a pre jej hrdzavočervenú farbu je známa ako červený planéta a bola pomenovaný podľa " +
                     "rímskeho boha vojny. Medzi jej povrchové úpravy patria hlboké kaňony a najvyššie sopky" +
                     " v slnešnej sústave. Dnes je Mars suchou planétou, no mnoho dôkazov svedčí o tom, že kedysi " +
-                    "na ňom tiekla voda."
+                    "na ňom tiekla voda. \n"
 
         } else if (MilkyWayPlanets.jupiterIsPlaying) {
 
@@ -143,7 +143,7 @@ class DecisionPage : AppCompatActivity() {
                         "2.5 násobne hmotnejšia ako zvyšných osem planét dokopy a vošlo by sa do nej vyše 1300 zemegúľ. " +
                         "Jupiter má meno podľa najvýznamnejšieho rímskeho boha (v gréckej mytológií známeho ako Zeus). " +
                         "Má najpočetnejšiu rodinu mesiacov v slnečnej sústave a jej príslušníci nesú mená mileniek najvyššieho boha, " +
-                        "jeho potomkov, spoločníkov či pomocníkov."
+                        "jeho potomkov, spoločníkov či pomocníkov. \n"
             binding.question2.text = "Magnetické pole"
 
         } else if (MilkyWayPlanets.saturnIsPlaying) {
@@ -161,7 +161,7 @@ class DecisionPage : AppCompatActivity() {
                         "zo všetkých planét viditeľnľých voľným okom. Táto obrovská guľa plynu a kvapaliny je na rovníku vydutá a má vnutnorný zdroj energie." +
                         " Pri zložení, ktorému dominuje vodík, má Saturn najnižšiu hustotu zo všetkých planét. Obklopuje " +
                         "ho veľkolepá sústava prstencov a má aj početnú rodinu mesiacov. Na ultrafialovej fotke je vyobrazený prstenec kde červená farba " +
-                        "dokazuje prítomnosť 'špinavých' častíc a tyrkysová farba prítomnosť častíc z čistého ľadu."
+                        "dokazuje prítomnosť 'špinavých' častíc a tyrkysová farba prítomnosť častíc z čistého ľadu. \n"
             binding.question2.text = "Prstence"
 
         } else if (MilkyWayPlanets.uranusIsPlaying) {
@@ -174,7 +174,7 @@ class DecisionPage : AppCompatActivity() {
                         " Je svetlomodrá a bez povrchových útvarov, s riedkou sústavou prstencov a početnou rodinou mesiacov. Planéta " +
                         "je naklonená nabok, takže zo Zeme vyzerá, akoby ju prstence obklopovali zhora dole. Urán je prvou planétou, ktorá bola " +
                         "objavená ďalekohladom. Na fotke je možné vidieť prstence v nepravých farbách. Je tam vidno 9 prstencov. " +
-                        "Jemné čiary v pastelových farbách vznikli úpravou obrázka. Najjasnejší, biely prstenec je najvzdialenejší prseten. "
+                        "Jemné čiary v pastelových farbách vznikli úpravou obrázka. Najjasnejší, biely prstenec je najvzdialenejší prseten.  \n"
             binding.question2.text = "Prstence"
 
         } else if (MilkyWayPlanets.neptuneIsPlaying) {
@@ -185,7 +185,7 @@ class DecisionPage : AppCompatActivity() {
             binding.textAboutPlanet.text = "Neptún je najmenší a najchladnejší zo štyroch plynných obrov a zároveň" +
                     " najvzdialenejší od Slnka. Bol objavená v roku 1846 a zatiaľ skúmala tento vzdialená svet iba " +
                     "jediná medziplanetárna sonda. Keď v roku 1989 letela okolo neho sonda, ponúkla prvá ophľad naň a zistila, " +
-                    "že je najveterjnejšou planétou v slnečnej sústave."
+                    "že je najveterjnejšou planétou v slnečnej sústave. \n"
             binding.question2.text = "Prstence"
         }
 

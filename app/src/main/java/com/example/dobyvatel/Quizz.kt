@@ -164,6 +164,7 @@ class Quizz : AppCompatActivity() {
 
             }else{
                 // HRAC PREHRAL
+                //TODO nieco napisat viac
 
                 binding.finish.text = "Prehral si"
                 Handler(Looper.getMainLooper()).postDelayed({

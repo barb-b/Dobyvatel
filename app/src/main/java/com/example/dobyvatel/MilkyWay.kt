@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -27,6 +28,10 @@ class MilkyWay : AppCompatActivity() {
 
         //TODO urobit to so vsetkymi planetami, ak je level done, obrazok je odmknuty
         setImages()
+
+        // animation
+        val slideIn = AnimationUtils.loadAnimation(this, R.anim.slidein)
+        binding.chest.startAnimation(slideIn)
 
         //        SLNKO
         binding.sun.setOnClickListener{

@@ -15,6 +15,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.dobyvatel.databinding.ActivityImageGameBinding
+import com.example.dobyvatel.objects.Constants
 import com.example.dobyvatel.objects.MilkyWayPlanets
 import kotlin.random.Random
 
@@ -79,6 +80,10 @@ class ImageGame : AppCompatActivity() {
             override fun onFinish() {
 
                 timer.cancel()
+
+                for (image in listOfImageAlien) {
+                    image.visibility = View.INVISIBLE
+                }
 
                 if (score >= 20) {
                     //HAPPY PATH -> hrac vyhral
@@ -422,7 +427,7 @@ class ImageGame : AppCompatActivity() {
     // casomiera na prepinanie obrazkov
     fun endImage(bomb: Int = 0) {
 
-        timer = object : CountDownTimer(700, 500) {
+        timer = object : CountDownTimer(Constants.milisinFuture.toLong(), Constants.countDownInterval.toLong()) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {

@@ -25,4 +25,10 @@
     to skúsiť mierovou dohodou alebo sa o objekt pobiť. ALE POZOR! Objekt ti môže vzdorovať alebo sa nakoniec vzdať.
     Takže sa priprav na dobrodužnú jazdu a začnime spoločne dobývať!</string>
 
+    <string-array name="difficulty">
+        <item>Obťiažnosť</item>
+        <item>Ľahká</item>
+        <item>Stredná</item>
+        <item>Ťažká</item>
+    </string-array>
 </resources>

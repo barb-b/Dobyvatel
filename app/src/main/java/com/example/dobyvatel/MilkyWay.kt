@@ -33,6 +33,8 @@ class MilkyWay : AppCompatActivity() {
         val slideIn = AnimationUtils.loadAnimation(this, R.anim.slidein)
         binding.chest.startAnimation(slideIn)
 
+        binding.settings.animate().rotationBy(200F).setDuration(2000)
+
         //        SLNKO
         binding.sun.setOnClickListener{
 
@@ -200,10 +202,6 @@ class MilkyWay : AppCompatActivity() {
                 binding.collectionfragment.visibility = View.VISIBLE
             }
 
-
-
-
-
 //            val intent = Intent(this, Testadebug::class.java)
 //            startActivity(intent)
 
@@ -218,10 +216,27 @@ class MilkyWay : AppCompatActivity() {
 //            binding.uranus.setImageResource(R.drawable.milkyway_uran)
         }
 
-        binding.saveButton.setOnClickListener{
-            saveData()
+        binding.settings.setOnClickListener {
+
+            binding.settings.animate().rotationBy(200F).setDuration(2000)
+
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.settingFragment, Settings())
+                commit()
+            }
+            if(binding.settingFragment.isVisible){
+                binding.settingFragment.visibility = View.GONE
+            }else{
+                binding.settingFragment.visibility = View.VISIBLE
+            }
         }
+
+//        binding.saveButton.setOnClickListener{
+//            saveData()
+//        }
     }
+
+
 
     fun setImages(){
         if(MilkyWayPlanets.sunDone){

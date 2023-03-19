@@ -23,54 +23,49 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        if(Constants.isSaved ==false){
+        if (Constants.isSaved == false) {
             binding.savegame.setBackgroundColor(Color.GRAY)
             binding.savegame.isEnabled = false
         }
 
-
         setContentView(binding.root)
 
         binding.novahra.setOnClickListener {
-
             val intent = Intent(this, WelcomeAlien::class.java)
             startActivity(intent)
             finish()
         }
 
         binding.savegame.setOnClickListener {
-            if(Constants.isSaved){
+            if (Constants.isSaved) {
                 loadData()
             }
-            // load saved game
         }
-
-
-
     }
 
-    fun loadData(){
+    fun loadData() {
+        //ukladanie dat
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
 
-        val sunDone = sharedPreferences.getBoolean("SUN_DONE",false)
-        val mercuryDone = sharedPreferences.getBoolean("MERCURY_DONE",false)
-        val venusDone = sharedPreferences.getBoolean("VENUS_DONE",false)
-        val earthDone = sharedPreferences.getBoolean("EARTH_DONE",false)
-        val marsDone = sharedPreferences.getBoolean("MARS_DONE",false)
-        val jupiterDone = sharedPreferences.getBoolean("JUPITER_DONE",false)
-        val saturnDone = sharedPreferences.getBoolean("SATURN_DONE",false)
-        val uranusDone = sharedPreferences.getBoolean("URANUS_DONE",false)
-        val neptuneDone = sharedPreferences.getBoolean("NEPTUNE_DONE",false)
+        val sunDone = sharedPreferences.getBoolean("SUN_DONE", false)
+        val mercuryDone = sharedPreferences.getBoolean("MERCURY_DONE", false)
+        val venusDone = sharedPreferences.getBoolean("VENUS_DONE", false)
+        val earthDone = sharedPreferences.getBoolean("EARTH_DONE", false)
+        val marsDone = sharedPreferences.getBoolean("MARS_DONE", false)
+        val jupiterDone = sharedPreferences.getBoolean("JUPITER_DONE", false)
+        val saturnDone = sharedPreferences.getBoolean("SATURN_DONE", false)
+        val uranusDone = sharedPreferences.getBoolean("URANUS_DONE", false)
+        val neptuneDone = sharedPreferences.getBoolean("NEPTUNE_DONE", false)
 
-        val sunIsPlaying = sharedPreferences.getBoolean("SUN_IS_PLAYING",false)
-        val mercuryIsPlaying = sharedPreferences.getBoolean("MERCURY_IS_PLAYING",false)
-        val venusIsPlaying = sharedPreferences.getBoolean("VENUS_IS_PLAYING",false)
-        val earthIsPlaying = sharedPreferences.getBoolean("EARTH_IS_PLAYING",false)
-        val marsIsPlaying = sharedPreferences.getBoolean("MARS_IS_PLAYING",false)
-        val jupiterIsPlaying = sharedPreferences.getBoolean("JUPITER_IS_PLAYING",false)
-        val saturnIsPlaying = sharedPreferences.getBoolean("SATURN_IS_PLAYING",false)
-        val uranusIsPlaying = sharedPreferences.getBoolean("URANUS_IS_PLAYING",false)
-        val neptuneIsPlaying = sharedPreferences.getBoolean("NEPTUNE_IS_PLAYING",false)
+        val sunIsPlaying = sharedPreferences.getBoolean("SUN_IS_PLAYING", false)
+        val mercuryIsPlaying = sharedPreferences.getBoolean("MERCURY_IS_PLAYING", false)
+        val venusIsPlaying = sharedPreferences.getBoolean("VENUS_IS_PLAYING", false)
+        val earthIsPlaying = sharedPreferences.getBoolean("EARTH_IS_PLAYING", false)
+        val marsIsPlaying = sharedPreferences.getBoolean("MARS_IS_PLAYING", false)
+        val jupiterIsPlaying = sharedPreferences.getBoolean("JUPITER_IS_PLAYING", false)
+        val saturnIsPlaying = sharedPreferences.getBoolean("SATURN_IS_PLAYING", false)
+        val uranusIsPlaying = sharedPreferences.getBoolean("URANUS_IS_PLAYING", false)
+        val neptuneIsPlaying = sharedPreferences.getBoolean("NEPTUNE_IS_PLAYING", false)
 
         MilkyWayPlanets.sunDone = sunDone
         MilkyWayPlanets.mercuryDone = mercuryDone
@@ -97,20 +92,18 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    fun gameIsSaved(){
+    fun gameIsSaved() {
         val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
-        Constants.isSaved = sharedPreferences.getBoolean("IS_SAVED",false)
+        Constants.isSaved = sharedPreferences.getBoolean("IS_SAVED", false)
     }
 
-
-    /// TODO
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.cleardata -> {
                 val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
                 sharedPreferences.edit().clear().commit()

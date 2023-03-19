@@ -19,14 +19,10 @@ class LevelsPage : AppCompatActivity() {
 
         binding.milkyway.animate().rotationBy(100F).setDuration(2000)
 
-
         binding.milkyway.setOnClickListener{
 
             val intent = Intent(this, MilkyWay::class.java)
             startActivity(intent)
         }
-
-
-        //TODO ostatne levely
     }
 }

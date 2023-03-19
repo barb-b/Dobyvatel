@@ -19,22 +19,8 @@ class WelcomeAlien : AppCompatActivity() {
         binding = ActivityWelcomeAlienBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val displayMetrics = DisplayMetrics()
-        val height = displayMetrics.heightPixels
-        val width = displayMetrics.widthPixels
-
-
-//        binding.Tod.x = 800F
-//
-//        binding.Tod.animate()
-//            .translationX(0F)
-//            .setDuration(2000)
-
         val animationSlideUp = AnimationUtils.loadAnimation(this, R.anim.show)
         binding.Tod.startAnimation(animationSlideUp)
-
-
-
 
         binding.next.setOnClickListener {
             val intent = Intent(this, LevelsPage::class.java)

@@ -530,13 +530,13 @@ class DecisionPage : AppCompatActivity() {
     private operator fun next(): Int {
 
         val random = Random
-        return 1
+//        return 1
 //        return 0
-//        return if (random.nextBoolean()) {
-//            0
-//        } else {
-//            1
-//        }
+        return if (random.nextBoolean()) {
+            0
+        } else {
+            1
+        }
     }
 
 

@@ -17,6 +17,8 @@ class LevelsPage : AppCompatActivity() {
         binding = ActivityLevelsPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.milkyway.animate().rotationBy(100F).setDuration(2000)
+
 
         binding.milkyway.setOnClickListener{
 

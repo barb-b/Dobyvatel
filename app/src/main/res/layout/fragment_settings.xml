@@ -46,6 +46,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/difficultyButton" />
 
+        <Button
+            android:id="@+id/debug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/neon_green"
+            android:text="cheat"
+            android:textColor="@color/button_colortext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/difficultyButton" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

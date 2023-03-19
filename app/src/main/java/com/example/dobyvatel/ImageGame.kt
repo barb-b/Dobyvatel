@@ -69,11 +69,11 @@ class ImageGame : AppCompatActivity() {
         timerGame = object : CountDownTimer(30000, 1000) {
 
             // Callback function, fired on regular interval
-            override fun onTick(millisUntilFinished: Long) {
-//                binding.countdown.setText("Zostávajúci čas: " + millisUntilFinished / 1000)
+            override fun onTick(millisUntilFinished: Long) {//                binding.countdown.setText("Zostávajúci čas: " + millisUntilFinished / 1000)
 
 //                ObjectAnimator.ofInt(binding.progressBar2,"progress", (millisUntilFinished / 1000).toInt())
 //                    .start()
+
                 progressBarTimeScore(millisUntilFinished)
             }
             //koniec casu: End game

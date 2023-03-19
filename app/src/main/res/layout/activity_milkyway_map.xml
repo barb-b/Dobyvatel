@@ -343,51 +343,63 @@
             android:background="@null"
             android:scaleType="fitCenter"/>
 
+<!--        <ImageButton-->
+<!--            android:id="@+id/saveButton"-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_gravity="bottom|start"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:background="@null"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            app:srcCompat="@drawable/save"-->
+<!--            tools:ignore="SpeakableTextPresentCheck" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/ufoText"-->
+<!--            android:layout_width="170dp"-->
+<!--            android:layout_height="80dp"-->
+<!--            android:layout_gravity="top|right"-->
+<!--            android:layout_margin="30dp"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:layout_marginBottom="100dip"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/rounded_courner"-->
+<!--            android:padding="10dp"-->
+<!--            android:text="Vyber si planetu na dobyvanie"-->
+<!--            android:textColor="@color/black" />-->
+
         <ImageButton
-            android:id="@+id/saveButton"
+            android:id="@+id/settings"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:layout_gravity="bottom|start"
-            android:layout_margin="20dp"
+            android:layout_gravity="top|left"
+            android:layout_margin="10dp"
             android:adjustViewBounds="true"
             android:background="@null"
             android:scaleType="fitCenter"
-            app:srcCompat="@drawable/save"
+            app:srcCompat="@drawable/settings"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <TextView
-            android:id="@+id/ufoText"
-            android:layout_width="170dp"
-            android:layout_height="80dp"
-            android:layout_gravity="top|right"
-            android:layout_margin="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="100dip"
-            android:layout_weight="1"
-            android:background="@drawable/rounded_courner"
-            android:padding="10dp"
-            android:text="Vyber si planetu na dobyvanie"
-            android:textAlignment="center"
-            android:textColor="@color/black" />
-
-        <ImageView
-            android:id="@+id/alien"
-            android:layout_width="170dp"
-            android:layout_height="100dp"
-            android:layout_gravity="top|left"
-            android:adjustViewBounds="false"
-            app:srcCompat="@drawable/alien"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="-50dp"/>
 
         <androidx.fragment.app.FragmentContainerView
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="100dp"
             android:id="@+id/collectionfragment"
             android:visibility="gone"
             android:name="com.example.dobyvatel.CollectionFragment"
             android:layout_width="match_parent"
             android:layout_height="500dp"
             tools:ignore="MissingConstraints" />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/settingFragment"
+            android:visibility="gone"
+            android:name="com.example.dobyvatel.Settings"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            tools:ignore="MissingConstraints" />
+
+
     </FrameLayout>
 
 

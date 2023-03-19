@@ -10,55 +10,83 @@
     <ImageView
         android:id="@+id/Tod"
         android:layout_width="350dp"
+        android:alpha="0.5"
         android:layout_height="450dp"
         android:layout_marginLeft="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tod" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_marginTop="-250dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="-50dp"
+        android:fontFamily="@font/shadows"
         android:text="TOD"
         android:textAlignment="viewStart"
         android:textColor="@color/neon_green"
-        android:textSize="30sp"
+        android:textSize="170sp"
         android:textStyle="bold"
         android:typeface="monospace"
+        android:shadowColor="@color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/aboutTod"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="-200dp"
-        android:text="Moje meno je Tod \nMiesto pobytu: Daleka galaxia \nVek: Neurcito \nPovolanie: Lietajuci v galaxii \n O mne: bla bla bla bla bla bla bla bla baasdf asdfjfalfasdjakdfhlasdkjf afsadf"
-        android:textAlignment="textStart"
-        android:textColor="@color/background_text"
-        android:textSize="15sp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="20dp"
+        android:outlineAmbientShadowColor="@color/neon_green"
+        android:outlineSpotShadowColor="@color/neon_green"
+        android:scrollbarThumbVertical="@color/neon_green"
+        app:layout_constraintBottom_toTopOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/next">
 
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/Tod"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/aboutTod"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:padding="25dp"
+                android:shadowColor="@color/black"
+                android:shadowDx="-2"
+                android:shadowDy="-2"
+                android:shadowRadius="1"
+                android:text="@string/tod_bio"
+                android:textAlignment="viewStart"
+                android:textColor="@color/background_text"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dobyvanie!"
+        android:layout_marginTop="40dp"
+        android:padding="20dp"
         android:backgroundTint="@color/neon_green"
+        android:text="Dobyvanie!"
+        android:shadowColor="@color/red"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+
         android:textColor="@color/button_colortext"
-        android:layout_marginRight="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Tod" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

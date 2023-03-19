@@ -164,6 +164,7 @@ class Quizz : AppCompatActivity() {
 
             }else{
                 // HRAC PREHRAL
+                //TODO nieco napisat viac
 
                 binding.finish.text = "Prehral si"
                 Handler(Looper.getMainLooper()).postDelayed({
@@ -178,7 +179,7 @@ class Quizz : AppCompatActivity() {
             // Generuje sa dalsia otazka
 
             // Z listu sa vytiahne random otazka
-            val randomNu = Random.nextInt(0, list.size)
+            val randomNu = (0 until list.size).random()
             currentQuestion = list.get(randomNu)
 
             //TODO vyhodnotenie

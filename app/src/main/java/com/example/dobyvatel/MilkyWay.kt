@@ -5,10 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.LifecycleObserver
 
 import com.example.dobyvatel.databinding.ActivityMilkywayMapBinding
 import com.example.dobyvatel.objects.Constants
@@ -27,11 +29,14 @@ class MilkyWay : AppCompatActivity() {
         //TODO urobit to so vsetkymi planetami, ak je level done, obrazok je odmknuty
         setImages()
 
+        // animation
+        val slideIn = AnimationUtils.loadAnimation(this, R.anim.slidein)
+        binding.chest.startAnimation(slideIn)
+
+        binding.settings.animate().rotationBy(200F).setDuration(2000)
+
         //        SLNKO
         binding.sun.setOnClickListener{
-//            val intent = Intent(this, ImageGame::class.java)
-////            startActivity(intent)
-//            startActivityForResult(intent,0)
 
             if(MilkyWayPlanets.sunDone == false){
 
@@ -43,9 +48,6 @@ class MilkyWay : AppCompatActivity() {
 
                 //TODO level je splneny, malo by sa nieco vypisat
             }
-            ///TODO urobit to takto, cez imageSource. Nechat len jeden obrazok
-            ///TODO ktoremu sa bude nastavovat rozne source
-//            binding.mercuryBlack.setImageResource(R.drawable.milkyway_mercury)
         }
 
         //        MERKUR
@@ -185,7 +187,7 @@ class MilkyWay : AppCompatActivity() {
 
             //TODO aktualizacia karticiek
             //zasa na zaklade co je done -> karticka bude visible
-            binding.ufoText.text = "isTrue " + Constants.isTrue.toString()
+//            binding.ufoText.text = "isTrue " + Constants.isTrue.toString()
 
 
             supportFragmentManager.beginTransaction().apply {
@@ -193,15 +195,12 @@ class MilkyWay : AppCompatActivity() {
                 commit()
             }
 
+
             if(binding.collectionfragment.isVisible){
                 binding.collectionfragment.visibility = View.GONE
             }else{
                 binding.collectionfragment.visibility = View.VISIBLE
             }
-
-
-
-
 
 //            val intent = Intent(this, Testadebug::class.java)
 //            startActivity(intent)
@@ -217,10 +216,27 @@ class MilkyWay : AppCompatActivity() {
 //            binding.uranus.setImageResource(R.drawable.milkyway_uran)
         }
 
-        binding.saveButton.setOnClickListener{
-            saveData()
+        binding.settings.setOnClickListener {
+
+            binding.settings.animate().rotationBy(200F).setDuration(2000)
+
+            supportFragmentManager.beginTransaction().apply {
+                replace(R.id.settingFragment, Settings())
+                commit()
+            }
+            if(binding.settingFragment.isVisible){
+                binding.settingFragment.visibility = View.GONE
+            }else{
+                binding.settingFragment.visibility = View.VISIBLE
+            }
         }
+
+//        binding.saveButton.setOnClickListener{
+//            saveData()
+//        }
     }
+
+
 
     fun setImages(){
         if(MilkyWayPlanets.sunDone){
@@ -291,7 +307,7 @@ class MilkyWay : AppCompatActivity() {
 //            MilkyWayDone.sun = data?.getBooleanExtra("boolSun",false) == true
 //            MilkyWayDone.mercury = data?.getBooleanExtra("boolMerc",false) == true
             setImages()
-            binding.ufoText.text = "data sa poslali"
+//            binding.ufoText.text = "data sa poslali"
         }
     }
 }

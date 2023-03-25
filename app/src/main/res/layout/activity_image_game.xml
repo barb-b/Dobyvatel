@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ImageGame"
     android:background="@color/galaxy_grey"
-    >
+    tools:context=".ImageGame">
 
     <TextView
         android:id="@+id/mainHeader"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:layout_marginTop="20dp"
+        android:fontFamily="sans-serif-smallcaps"
         android:gravity="center"
         android:paddingHorizontal="15dp"
         android:text="@string/main_header"
-        android:fontFamily="sans-serif-smallcaps"
         android:textColor="@color/background_text"
         android:textSize="20sp"
         android:typeface="normal"
@@ -59,9 +58,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:orientation="vertical"
         android:background="@drawable/rounded_courner"
+        android:orientation="vertical"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"
@@ -77,7 +76,7 @@
                 android:id="@+id/alien1"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/imagegame_alien" />
 
@@ -85,7 +84,7 @@
                 android:id="@+id/alien2"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/imagegame_alien" />
 
@@ -93,7 +92,7 @@
                 android:id="@+id/alien3"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/imagegame_alien" />
         </TableRow>
@@ -107,7 +106,7 @@
                 android:id="@+id/alien4"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/imagegame_alien" />
 
@@ -115,7 +114,7 @@
                 android:id="@+id/alien5"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/imagegame_alien" />
 
@@ -123,7 +122,7 @@
                 android:id="@+id/alien6"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/imagegame_alien" />
         </TableRow>
@@ -137,7 +136,7 @@
                 android:id="@+id/alien7"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/imagegame_alien" />
 
@@ -145,7 +144,7 @@
                 android:id="@+id/alien8"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/imagegame_alien" />
 
@@ -153,50 +152,21 @@
                 android:id="@+id/alien9"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_marginBottom="10dp"
                 app:srcCompat="@drawable/imagegame_alien" />
         </TableRow>
 
     </TableLayout>
 
-
-<!--    <TextView-->
-<!--        android:id="@+id/countdown"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginVertical="10dp"-->
-<!--        android:text="Zostáva ti"-->
-<!--        android:textColor="@color/galaxy_purple_light"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/tabulkamimozenstanov"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-<!--    <ProgressBar-->
-<!--        android:id="@+id/scoreProgress"-->
-<!--        style="?android:attr/progressBarStyleHorizontal"-->
-<!--        android:layout_width="250dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_weight="1"-->
-<!--        android:foregroundTint="#9C27B0"-->
-<!--        android:max="20"-->
-<!--        android:progressTint="#CDDC39"-->
-<!--        android:scaleY="2"-->
-<!--        android:scrollbarSize="10dp"-->
-<!--        android:textAlignment="center"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/score" />-->
-
     <TextView
         android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Počet chytených mimozenšťanov"
-        android:fontFamily="sans-serif-smallcaps"
-        android:textColor="@color/background_text"
         android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="Počet chytených mimozenšťanov"
+        android:textColor="@color/background_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tabulkamimozenstanov" />

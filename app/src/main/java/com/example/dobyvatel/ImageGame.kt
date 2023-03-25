@@ -68,14 +68,11 @@ class ImageGame : AppCompatActivity() {
 
         timerGame = object : CountDownTimer(30000, 1000) {
 
-            // Callback function, fired on regular interval
-            override fun onTick(millisUntilFinished: Long) {//                binding.countdown.setText("Zostávajúci čas: " + millisUntilFinished / 1000)
-
-//                ObjectAnimator.ofInt(binding.progressBar2,"progress", (millisUntilFinished / 1000).toInt())
-//                    .start()
-
+            // Callback funkcia
+            override fun onTick(millisUntilFinished: Long) {
                 progressBarTimeScore(millisUntilFinished)
             }
+
             //koniec casu: End game
             override fun onFinish() {
 
@@ -93,7 +90,6 @@ class ImageGame : AppCompatActivity() {
                     // Aplikacia pocka niekolko sekund a potom sa vypne
                     Handler(Looper.getMainLooper()).postDelayed({
                         val intent = Intent()
-                        ///TODO ako sledovat planety
                         if (MilkyWayPlanets.sunIsPlaying) {
                             MilkyWayPlanets.planetIsDone("sun")
                         } else if (MilkyWayPlanets.mercuryIsPlaying) {
@@ -114,26 +110,20 @@ class ImageGame : AppCompatActivity() {
                             MilkyWayPlanets.planetIsDone("neptune")
                         }
 
-//                    intent.putExtra("boolSun", endOfGame)
                         setResult(Activity.RESULT_OK, intent)
                         finish()
                     }, 5000)
                 } else {
                     //UNHAPPY PATH -> hrac prehral
                     winOrLoose("loose")
-
                     Handler(Looper.getMainLooper()).postDelayed({
                         val intent = Intent()
-//                    intent.putExtra("boolSun", endOfGame)
                         setResult(Activity.RESULT_OK, intent)
                         finish()
                     }, 5000)
                 }
-
-
             }
         }.start()
-
 
         // na zaciatku vsetky obrazky zneviditelny
         for (image in listOfImageAlien) {
@@ -215,35 +205,33 @@ class ImageGame : AppCompatActivity() {
             image.setTag(R.id.KEY, null)
             image.visibility = View.INVISIBLE
         }
-        //TODO
-//        binding.score.text = "Score: " + score
 
         binding.numberScore.text = score.toString()
-
         game(Random.nextInt(startNumber, endNumber))
     }
 
-    fun progressBarTimeScore(time: Long){
-        if(time/ 1000>= 20){
+    //    Odpocitavanie casu z progressbaru
+    fun progressBarTimeScore(time: Long) {
+        if (time / 1000 >= 20) {
             binding.progressBarTime.progressTintList = ColorStateList.valueOf(Color.GREEN)
-        }else if (time/ 1000>=8){
-            binding.progressBarTime.progressTintList = ColorStateList.valueOf(Color.parseColor("#FF6F00"))
-        }else{
+        } else if (time / 1000 >= 8) {
+            binding.progressBarTime.progressTintList =
+                ColorStateList.valueOf(Color.parseColor("#FF6F00"))
+        } else {
             binding.progressBarTime.progressTintList = ColorStateList.valueOf(Color.RED)
         }
 
-        ObjectAnimator.ofInt(binding.progressBarTime,"progress",(time / 1000).toInt())
+        ObjectAnimator.ofInt(binding.progressBarTime, "progress", (time / 1000).toInt())
             .start()
     }
 
-    fun scoreSetNull (symbol:String){
-
-        if(symbol == "plus"){
+    fun scoreSetNull(symbol: String) {
+        if (symbol == "plus") {
             score++
-        }else{
-            if(score==0){
+        } else {
+            if (score == 0) {
                 score = 0
-            }else{
+            } else {
                 score--
             }
         }
@@ -253,10 +241,7 @@ class ImageGame : AppCompatActivity() {
     fun scoreEnd(score: Int) {
         when (score) {
             1 -> {
-                //TODO
                 endOfTimer = false
-
-                //TODO nadpis a aj farby ... vytvorit metodu na ukoncenie co sa spravi rovnako aj ked sa vyhra
                 winOrLoose("loose")
 
                 //hra sa ukoncuje: End game
@@ -279,7 +264,7 @@ class ImageGame : AppCompatActivity() {
     fun game(randomNumber: Int) {
         when (randomNumber) {
             1 -> {
-                setImageAlien(binding.alien1,getString(R.string.ALIEN))
+                setImageAlien(binding.alien1, getString(R.string.ALIEN))
                 endImage()
             }
 
@@ -345,7 +330,6 @@ class ImageGame : AppCompatActivity() {
         }
     }
 
-
     //metoda na random nastavenia miesta pre bombu
     fun setBombImage(randomNumber: Int) {
         when (randomNumber) {
@@ -381,7 +365,7 @@ class ImageGame : AppCompatActivity() {
 
             7 -> {
                 setImageBomb(binding.alien7, getString(R.string.BOMB))
-                endImage( 1)
+                endImage(1)
             }
 
             8 -> {
@@ -391,7 +375,7 @@ class ImageGame : AppCompatActivity() {
 
             9 -> {
                 setImageBomb(binding.alien9, getString(R.string.BOMB))
-                endImage( 1)
+                endImage(1)
             }
         }
     }
@@ -427,12 +411,11 @@ class ImageGame : AppCompatActivity() {
     // casomiera na prepinanie obrazkov
     fun endImage(bomb: Int = 0) {
 
-        timer = object : CountDownTimer(Constants.milisinFuture.toLong(), Constants.countDownInterval.toLong()) {
+        timer = object :
+            CountDownTimer(Constants.milisinFuture.toLong(), Constants.countDownInterval.toLong()) {
 
             // Callback function, fired on regular interval
             override fun onTick(millisUntilFinished: Long) {
-//                binding.countdown.setText("seconds remaining: " + millisUntilFinished / 1000)
-                ///TODO
                 timerIsRunning = true
             }
 
@@ -472,23 +455,19 @@ class ImageGame : AppCompatActivity() {
             }
         }
 
-        //TODO rovnako aj Xka su invisible
-        // Vsetky obrazky a text fields su invisible
-        // zarovnat napis do stredu
+        //Nastavenie Xka
         for (image in listOfImageAlien) {
             image.visibility = View.GONE
         }
         for (text in listOfTextObjects) {
             text.visibility = View.GONE
         }
-        for (x in listOfX){
+        for (x in listOfX) {
             x.visibility = View.GONE
         }
 
         binding.progressBarTime.visibility = View.GONE
 
         binding.tabulkamimozenstanov.background = null
-
     }
-
 }

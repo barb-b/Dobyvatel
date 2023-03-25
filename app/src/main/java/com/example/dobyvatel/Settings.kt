@@ -14,7 +14,7 @@ import com.example.dobyvatel.objects.Constants
 import com.example.dobyvatel.objects.MilkyWayPlanets
 
 
-class Settings : Fragment(R.layout.fragment_settings){
+class Settings : Fragment(R.layout.fragment_settings) {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,12 +28,15 @@ class Settings : Fragment(R.layout.fragment_settings){
         val spinner = view.findViewById<Spinner>(R.id.spinner)
 
         saveButton.setOnClickListener {
+
+            //Ulozenie dat
             Constants.isSaved = true
 
-            val sharedPreferences = this.activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+            val sharedPreferences =
+                this.activity?.getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
 
             val editor = sharedPreferences?.edit()
-            editor?.apply{
+            editor?.apply {
                 putBoolean("SUN_DONE", MilkyWayPlanets.sunDone)
                 putBoolean("MERCURY_DONE", MilkyWayPlanets.mercuryDone)
                 putBoolean("VENUS_DONE", MilkyWayPlanets.venusDone)
@@ -56,50 +59,57 @@ class Settings : Fragment(R.layout.fragment_settings){
                 putBoolean("IS_SAVED", Constants.isSaved)
             }?.apply()
 
-            Toast.makeText(activity,"Hra uložená", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Hra uložená", Toast.LENGTH_SHORT).show()
         }
-
-
-
 
         difficultyButton.setOnClickListener {
             spinner.performClick()
-
         }
 
+        //Moznost nastavenia obtiaznosti
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
 
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            //vzdy da najprv Obtiaznost ako text
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 difficultyButton.text = "Obtiaznost"
             }
 
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 difficultyButton.text = spinner.selectedItem.toString()
                 val difficulty = spinner.selectedItem.toString()
 
-                if(difficulty == "Ľahká"){
+                if (difficulty == "Ľahká") {
                     Constants.milisinFuture = Constants.easymilisinFuture
                     Constants.countDownInterval = Constants.easycountDownInterval
-                    Toast.makeText(activity,"Obťiažnosť nastavená na "+ difficulty.lowercase(), Toast.LENGTH_SHORT).show()
-                }else if(difficulty == "Stredná"){
+                    Toast.makeText(
+                        activity,
+                        "Obťiažnosť nastavená na " + difficulty.lowercase(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else if (difficulty == "Stredná") {
                     Constants.milisinFuture = Constants.mediummilisinFuture
                     Constants.countDownInterval = Constants.mediumcountDownInterval
-                    Toast.makeText(activity,"Obťiažnosť nastavená na "+ difficulty.lowercase(), Toast.LENGTH_SHORT).show()
-                }else if(difficulty == "Ťažká"){
+                    Toast.makeText(
+                        activity,
+                        "Obťiažnosť nastavená na " + difficulty.lowercase(),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else if (difficulty == "Ťažká") {
                     Constants.milisinFuture = Constants.hardmilisinFuture
                     Constants.countDownInterval = Constants.hardcountDownInterval
-                    Toast.makeText(activity,"Obťiažnosť nastavená na "+ difficulty.lowercase(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        activity,
+                        "Obťiažnosť nastavená na " + difficulty.lowercase(),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-
-
             }
         }
-
-
         return view
-
     }
-
-
-
 }

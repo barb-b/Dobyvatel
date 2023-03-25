@@ -3,7 +3,6 @@ package com.example.dobyvatel.objects
 object Constants {
 
     var isSaved = false
-    var isTrue = false
 
     var easymilisinFuture = 1000
     var easycountDownInterval = 800

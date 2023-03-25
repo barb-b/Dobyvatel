@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CollectionFragment"
-    android:background="@drawable/transparent">
+    android:background="@drawable/transparent"
+    tools:context=".CollectionFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -26,7 +25,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/sunCard"
@@ -35,8 +34,8 @@
                 android:layout_gravity="center"
                 android:layout_marginLeft="80dp"
                 android:layout_marginTop="15dp"
-                android:visibility="gone"
-                android:src="@drawable/collection_sun" />
+                android:src="@drawable/collection_sun"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/merkuryCard"
@@ -44,8 +43,8 @@
                 android:layout_height="300dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:visibility="gone"
-                android:src="@drawable/collection_merkur" />
+                android:src="@drawable/collection_merkur"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/venusCard"
@@ -53,62 +52,62 @@
                 android:layout_height="300dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:visibility="gone"
-                android:src="@drawable/collection_venus" />
+                android:src="@drawable/collection_venus"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/earthCard"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:visibility="gone"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/collection_earth" />
+                android:src="@drawable/collection_earth"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/marsCard"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:visibility="gone"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/collection_mars" />
+                android:src="@drawable/collection_mars"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/jupiterCard"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:visibility="gone"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/collection_jupiter" />
+                android:src="@drawable/collection_jupiter"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/saturnCard"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:visibility="gone"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/collection_saturn" />
+                android:src="@drawable/collection_saturn"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/uranCard"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:visibility="gone"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/collection_uran" />
+                android:src="@drawable/collection_uran"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/neptuneCard"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:visibility="gone"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-                android:src="@drawable/collection_neptune" />
+                android:src="@drawable/collection_neptune"
+                android:visibility="gone" />
         </LinearLayout>
     </HorizontalScrollView>
 

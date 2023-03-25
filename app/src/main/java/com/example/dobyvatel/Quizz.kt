@@ -32,8 +32,7 @@ class Quizz : AppCompatActivity() {
     var scoreQuestion = 0
     var numberOfQuestions = 0
 
-    var currentQuestion = QuizzClass("","","","")
-
+    var currentQuestion = QuizzClass("", "", "", "")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,23 +72,21 @@ class Quizz : AppCompatActivity() {
         randomOrderRadio.add(binding.radioButton3)
         randomOrderRadio.add(binding.radioButton4)
 
-        ///TODO najprv random cislo -> potom vytiahnut z listu to
+        ///Poprehadzuje do random poradia
         createRandomQuestion(listOfQuestion, randomOrderRadio)
 
         //LISTENERY
         binding.nextQuestion.setOnClickListener {
 
-            if(binding.radioGroup.checkedRadioButtonId == -1){
+            if (binding.radioGroup.checkedRadioButtonId == -1) {
                 ///Ak radiobutton nie je zaskrtnyty nic sa nespravi
-
-            }else{
+            } else {
                 isCorrectAnswer(currentQuestion)
 
                 Handler(Looper.getMainLooper()).postDelayed({
 
                     createRandomQuestion(listOfQuestion, randomOrderRadio)
-                }, 3000)
-
+                }, 2000)
             }
         }
     }
@@ -116,13 +113,11 @@ class Quizz : AppCompatActivity() {
         }
     }
 
-    fun createRandomQuestion(list: ArrayList<QuizzClass>, radioButton:ArrayList<RadioButton>){
+    fun createRandomQuestion(list: ArrayList<QuizzClass>, radioButton: ArrayList<RadioButton>) {
 
 
-        if(numberOfQuestions == 3){
+        if (numberOfQuestions == 3) {
             // 3 otazky -> navrat ku planetam a vyhodnotenie
-            //TODO VYHODNOTENIE
-            // Clear vsetko
 
             // Nastavenie visibility
             binding.radioGroup.visibility = View.GONE
@@ -131,14 +126,13 @@ class Quizz : AppCompatActivity() {
             binding.nextQuestion.visibility = View.GONE
             binding.finish.visibility = View.VISIBLE
 
-            if (scoreQuestion == 3){
+            if (scoreQuestion == 3) {
                 // HRAC VYHRAL
 
                 binding.finish.text = "Vyhral si"
 
                 Handler(Looper.getMainLooper()).postDelayed({
                     val intent = Intent()
-                    ///TODO dat to metody -> opakovanie
                     if (MilkyWayPlanets.sunIsPlaying) {
                         MilkyWayPlanets.planetIsDone("sun")
                     } else if (MilkyWayPlanets.mercuryIsPlaying) {
@@ -162,9 +156,8 @@ class Quizz : AppCompatActivity() {
                     finish()
                 }, 3000)
 
-            }else{
+            } else {
                 // HRAC PREHRAL
-                //TODO nieco napisat viac
 
                 binding.finish.text = "Prehral si"
                 Handler(Looper.getMainLooper()).postDelayed({
@@ -172,18 +165,14 @@ class Quizz : AppCompatActivity() {
                     setResult(Activity.RESULT_OK, intent)
                     finish()
                 }, 3000)
-
             }
 
-        }else{
+        } else {
             // Generuje sa dalsia otazka
 
             // Z listu sa vytiahne random otazka
             val randomNu = (0 until list.size).random()
             currentQuestion = list.get(randomNu)
-
-            //TODO vyhodnotenie
-            //TODO predtym ako sa vsetko znova nacita treba urobit vyhodnotenie
 
             // Cistenie a nahadzanie otazok
             binding.radioGroup.clearCheck()
@@ -206,20 +195,20 @@ class Quizz : AppCompatActivity() {
     }
 
     // Je odpoved na otazky sprana?
-    fun isCorrectAnswer(quizzCorrect: QuizzClass){
+    fun isCorrectAnswer(quizzCorrect: QuizzClass) {
+
         val radio: RadioButton = findViewById(binding.radioGroup.checkedRadioButtonId)
-        ///TODO oznac spravnu odpoved na zeleno a zlu na cerveno
 
         binding.nextQuestion.isEnabled = false
         binding.nextQuestion.setBackgroundColor(Color.GRAY)
 
-        if(radio.text == quizzCorrect.correctAns){
+        if (radio.text == quizzCorrect.correctAns) {
             scoreQuestion++
             radio.setBackgroundColor(Color.GREEN)
             radio.setTextColor(Color.BLACK)
-            ObjectAnimator.ofInt(binding.progressBar,"progress", scoreQuestion)
+            ObjectAnimator.ofInt(binding.progressBar, "progress", scoreQuestion)
                 .start()
-        }else{
+        } else {
             //zla odpoved
             radio.setBackgroundColor(Color.RED)
             radio.setTextColor(Color.BLACK)
